@@ -26,11 +26,15 @@ public class Elfo
         }     
     }
 
-    public void atirarFlecha(boolean acertar){
-        if (acertar == true){
+    public void atirarFlecha(){
+        if (acertar() == true){
             this.flechas--;
             this.experiencia++;
         }
     }
-   
+    
+    public static boolean acertar() {
+       return Math.random() < 0.5;
+       //I tried another approaches here, still the same result
+   } 
 }
