@@ -7,10 +7,14 @@ public class Elfo
     public Elfo(String nome,Integer flechas)
     {
         this.nome = nome;
-        if (flechas == null){
-            this.flechas = 42;
+        if (flechas != null){
+            this.flechas = flechas;
         }
         this.flechas = flechas;
+    }
+    
+    public Elfo(String nome){
+        this(nome,42);
     }
  
       public void atirarFlecha(){
