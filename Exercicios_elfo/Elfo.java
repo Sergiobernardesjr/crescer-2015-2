@@ -3,6 +3,7 @@ public class Elfo
     private int flechas;
     private int experiencia;
     private String nome;
+     
     
     public Elfo(String nome,Integer flechas)
     {
@@ -17,10 +18,12 @@ public class Elfo
         this(nome,42);
     }
  
-      public void atirarFlecha(){
-        if (this.acertar()){
-            this.experiencia++;
-        }
+      public void atirarFlecha(Dwarf dwarf){
+      
+            if (this.acertar()){
+               this.experiencia++;
+               dwarf.danoRecebido();
+            }
         
         this.flechas--;
     }
@@ -28,23 +31,4 @@ public class Elfo
     public static boolean acertar() {
        return Math.random() < 0.5;
    } 
-   
-   public String getNome(){
-       return nome;
-    }
-    
-    public void setNome(String novoNome){
-        this.nome = novoNome;
-    }
-    
-    public int getFlechas(){
-        return this.flechas;
-    }
-    
-    /*
-    public void setFlechas(int flechas){
-        if (flechas > this.flechas)
-        this.flechas = flechas;
-    }
-    */
 }
