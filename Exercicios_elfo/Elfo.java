@@ -10,13 +10,15 @@ public class Elfo
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
     private int flechas;
     private int experiencia;
+    private String nome;
     
     
     /**
      * COnstrutor para objetos da classe Elfo
      */
-    public Elfo(int flechas)
+    public Elfo(String nome, int flechas)
     {
+        this.nome = nome;
         this.flechas = flechas;
         
         if (this.flechas == 0){
