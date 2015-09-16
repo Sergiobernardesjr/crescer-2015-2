@@ -12,22 +12,17 @@ public class Elfo
     private int experiencia;
     private String nome;
     
-    
-    /**
-     * COnstrutor para objetos da classe Elfo
-     */
-    public Elfo(String nome, int flechas)
+    public Elfo(String nome,Integer flechas)
     {
         this.nome = nome;
-        this.flechas = flechas;
-        
-        if (this.flechas == 0){
+        if (flechas == null){
             this.flechas = 42;
-        }     
+        }
+        this.flechas = flechas;
     }
-
-    public void atirarFlecha(){
-        if (acertar() == true){
+ 
+      public void atirarFlecha(){
+        if (this.acertar()){
             this.flechas--;
             this.experiencia++;
         }
