@@ -21,14 +21,20 @@ public class Elfo
       public void atirarFlecha(Dwarf dwarf){
       
             if (this.acertar()){
-               this.experiencia++;
-               dwarf.danoRecebido();
+             this.experiencia++;
+             dwarf.danoRecebido();
             }
         
         this.flechas--;
     }
     
     public static boolean acertar() {
-       return Math.random() < 0.5;
-   } 
+        return Math.random() < 0.5;
+    }
+    
+   
+   public int getFlechas(){
+       return this.flechas;
+    }
+    
 }
