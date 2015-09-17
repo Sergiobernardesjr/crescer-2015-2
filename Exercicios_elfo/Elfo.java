@@ -3,7 +3,7 @@ public class Elfo
     private int flechas;
     private int experiencia;
     private String nome;
-     
+    private Status status; 
     
     public Elfo(String nome,Integer flechas)
     {
@@ -12,6 +12,7 @@ public class Elfo
             this.flechas = flechas;
         }
         this.flechas = flechas;
+        this.status = Status.VIVO;
     }
     
     public Elfo(String nome){
@@ -25,13 +26,11 @@ public class Elfo
     }
    
     public String toString(){
-        if ((this.flechas == 1) && (this.experiencia < 2)){
-            return this.nome+ " possui " +this.flechas+ " flecha e " +this.experiencia+ " nível de experiência.";
-        }
-        else{
-            return this.nome+ " possui " +this.flechas+ " flechas e " +this.experiencia+ " níveis de experiência.";
-        }
-    
+        boolean flechasPlural = Math.abs(this.flechas) != 1;
+        
+        boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
+        
+        return String.format("%s possui %d %s e %d %s de experiência.",this.nome, this.flechas, flechasPlural ? "flechas" : "flecha", this.experiencia, nivelNoSingular ? "nível" : "níveis");
     }
     
    
@@ -45,5 +44,9 @@ public class Elfo
     
     public int getExperiencia(){
         return this.experiencia;
+    }
+    
+    public Status getStatus(){
+        return this.status;
     }
 }

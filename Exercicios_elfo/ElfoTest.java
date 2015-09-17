@@ -14,6 +14,12 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoNasceVivo(){
+        Elfo legolas = new Elfo("Legolas");
+        assertEquals(Status.VIVO, legolas.getStatus());
+    }
+    
+    @Test
     public void elfoCriadoComNomeNull(){
         Elfo elfo1 = new Elfo(null);
         assertNull(elfo1.getNome());  
@@ -116,13 +122,14 @@ public class ElfoTest
     
     @Test
     public void elfoStringComNomeEFlechaEExperienciaSingular(){
-        Elfo gnolim = new Elfo("Gnolim", 1);
-        
-        assertEquals("Gnolim possui 1 flecha e 0 nível de experiência.", gnolim.toString());
+        Elfo gnolim = new Elfo("Gnolim", 2);
+        gnolim.atirarFlecha(new Dwarf());
+        assertEquals("Gnolim possui 1 flecha e 1 nível de experiência.", gnolim.toString());
     }
     
     public void elfoStringComNomeEFlechaEExperienciaPlural(){
        Elfo gnolim = new Elfo("Gnolim", 10); 
+       
        assertEquals("Gnolim possui 10 flechas e 0 níveis de experiência.", gnolim.toString());
     }
 }
