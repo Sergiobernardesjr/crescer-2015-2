@@ -55,19 +55,7 @@ public class ElfoTest
         assertFalse(0 != nulinho.getExperiencia());
         assertEquals(0, nulinho.getExperiencia());
     }
-    
-    @Test
-    public void acertarFalso(){
-        Elfo legolas = new Elfo("Legolas");
-        assertFalse(legolas.acertar());
-    }
-    
-    @Test
-    public void acertarVerdadeiro(){
-        Elfo mirado = new Elfo("Miradao");
-        assertTrue(mirado.acertar());
-    }    
-          
+              
     @Test
     public void atirarFlechaStatusAtualizando(){
         int flechas = 10000;

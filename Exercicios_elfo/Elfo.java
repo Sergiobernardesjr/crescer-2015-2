@@ -19,15 +19,11 @@ public class Elfo
     }
  
       public void atirarFlecha(Dwarf dwarf){
-      
-            if (this.acertar()){
              this.experiencia++;
              dwarf.danoRecebido();
-            }
-        
-        this.flechas--;
+             this.flechas--;
     }
-    
+   
     public static boolean acertar() {
         return Math.random() < 0.5;
     }
