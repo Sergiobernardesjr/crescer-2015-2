@@ -62,7 +62,7 @@ public class ElfoTest
     public void elfoAtiraFlechaDwarf(){
         //Arrange
         Elfo mirado = new Elfo("Mirado");
-        Dwarf balin = new Dwarf();
+        Dwarf balin = new Dwarf("balin");
         int qtdFlechasEsperada = 41;
         int experienciaEsperada = 1;
         int vidaEsperada = 100;
@@ -78,8 +78,8 @@ public class ElfoTest
     public void elfoAtiraEmDoisAnoes(){
         //Arrange
         Elfo mirado = new Elfo("Mirado");
-        Dwarf balin = new Dwarf();
-        Dwarf gimli = new Dwarf();
+        Dwarf balin = new Dwarf("balin");
+        Dwarf gimli = new Dwarf("gimli");
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
         int vidaEsperada = 100;
@@ -98,8 +98,8 @@ public class ElfoTest
         //Arrange
         Elfo mirado = new Elfo("Mirado");
         Elfo noob = new Elfo("noob");
-        Dwarf balin = new Dwarf();
-        Dwarf gimli = new Dwarf();
+        Dwarf balin = new Dwarf("balin");
+        Dwarf gimli = new Dwarf("gimli");
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
         int vidaEsperada = 90;
@@ -123,7 +123,7 @@ public class ElfoTest
     @Test
     public void elfoStringComNomeEFlechaEExperienciaSingular(){
         Elfo gnolim = new Elfo("Gnolim", 2);
-        gnolim.atirarFlecha(new Dwarf());
+        gnolim.atirarFlecha(new Dwarf("bofur"));
         assertEquals("Gnolim possui 1 flecha e 1 nível de experiência.", gnolim.toString());
     }
     
