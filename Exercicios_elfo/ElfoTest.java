@@ -64,8 +64,36 @@ public class ElfoTest
     
     @Test
     public void acertarVerdadeiro(){
-        Elfo legolas = new Elfo("Legolas");
-        assertTrue(legolas.acertar());
+        Elfo mirado = new Elfo("Miradao");
+        assertTrue(mirado.acertar());
+    }    
+          
+    @Test
+    public void atirarFlechaStatusAtualizando(){
+        int flechas = 10000;
+        String nome = "Legolas";
+        String nome_2 = null;
+        Dwarf gimli = new Dwarf(), balin = new Dwarf();
+        Elfo legolas = new Elfo(nome,flechas), nulinho = new Elfo(nome_2);
+        
+        legolas.atirarFlecha(gimli);
+        assertEquals(flechas-1,legolas.getFlechas()); 
+        assertFalse(flechas-1 != legolas.getFlechas()); 
+        assertFalse(1 != legolas.getExperiencia());
+        assertEquals(1, legolas.getExperiencia()); 
+        
+        legolas.atirarFlecha(gimli);
+        legolas.atirarFlecha(gimli);
+        assertEquals(flechas-3, legolas.getFlechas()); 
+        assertFalse(flechas-3 != legolas.getFlechas()); 
+        assertEquals(3, legolas.getExperiencia()); 
+        assertFalse(3 != legolas.getExperiencia()); 
+        
+        nulinho.atirarFlecha(balin);
+        assertEquals(41, nulinho.getFlechas()); 
+        assertFalse(42 == nulinho.getFlechas()); 
+        assertEquals(1, nulinho.getExperiencia()); 
+        assertFalse(1 != nulinho.getExperiencia()); 
     }
     /*
     @Test
@@ -77,10 +105,7 @@ public class ElfoTest
         Dwarf gimli = new Dwarf(), balin = new Dwarf(); 
         
          assertTrue(mirado.acertar());
-         assertEquals(flechas-1, mirado.getFlechas()); 
-         assertFalse(flechas-1 != mirado.getFlechas()); 
-         assertFalse(1 != mirado.getExperiencia());
-         assertEquals(1, mirado.getExperiencia()); 
+         assertEquals(flechas-1, mirado.getFlechas());
         
          assertTrue(mirado.acertar());
          assertEquals(41, nulinho.getFlechas()); 
