@@ -113,4 +113,11 @@ public class ElfoTest
         assertEquals(vidaEsperada, gimli.getVida());
         assertEquals(vidaEsperada, balin.getVida());
     }
+    
+    @Test
+    public void elfoStringComNomeEFlechas(){
+        Elfo gnolim = new Elfo("Gnolim");
+        
+        assertEquals("Nome: Gnolim Flechas: 42", gnolim.toString());
+    }
 }
