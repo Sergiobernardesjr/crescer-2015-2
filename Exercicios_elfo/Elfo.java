@@ -32,6 +32,10 @@ public class Elfo
         return Math.random() < 0.5;
     }
     
+    public String toString(){
+        return "Nome: " +this.nome+ " Flechas: " +this.flechas;
+    }
+    
    
     public int getFlechas(){
         return this.flechas;
