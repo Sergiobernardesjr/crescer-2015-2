@@ -33,8 +33,16 @@ public class Elfo
     }
     
    
-   public int getFlechas(){
-       return this.flechas;
+    public int getFlechas(){
+        return this.flechas;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public int getExperiencia(){
+        return this.experiencia;
     }
     
 }
