@@ -18,14 +18,20 @@ public class Elfo
         this(nome,42);
     }
  
-      public void atirarFlecha(Dwarf dwarf){
+    public void atirarFlecha(Dwarf dwarf){
              this.experiencia++;
              dwarf.danoRecebido();
              this.flechas--;
     }
    
     public String toString(){
-        return "Nome: " +this.nome+ " Flechas: " +this.flechas;
+        if ((this.flechas == 1) && (this.experiencia < 2)){
+            return this.nome+ " possui " +this.flechas+ " flecha e " +this.experiencia+ " nível de experiência.";
+        }
+        else{
+            return this.nome+ " possui " +this.flechas+ " flechas e " +this.experiencia+ " níveis de experiência.";
+        }
+    
     }
     
    

@@ -115,9 +115,14 @@ public class ElfoTest
     }
     
     @Test
-    public void elfoStringComNomeEFlechas(){
-        Elfo gnolim = new Elfo("Gnolim");
+    public void elfoStringComNomeEFlechaEExperienciaSingular(){
+        Elfo gnolim = new Elfo("Gnolim", 1);
         
-        assertEquals("Nome: Gnolim Flechas: 42", gnolim.toString());
+        assertEquals("Gnolim possui 1 flecha e 0 nível de experiência.", gnolim.toString());
+    }
+    
+    public void elfoStringComNomeEFlechaEExperienciaPlural(){
+       Elfo gnolim = new Elfo("Gnolim", 10); 
+       assertEquals("Gnolim possui 10 flechas e 0 níveis de experiência.", gnolim.toString());
     }
 }
