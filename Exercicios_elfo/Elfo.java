@@ -24,10 +24,6 @@ public class Elfo
              this.flechas--;
     }
    
-    public static boolean acertar() {
-        return Math.random() < 0.5;
-    }
-    
     public String toString(){
         return "Nome: " +this.nome+ " Flechas: " +this.flechas;
     }
