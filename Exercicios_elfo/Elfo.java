@@ -40,5 +40,4 @@ public class Elfo
     public int getExperiencia(){
         return this.experiencia;
     }
-    
 }
