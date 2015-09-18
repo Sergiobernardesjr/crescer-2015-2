@@ -17,8 +17,8 @@ public class DataTerceiraEra
        this.ano = ano;
    }
    
-   public boolean ehBissesto(int ano){
-       if (ano/4 % 2 == 0){
+   public boolean ehBissesto(){
+       if (this.ano/4 % 2 == 0){
            return true;
        }
        return false;

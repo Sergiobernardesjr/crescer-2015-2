@@ -17,15 +17,15 @@ public class DwarfTest
     public void testeNomeSemInformarDataNascimento(){
         Dwarf ion = new Dwarf("Ion");
         DataTerceiraEra data = ion.getDataNascimento();
-        assertEquals(17, data.getDia());
-        assertEquals(9, data.getMes());
-        assertEquals(2015, data.getAno());
+        assertEquals(1, data.getDia());
+        assertEquals(1, data.getMes());
+        assertEquals(1, data.getAno());
     }
     
-    @Test
-    public void testeNomeInformandoDataNascimento(){
+//    @Test
+//    public void testeNomeInformandoDataNascimento(){
 //        Dwarf ion = new Dwarf("
-    }
+//    }
 
     @Test
     public void quandoDwarfNasceCom110DeVida(){
@@ -61,4 +61,15 @@ public class DwarfTest
         }
         assertEquals(Status.MORTO, gimli.getStatus());
     }
+    
+    @Test
+    public void numeroDaSorteEstaCalculandoCertoConformeParametrosDoDwarf(){
+        DataTerceiraEra dataNascimento = new DataTerceiraEra(1,1,2000);
+        Dwarf gnomo = new Dwarf("Gnomo", dataNascimento);
+        double numeroSorteEsperado = 101.0;
+        
+        assertTrue(numeroSorteEsperado == gnomo.getNumeroSorte());
+    }
+    
+    
 }

@@ -10,6 +10,6 @@ public class DataTerceiraEraTest
     @Test
     public void testarSeAnoÉBissesto(){
         DataTerceiraEra data = new DataTerceiraEra(11,02,2016);
-        assertTrue(data.ehBissesto(2016));
+        assertTrue(data.ehBissesto());
     }
 }
