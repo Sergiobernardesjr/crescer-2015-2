@@ -18,10 +18,7 @@ public class DataTerceiraEra
    }
    
    public boolean ehBissesto(){
-       if (this.ano/4 % 2 == 0){
-           return true;
-       }
-       return false;
+       return this.ano %400 == 0 || (this.ano % 4 == 0 && this.ano %100 != 0);
    }
    
    public int getDia(){
@@ -35,5 +32,14 @@ public class DataTerceiraEra
    public int getAno(){
        return this.ano;
    }   
+   
+   public boolean equals(Object obj){
+       
+       DataTerceiraEra outraData = (DataTerceiraEra)obj;
+       
+       return this.dia == outraData.getDia() &&
+              this.mes == outraData.getMes() &&
+              this.ano == outraData.getAno();
+   }
 }
 
