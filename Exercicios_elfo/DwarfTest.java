@@ -12,13 +12,27 @@ public class DwarfTest
         assertEquals("Gloin", gloin.getNome());
         assertEquals(0, gloin.getExperiencia());
     }
+
+    @Test
+    public void testeNomeSemInformarDataNascimento(){
+        Dwarf ion = new Dwarf("Ion");
+        DataTerceiraEra data = ion.getDataNascimento();
+        assertEquals(17, data.getDia());
+        assertEquals(9, data.getMes());
+        assertEquals(2015, data.getAno());
+    }
     
+    @Test
+    public void testeNomeInformandoDataNascimento(){
+//        Dwarf ion = new Dwarf("
+    }
+
     @Test
     public void quandoDwarfNasceCom110DeVida(){
         Dwarf gimli = new Dwarf("Gimli");
         assertEquals(110, gimli.getVida());
     }
-    
+
     @Test
     public void dwarfNasceVivo(){
         Dwarf gimli = new Dwarf("Gimli");
@@ -37,7 +51,7 @@ public class DwarfTest
         //Assert (Validação do reste)
         assertEquals(100, gimli.getVida());
     }
-    
+
     @Test
     public void aMorteDoAnao(){
         Dwarf gimli = new Dwarf("Gimli");
