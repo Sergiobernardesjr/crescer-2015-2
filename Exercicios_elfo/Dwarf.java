@@ -21,17 +21,20 @@ public class Dwarf
     }
 
     public void danoRecebido(){
-        if (getNumeroSorte() < 0){
-            this.experiencia += 2;
+        if (getStatus() == Status.MORTO){
         }
-        else if (getNumeroSorte() >= 0 && getNumeroSorte() <= 100){
+        else{
+            if (getNumeroSorte() < 0){
+                this.experiencia += 2;
+            }
+            else if (getNumeroSorte() >= 0 && getNumeroSorte() <= 100){
+            }
+            else
+            {
+                this.vida -= 10;
+                statusDwarf();
+            }
         }
-        else
-        {
-            this.vida -= 10;
-            statusDwarf();
-        }
-
     }
 
     public int getVida(){
@@ -67,6 +70,7 @@ public class Dwarf
         double numeroSorte = 101;
         boolean vidaSorte = this.vida >= 80 && this.vida <= 90;
         boolean nomeSorte = this.nome.equals("Seixas") || this.nome.equals("Meireles");
+        
         if (dataNascimento.ehBissesto() && vidaSorte){
             numeroSorte *= -33;
         }

@@ -53,14 +53,24 @@ public class DwarfTest
     }
 
     @Test
-    public void aMorteDoAnao(){
-        Dwarf gimli = new Dwarf("Gimli");
-        int i;
-        for (i = 0;i <= 10; i++){
-            gimli.danoRecebido();
-        }
-        assertEquals(Status.MORTO, gimli.getStatus());
+    public void quandoDwarfEMeirelesNãoRecebeDano(){
+        Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(1,1,2015));
+        int vidaEsperada = 110;
+        
+        meireles.danoRecebido();
+        
+        assertEquals(vidaEsperada, meireles.getVida());
     }
+    
+    @Test
+    public void quandoDwarfESeixasNãoRecebeDano(){
+        Dwarf seixas = new Dwarf("Seixas", new DataTerceiraEra(1,1,2015));
+        int vidaEsperada = 110;
+        
+        seixas.danoRecebido();
+        
+        assertEquals(vidaEsperada, seixas.getVida());
+    }    
     
     @Test
     public void numeroDaSorteEstaCalculandoCertoConformeParametrosDoDwarf(){
