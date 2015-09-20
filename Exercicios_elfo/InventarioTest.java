@@ -8,11 +8,11 @@ public class InventarioTest
 {
    @Test
    public void adicionarItemNoInventario(){
+       Item itemEsperado = new Item("poção de vida", 2);
        Inventario inv = new Inventario();
-       String item = "item1";
        
-       inv.adicionarItem(item);
+       inv.adicionarItem(new Item("poção de vida", 2));
        
-       assertEquals("item1", inv.getItem());
+       assertEquals(inv.getItem().get(0), itemEsperado);
    }
 }

@@ -2,17 +2,17 @@ import java.util.ArrayList;
 
 public class Inventario
 {
-    private ArrayList<String> itens = new ArrayList<>();
+    private ArrayList<Item> itens = new ArrayList<>();
     
-    public void perdeItem(String item){
+    public void perdeItem(Item item){
         this.itens.remove(item);
     }
     
-    public void adicionarItem(String item){
+    public void adicionarItem(Item item){
         this.itens.add(item);
     }
     
-    public ArrayList<String> getItem(){
+    public ArrayList<Item> getItem(){
         return this.itens;
     }
 }
