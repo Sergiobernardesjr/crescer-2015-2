@@ -15,6 +15,16 @@ public class Item
        this.quantidade = quantidade;
    }
    
+   public boolean equalsDescricao(Object obj){
+       Item item = (Item)obj;
+       return this.descricao == item.getDescricao();
+   }
+   
+   public boolean equalsQuantidade(Object obj){
+       Item item = (Item)obj;
+       return this.quantidade == item.getQuantidade();
+   }
+    
    public String getDescricao(){
        return this.descricao;
    }

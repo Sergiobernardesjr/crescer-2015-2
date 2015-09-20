@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Dwarf
 {
     private String nome;
+    private Inventario inventario;
     private int vida = 110; 
     private int experiencia = 0;
     private int dia;
@@ -80,5 +81,5 @@ public class Dwarf
 
         return numeroSorte;
     }
-    
+
 }

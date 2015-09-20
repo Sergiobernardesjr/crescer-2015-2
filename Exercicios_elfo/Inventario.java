@@ -15,4 +15,5 @@ public class Inventario
     public ArrayList<Item> getItem(){
         return this.itens;
     }
+    
 }
