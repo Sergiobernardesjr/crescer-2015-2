@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Dwarf
 {
@@ -79,4 +80,5 @@ public class Dwarf
 
         return numeroSorte;
     }
+    
 }
