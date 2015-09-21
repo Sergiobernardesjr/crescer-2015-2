@@ -2,15 +2,15 @@ import java.util.ArrayList;
 
 public class Dwarf
 {
-    private String nome;
-    private Inventario inventario = new Inventario();
-    private int vida = 110; 
-    private int experiencia = 0;
-    private int dia;
-    private int mes;
-    private int ano;
-    private DataTerceiraEra dataNascimento;
-    private Status status = Status.VIVO;
+    protected String nome;
+    protected Inventario inventario = new Inventario();
+    protected int vida = 110; 
+    protected int experiencia = 0;
+    protected int dia;
+    protected int mes;
+    protected int ano;
+    protected DataTerceiraEra dataNascimento;
+    protected Status status = Status.VIVO;
 
     public Dwarf(String nome){
         this.nome = nome;
