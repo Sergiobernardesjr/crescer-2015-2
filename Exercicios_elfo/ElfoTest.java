@@ -75,6 +75,22 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoAtiraFlechaIrishDwarf(){
+        //Arrange
+        Elfo mirado = new Elfo("Mirado");
+        IrishDwarf balin = new IrishDwarf("balin");
+        int qtdFlechasEsperada = 41;
+        int experienciaEsperada = 1;
+        int vidaEsperada = 100;
+        //Act
+        mirado.atirarFlecha(balin);
+        //Assert        
+        assertEquals(qtdFlechasEsperada, mirado.getFlechas());
+        assertEquals(experienciaEsperada, mirado.getExperiencia());
+        assertEquals(vidaEsperada, balin.getVida());
+    }
+    
+    @Test
     public void elfoAtiraEmDoisAnoes(){
         //Arrange
         Elfo mirado = new Elfo("Mirado");
@@ -92,6 +108,25 @@ public class ElfoTest
         assertEquals(vidaEsperada, gimli.getVida());
         assertEquals(vidaEsperada, balin.getVida());
     }
+    
+    @Test
+    public void elfoAtiraEmDoisIrishDwarf(){
+        //Arrange
+        Elfo mirado = new Elfo("Mirado");
+        IrishDwarf balin = new IrishDwarf("balin");
+        IrishDwarf gimli = new IrishDwarf("gimli");
+        int qtdFlechasEsperada = 40;
+        int experienciaEsperada = 2;
+        int vidaEsperada = 100;
+        //Act
+        mirado.atirarFlecha(balin);
+        mirado.atirarFlecha(gimli);
+        //Assert        
+        assertEquals(qtdFlechasEsperada, mirado.getFlechas());
+        assertEquals(experienciaEsperada, mirado.getExperiencia());
+        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, balin.getVida());
+    }    
     
     @Test
     public void doisElfosAtiramEmDoisDwarves(){

@@ -13,7 +13,6 @@ public class InventarioTest
        
        inv.adicionarItem(new Item("vida", 2));
        
-       assertTrue((inv.getItem().get(0)).equalsDescricao(itemEsperado));
-       assertTrue((inv.getItem().get(0)).equalsQuantidade(itemEsperado));
+       assertTrue((inv.getItem().get(0)).equals(itemEsperado));
    }
 }

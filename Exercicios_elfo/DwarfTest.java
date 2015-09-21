@@ -156,4 +156,14 @@ public class DwarfTest
         assertEquals(0, dwarf.getExperiencia());
         assertEquals(100, dwarf.getVida());
     }
+    
+    @Test
+    public void mostrarItensQueODwarfTem(){
+        Dwarf ion = new Dwarf("Cezar");
+        Item item = new Item("Machado",2);
+        Item itemEsperado = new Item("Machado",2);
+        ion.getInventario().adicionarItem(item);
+        
+        assertEquals((itemEsperado),(ion.getInventario().getItem().get(0)));
+    }
 }

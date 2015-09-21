@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Dwarf
+public class IrishDwarf
 {
     private String nome;
     private Inventario inventario = new Inventario();
@@ -12,12 +12,12 @@ public class Dwarf
     private DataTerceiraEra dataNascimento;
     private Status status = Status.VIVO;
 
-    public Dwarf(String nome){
+    public IrishDwarf(String nome){
         this.nome = nome;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
     }
 
-    public Dwarf(String nome, DataTerceiraEra dataNascimento){
+    public IrishDwarf(String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
@@ -91,7 +91,7 @@ public class Dwarf
         
         if (numero == -3333.0)
         {
-            getInventario().aumentar1000UnidadeEmCadaItem();
+            getInventario().irishSortudo();
         }
     }
 }

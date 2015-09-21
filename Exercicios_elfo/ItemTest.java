@@ -20,4 +20,22 @@ public class ItemTest
        assertEquals("Arco", arco.getDescricao());
        assertEquals(1, arco.getQuantidade());
    }
+   
+   @Test
+   public void aumentar1000MaisQuantidadesAtuaisCom3Quantidade(){
+       Item arco = new Item("Arco",3);
+       int quantidadeEsperada = 6003;
+       arco.aumentar1000UnidadesMaisSomaDasQuantidadesAtuais();
+       
+       assertEquals(quantidadeEsperada, arco.getQuantidade());
+   }
+   
+   @Test
+   public void aumentar1000MaisQuantidadesAtuaisCom10Quantidade(){
+       Item arco = new Item("Arco",10);
+       int quantidadeEsperada = 55010;
+       arco.aumentar1000UnidadesMaisSomaDasQuantidadesAtuais();
+       
+       assertEquals(quantidadeEsperada, arco.getQuantidade());
+   }
 }

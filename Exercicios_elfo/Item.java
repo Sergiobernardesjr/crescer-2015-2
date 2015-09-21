@@ -15,21 +15,31 @@ public class Item
        this.quantidade = quantidade;
    }
    
-   public boolean equalsDescricao(Object obj){
+   public boolean equals(Object obj){
        Item item = (Item)obj;
-       return this.descricao == item.getDescricao();
+       return this.descricao == item.getDescricao() && this.quantidade == item.getQuantidade();
    }
-   
-   public boolean equalsQuantidade(Object obj){
-       Item item = (Item)obj;
-       return this.quantidade == item.getQuantidade();
-   }
-    
+       
    public String getDescricao(){
        return this.descricao;
    }
    
    public int getQuantidade(){
        return this.quantidade;
+   }
+   
+   public void aumentar1000Unidades(){
+       this.quantidade += 1000;
+   }
+   
+   public void aumentar1000UnidadesMaisSomaDasQuantidadesAtuais(){
+       int quantidadeAcumulada = 0;
+       
+       for (int i = 0; i <= this.quantidade;i++){
+           quantidadeAcumulada += i;
+       }
+       quantidadeAcumulada = ((quantidadeAcumulada * 1000) + this.quantidade);
+       
+       this.quantidade = quantidadeAcumulada;
    }
 }
