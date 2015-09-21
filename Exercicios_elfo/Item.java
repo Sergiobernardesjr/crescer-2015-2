@@ -35,11 +35,7 @@ public class Item
    public void aumentar1000UnidadesMaisSomaDasQuantidadesAtuais(){
        int quantidadeAcumulada = 0;
        
-       for (int i = 0; i <= this.quantidade;i++){
-           quantidadeAcumulada += i;
-       }
-       quantidadeAcumulada = ((quantidadeAcumulada * 1000) + this.quantidade);
-       
-       this.quantidade = quantidadeAcumulada;
+       int pa = ((this.quantidade * (this.quantidade+1)) / 2);
+       this.quantidade += 1000 * pa;
    }
 }
