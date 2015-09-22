@@ -1,4 +1,7 @@
+import java.util.*;
+
 public class GreenElf extends Elfo{
+    
     public GreenElf(String nome){
         super(nome);
     }
@@ -7,23 +10,24 @@ public class GreenElf extends Elfo{
         super(nome,flechas);
     }
 
-    private void gerarInventario() {
-        Item espadaValiriano = new Item("Espada de aço valiriano",1);
-        Item arcoDeVidro = new Item("Arco de vidro", 1);
-        Item flechaDeVidro = new Item("Flecha de vidro", 1);
-        this.inventario.adicionarItem(espadaValiriano);
-        this.inventario.adicionarItem(arcoDeVidro);
-        this.inventario.adicionarItem(flechaDeVidro);
+    private void gerarInventario(Item item) {
+       ArrayList<String> validas = 
+            new ArrayList<String>(
+                Arrays.asList(new String[] { 
+                    "Espada de aço valiriano", "Arco e Flecha de Vidro"
+                })
+            );
+            
+        boolean podeAdicionar = 
+                item != null && validas.contains(item.getDescricao());
+            
+        if (podeAdicionar){
+            super.adicionarItem(item);
+        }
     }
 
     public void atirarFlecha(Dwarf dwarf){
         super.atirarFlecha(dwarf);
         this.experiencia ++;
-    }
-    /*
-    public void atirarFlecha(IrishDwarf dwarf){
-        super.atirarFlecha(dwarf);
-        this.experiencia ++;
-    }
-     */  
+    }  
 }

@@ -31,5 +31,20 @@ public class GreenElfTest {
         
         assertEquals(flechasEsperada, elfo.getFlechas());
         assertEquals(experienciaEsperada, elfo.getExperiencia());
-    }    
+    }   
+    
+    @Test
+    public void elfoAtacaIrishDwarfEDwarf(){
+        GreenElf elfo = new GreenElf("Elfo");
+        IrishDwarf dwarf = new IrishDwarf("dwarf");
+        Dwarf dwarfinho = new Dwarf("dwarf");
+        int flechasEsperada = 40, 
+            experienciaEsperada = 4;
+            
+        elfo.atirarFlecha(dwarf);
+        elfo.atirarFlecha(dwarfinho);
+        
+        assertEquals(flechasEsperada, elfo.getFlechas());
+        assertEquals(experienciaEsperada, elfo.getExperiencia());
+    }
 }
