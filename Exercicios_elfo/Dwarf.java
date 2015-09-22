@@ -1,23 +1,23 @@
 import java.util.ArrayList;
 
 public class Dwarf extends Personagem {
-    protected String nome;
-    protected int vida = 110; 
-    protected int experiencia = 0;
     protected int dia;
     protected int mes;
     protected int ano;
     protected DataTerceiraEra dataNascimento;
-    protected Status status = Status.VIVO;
 
     public Dwarf(String nome){
         this.nome = nome;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
+        vida = 110;
+        status = Status.VIVO;
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        vida = 110;
+        status = Status.VIVO;        
     }
 
     public void danoRecebido(){
@@ -35,10 +35,6 @@ public class Dwarf extends Personagem {
         }
     }
 
-    public int getVida(){
-        return this.vida;
-    }
-
     public void statusDwarf(){
         if (this.vida == 0){
             status = Status.MORTO;
@@ -50,14 +46,6 @@ public class Dwarf extends Personagem {
 
     public Status getStatus(){
         return this.status;
-    }
-
-    public int getExperiencia(){
-        return this.experiencia;
-    }
-
-    public String getNome(){
-        return this.nome;
     }
 
     public DataTerceiraEra getDataNascimento(){

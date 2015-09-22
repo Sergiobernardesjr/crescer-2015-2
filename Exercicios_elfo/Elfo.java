@@ -1,10 +1,5 @@
 public class Elfo extends Personagem {
     protected int flechas;
-    protected int experiencia;
-    protected String nome;
-    protected Status status;
-    protected Inventario inventario;
-    protected int vida = 80;
 
     public Elfo(String nome,Integer flechas)
     {
@@ -14,10 +9,12 @@ public class Elfo extends Personagem {
         }
         this.flechas = flechas;
         this.status = Status.VIVO;
+        vida = 80;
     }
 
     public Elfo(String nome){
         this(nome,42);
+        vida = 80;
     }
 
     public void atirarFlecha(Dwarf dwarf){
@@ -31,16 +28,6 @@ public class Elfo extends Personagem {
         this.flechas--;
     }
 
-    public void receberAtaqueOrc(Orc orc){
-        this.vida -= orc.getDanoDeAtaque();
-    }
-    
-/*    public void atirarFlecha(IrishDwarf dwarf){
-        this.experiencia++;
-        dwarf.danoRecebido();
-        this.flechas--;
-    }
-*/
     public String toString(){
         boolean flechasPlural = Math.abs(this.flechas) != 1;
 
@@ -52,17 +39,4 @@ public class Elfo extends Personagem {
     public int getFlechas(){
         return this.flechas;
     }
-
-    public String getNome(){
-        return this.nome;
-    }
-
-    public int getExperiencia(){
-        return this.experiencia;
-    }
-
-    public Status getStatus(){
-        return this.status;
-    }
-    
 }

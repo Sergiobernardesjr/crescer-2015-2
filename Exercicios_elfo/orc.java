@@ -1,4 +1,4 @@
-public class Orc extends Personagem {
+public class Orc {
     private int vida;
     private Inventario inventario;
     private Status status;
