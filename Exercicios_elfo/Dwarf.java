@@ -94,4 +94,8 @@ public class Dwarf
             getInventario().aumentar1000UnidadeEmCadaItem();
         }
     }
+    
+    public void atacarOrc(Orc orc){
+        orc.recebeAtaqueDwarf();
+    }
 }

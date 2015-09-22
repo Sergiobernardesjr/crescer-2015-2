@@ -75,6 +75,20 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoAtacaOrcComEscudoUrukHai(){
+        Elfo ninja = new Elfo("Ninja");
+        Orc orc = new Orc();
+        int qtdFlechasEsperada = 41;
+        int vidaEsperada = 246;
+        
+        orc.orcUrukHai();
+        
+        ninja.atacarOrc(orc);
+        assertEquals(qtdFlechasEsperada, ninja.getFlechas());
+        assertEquals(vidaEsperada, orc.getVida());
+    }
+    
+    @Test
     public void elfoAtiraFlechaIrishDwarf(){
         //Arrange
         Elfo mirado = new Elfo("Mirado");

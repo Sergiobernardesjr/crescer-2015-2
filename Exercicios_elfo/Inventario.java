@@ -33,6 +33,17 @@ public class Inventario
        }
    }
    
+   public boolean escudoUrukHai(){
+       int indice = 0;
+       boolean escudo;
+       for (Item item : this.itens){
+           if (item.getDescricao() == "Escudo Uruk Hai"){
+               indice = this.itens.indexOf(item);
+           }
+       }
+       return escudo = itens.get(indice).getDescricao() == "Escudo Uruk Hai";
+   }   
+   
    public void irishSortudo(){
       for (Item item : this.itens){
            item.aumentar1000UnidadesMaisSomaDasQuantidadesAtuais();

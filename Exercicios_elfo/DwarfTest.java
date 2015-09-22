@@ -166,4 +166,28 @@ public class DwarfTest
         
         assertEquals((itemEsperado),(ion.getInventario().getItem().get(0)));
     }
+    
+    @Test
+    public void dwarfAtacaOrcaUrukHaiComEscudo(){
+        Dwarf ion = new Dwarf("Atacadinho");
+        Orc orc = new Orc();
+        int vidaEsperada = 245;
+        
+        orc.orcUrukHai();
+        
+        ion.atacarOrc(orc);
+        
+        assertEquals(vidaEsperada, orc.getVida());
+    }
+    
+    @Test
+    public void dwarfAtacaOrcaUrukHaiSemEscudo(){
+        Dwarf ion = new Dwarf("Atacadinho");
+        Orc orc = new Orc();
+        int vidaEsperada = 240;
+         
+        ion.atacarOrc(orc);
+        
+        assertEquals(vidaEsperada, orc.getVida());
+    }    
 }

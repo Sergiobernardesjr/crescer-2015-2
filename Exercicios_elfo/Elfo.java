@@ -24,6 +24,11 @@ public class Elfo
         dwarf.danoRecebido();
         this.flechas--;
     }
+    
+    public void atacarOrc(Orc orc){
+        orc.recebeAtaqueElfo();
+        this.flechas--;
+    }
 
     public void atirarFlecha(IrishDwarf dwarf){
         this.experiencia++;
