@@ -77,11 +77,11 @@ public class ElfoTest
     @Test
     public void elfoAtacaOrcComEscudoUrukHai(){
         Elfo ninja = new Elfo("Ninja");
-        Orc orc = new Orc();
+        TipoOrc tipoOrc;
+        tipoOrc = TipoOrc.URUKHAI;
+        Orc orc = new Orc(tipoOrc);
         int qtdFlechasEsperada = 41;
-        int vidaEsperada = 246;
-        
-        orc.orcUrukHai();
+        int vidaEsperada = 142;
         
         ninja.atacarOrc(orc);
         assertEquals(qtdFlechasEsperada, ninja.getFlechas());
@@ -180,5 +180,21 @@ public class ElfoTest
        Elfo gnolim = new Elfo("Gnolim", 10); 
        
        assertEquals("Gnolim possui 10 flechas e 0 níveis de experiência.", gnolim.toString());
+    }
+    
+    public void elfoPodeTerItens(){
+        Elfo elfo = new Elfo("elfo");
+        Item arco = new Item("Arco",1);
+        Item itemEsperado = new Item ("Arco",1);
+        
+        elfo.getInventario().adicionarItem(arco);
+        
+        assertEquals(itemEsperado, elfo.getInventario().getItem().get(0));
+        
+    }
+    
+    public void elfoTemInventario(){
+        Elfo elfinho = new Elfo("Elfinho");
+        assertEquals(new Inventario(), elfinho.getInventario());
     }
 }

@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 
-public class Dwarf
-{
+public class Dwarf extends Personagem {
     protected String nome;
-    protected Inventario inventario = new Inventario();
     protected int vida = 110; 
     protected int experiencia = 0;
     protected int dia;
@@ -81,11 +79,7 @@ public class Dwarf
 
         return numeroSorte;
     }
-    
-    public Inventario getInventario(){
-        return this.inventario;
-    }
-    
+       
     public void tentarSorte(){
         double numero = getNumeroSorte();
         

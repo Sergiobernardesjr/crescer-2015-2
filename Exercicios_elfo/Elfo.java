@@ -1,9 +1,10 @@
-public class Elfo
-{
-    private int flechas;
-    private int experiencia;
-    private String nome;
-    private Status status; 
+public class Elfo extends Personagem {
+    protected int flechas;
+    protected int experiencia;
+    protected String nome;
+    protected Status status;
+    protected Inventario inventario;
+    protected int vida = 80;
 
     public Elfo(String nome,Integer flechas)
     {
@@ -30,12 +31,16 @@ public class Elfo
         this.flechas--;
     }
 
-    public void atirarFlecha(IrishDwarf dwarf){
+    public void receberAtaqueOrc(Orc orc){
+        this.vida -= orc.getDanoDeAtaque();
+    }
+    
+/*    public void atirarFlecha(IrishDwarf dwarf){
         this.experiencia++;
         dwarf.danoRecebido();
         this.flechas--;
     }
-
+*/
     public String toString(){
         boolean flechasPlural = Math.abs(this.flechas) != 1;
 
@@ -59,4 +64,5 @@ public class Elfo
     public Status getStatus(){
         return this.status;
     }
+    
 }

@@ -170,10 +170,10 @@ public class DwarfTest
     @Test
     public void dwarfAtacaOrcaUrukHaiComEscudo(){
         Dwarf ion = new Dwarf("Atacadinho");
-        Orc orc = new Orc();
-        int vidaEsperada = 245;
-        
-        orc.orcUrukHai();
+        TipoOrc tipoOrc;
+        tipoOrc = TipoOrc.URUKHAI;
+        Orc orc = new Orc(tipoOrc);
+        int vidaEsperada = 145;
         
         ion.atacarOrc(orc);
         
@@ -183,8 +183,10 @@ public class DwarfTest
     @Test
     public void dwarfAtacaOrcaUrukHaiSemEscudo(){
         Dwarf ion = new Dwarf("Atacadinho");
-        Orc orc = new Orc();
-        int vidaEsperada = 240;
+        TipoOrc tipoOrc;
+        tipoOrc = TipoOrc.SNAGA;
+        Orc orc = new Orc(tipoOrc);
+        int vidaEsperada = 60;
          
         ion.atacarOrc(orc);
         
