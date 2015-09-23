@@ -1,51 +1,26 @@
-public class Orc {
-    private int vida;
-    private Inventario inventario;
-    private Status status;
-    private TipoOrc tipoOrc;
+public class Orc extends Personagem{
 
-    public Orc(TipoOrc tipoOrc)
+    public Orc()
     {
-        this.inventario = new Inventario();
-        this.tipoOrc = tipoOrc;
-        gerarVidaInicial();
-        gerarInventario();
         this.status = Status.VIVO;
     }
     
-    public void recebeAtaqueDwarf() {
+    public void recebeAtaque() {
         
         if(getItem("Escudo Uruk-Hai") == null){
             perderVida(10);
         }
         else {
-            perderVida(5);
+            perderVida(6);
         }
     }
     
-    public void recebeAtaqueElfo() {
-        perderVida(8);
-    }
-    
-    public void atacarAnao(Dwarf dwarf){
+    public void atacar(Personagem personagem){
         if(podeAtacarComEspada()){
-            dwarf.danoRecebido();
+            personagem.receberAtaqueOrc(this);
         }
         else if(podeAtacarComArco()) {
-            dwarf.danoRecebido();
-            debitarFlecha();
-        }
-        else {
-            this.status = Status.FUGINDO;
-        }
-    }
-    
-    public void atacarElfo(Elfo elfo){
-        if(podeAtacarComEspada()){
-            elfo.receberAtaqueOrc(this);
-        }
-        else if(podeAtacarComArco()) {
-            elfo.receberAtaqueOrc(this);
+            personagem.receberAtaqueOrc(this);
             debitarFlecha();
         }
         else {
@@ -65,23 +40,11 @@ public class Orc {
         return 0;
     }
     
-    public int getVida(){
-        return this.vida;
-    }
-    
-    public Inventario getInventario(){
-        return this.inventario;
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
-    
     private void debitarFlecha() {
         Item flecha = getItem("Flecha");
         
         if(flecha.getQuantidade() == 1){
-            this.inventario.perdeItem(flecha);
+            super.removerItem(flecha);
         }
         else {
             flecha.perdeUnidade();
@@ -105,39 +68,10 @@ public class Orc {
         
         if(vida <= 0){
             vida = 0;
-            this.status = Status.MORTO;
+            super.status = Status.MORTO;
         }
         else {
-            this.status = Status.FERIDO;
+            super.status = Status.FERIDO;
         }
-    }
-    
-    private Item getItem(String descricao){
-        return this.inventario.getItemPorDescricao(descricao);
-    }
-    
-    private void gerarInventario() {
-        if(this.tipoOrc == TipoOrc.URUKHAI) {
-            Item escudoUrukHai = new Item("Escudo Uruk-Hai",1);
-            Item espada = new Item("Espada", 1);
-            this.inventario.adicionarItem(escudoUrukHai);
-            this.inventario.adicionarItem(espada);
-        }
-        else if(this.tipoOrc == TipoOrc.SNAGA){
-            Item arco = new Item("Arco",1);
-            Item flechas = new Item("Flecha",5);
-            this.inventario.adicionarItem(arco);
-            this.inventario.adicionarItem(flechas);
-        }
-    }
-    
-    private void gerarVidaInicial() {
-        if(this.tipoOrc == TipoOrc.URUKHAI) {
-            this.vida = 150;
-        }
-        else if(this.tipoOrc == TipoOrc.SNAGA){
-            this.vida = 70;
-        }
-    }
-    
+    }  
 } 

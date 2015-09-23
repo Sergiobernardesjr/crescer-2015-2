@@ -38,4 +38,8 @@ public class Personagem
     public Inventario getInventario(){
         return this.inventario;
     }
+
+    public Item getItem(String descricao){
+        return this.inventario.getItemPorDescricao(descricao);
+    }
 }

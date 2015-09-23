@@ -78,6 +78,6 @@ public class Dwarf extends Personagem {
     }
     
     public void atacarOrc(Orc orc){
-        orc.recebeAtaqueDwarf();
+        orc.recebeAtaque();
     }
 }

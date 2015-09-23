@@ -77,11 +77,9 @@ public class ElfoTest
     @Test
     public void elfoAtacaOrcComEscudoUrukHai(){
         Elfo ninja = new Elfo("Ninja");
-        TipoOrc tipoOrc;
-        tipoOrc = TipoOrc.URUKHAI;
-        Orc orc = new Orc(tipoOrc);
+        UrukHai orc = new UrukHai();
         int qtdFlechasEsperada = 41;
-        int vidaEsperada = 142;
+        int vidaEsperada = 144;
         
         ninja.atacarOrc(orc);
         assertEquals(qtdFlechasEsperada, ninja.getFlechas());
