@@ -4,7 +4,7 @@ public class Dwarf extends Personagem {
     protected int dia;
     protected int mes;
     protected int ano;
-    protected DataTerceiraEra dataNascimento;
+    protected final DataTerceiraEra dataNascimento;
 
     public Dwarf(String nome){
         this.nome = nome;
@@ -80,4 +80,10 @@ public class Dwarf extends Personagem {
     public void atacarOrc(Orc orc){
         orc.recebeAtaque();
     }
+    /*
+    public int hashCode(){
+        return this.nome.hashCode() +
+               "Dwarf".hashCode();
+    }
+    */
 }

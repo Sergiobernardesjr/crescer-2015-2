@@ -1,7 +1,7 @@
 
 public class Personagem
 {
-    protected Inventario inventario = new Inventario();
+    protected final Inventario inventario = new Inventario();
     protected int vida;
     protected int experiencia;
     protected String nome;
@@ -41,5 +41,10 @@ public class Personagem
 
     public Item getItem(String descricao){
         return this.inventario.getItemPorDescricao(descricao);
+    }
+    
+    public int hashCode(){
+        return this.nome.hashCode() +
+               "Personagem".hashCode();               
     }
 }
