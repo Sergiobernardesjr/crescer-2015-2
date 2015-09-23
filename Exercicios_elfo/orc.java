@@ -1,8 +1,6 @@
 public class Orc extends Personagem{
 
-    public Orc()
-    {
-        this.status = Status.VIVO;
+    public Orc(){
     }
     
     public void recebeAtaque() {
@@ -16,12 +14,12 @@ public class Orc extends Personagem{
     }
     
     public void atacar(Personagem personagem){
-        if(podeAtacarComEspada()){
+        if(podeAtacarComEspada() || podeAtacarComArco()){
             personagem.receberAtaqueOrc(this);
-        }
-        else if(podeAtacarComArco()) {
-            personagem.receberAtaqueOrc(this);
-            debitarFlecha();
+            
+            if (podeAtacarComArco()){
+                debitarFlecha();
+            }
         }
         else {
             this.status = Status.FUGINDO;

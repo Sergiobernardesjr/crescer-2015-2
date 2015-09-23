@@ -39,7 +39,6 @@ public class Inventario
                 return item;
             }
         }
-
         return null;
     }   
 

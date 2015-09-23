@@ -5,7 +5,7 @@ public class Personagem
     protected int vida;
     protected int experiencia;
     protected String nome;
-    protected Status status;
+    protected Status status = Status.VIVO;
 
     public void receberAtaqueOrc(Orc orc){
         this.vida -= orc.getDanoDeAtaque();
