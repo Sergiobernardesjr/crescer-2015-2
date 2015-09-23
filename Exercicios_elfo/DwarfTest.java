@@ -33,7 +33,7 @@ public class DwarfTest
     @Test
     public void quandoDwarfNasceCom110DeVida(){
         Dwarf gimli = new Dwarf("Gimli");
-        assertEquals(110, gimli.getVida());
+        assertEquals(110, gimli.getVida(),0.00001);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class DwarfTest
         gimli.danoRecebido();
 
         //Assert (Validação do reste)
-        assertEquals(100, gimli.getVida());
+        assertEquals(100, gimli.getVida(),0.00001);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class DwarfTest
 
         meireles.danoRecebido();
 
-        assertEquals(vidaEsperada, meireles.getVida());
+        assertEquals(vidaEsperada, meireles.getVida(),0.00001);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class DwarfTest
 
         seixas.danoRecebido();
 
-        assertEquals(vidaEsperada, seixas.getVida());
+        assertEquals(vidaEsperada, seixas.getVida(),0.00001);
     }    
 
     @Test
@@ -136,7 +136,7 @@ public class DwarfTest
         dwarf.danoRecebido();
 
         assertEquals(2, dwarf.getExperiencia());
-        assertEquals(90, dwarf.getVida());
+        assertEquals(90, dwarf.getVida(),0.00001);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class DwarfTest
         Dwarf dwarf = new Dwarf("Meireles");
         dwarf.danoRecebido();
         assertEquals(0, dwarf.getExperiencia());
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(),0.00001);
     }
 
     @Test
@@ -154,7 +154,7 @@ public class DwarfTest
         dwarf.danoRecebido();
 
         assertEquals(0, dwarf.getExperiencia());
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(),0.00001);
     }
 
     @Test
@@ -175,7 +175,7 @@ public class DwarfTest
 
         ion.atacarOrc(orc);
 
-        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(vidaEsperada, orc.getVida(),0.00001);
     }
 
     @Test
@@ -186,6 +186,6 @@ public class DwarfTest
 
         ion.atacarOrc(orc);
 
-        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(vidaEsperada, orc.getVida(),0.00001);
     }    
 }

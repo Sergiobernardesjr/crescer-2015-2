@@ -16,6 +16,11 @@ public class Inventario
         return this.itens;
     }
 
+    public boolean equals(Object obj){
+        Inventario inventario = (Inventario)obj;
+        return this.itens.equals(inventario.getItem());
+    }
+
     public String inventarioDescricoes(){
         String descricoes = "";
         for (int i = 0; i < itens.size();i++){

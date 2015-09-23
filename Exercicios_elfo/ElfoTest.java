@@ -65,13 +65,13 @@ public class ElfoTest
         Dwarf balin = new Dwarf("balin");
         int qtdFlechasEsperada = 41;
         int experienciaEsperada = 1;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         //Act
         mirado.atirarFlecha(balin);
         //Assert        
         assertEquals(qtdFlechasEsperada, mirado.getFlechas());
         assertEquals(experienciaEsperada, mirado.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
     }
     
     @Test
@@ -79,11 +79,11 @@ public class ElfoTest
         Elfo ninja = new Elfo("Ninja");
         UrukHai orc = new UrukHai();
         int qtdFlechasEsperada = 41;
-        int vidaEsperada = 144;
+        double vidaEsperada = 144;
         
         ninja.atacarOrc(orc);
         assertEquals(qtdFlechasEsperada, ninja.getFlechas());
-        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(vidaEsperada, orc.getVida(),0.000001);
     }
     
     @Test
@@ -93,13 +93,13 @@ public class ElfoTest
         IrishDwarf balin = new IrishDwarf("balin");
         int qtdFlechasEsperada = 41;
         int experienciaEsperada = 1;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         //Act
         mirado.atirarFlecha(balin);
         //Assert        
         assertEquals(qtdFlechasEsperada, mirado.getFlechas());
         assertEquals(experienciaEsperada, mirado.getExperiencia());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
     }
     
     @Test
@@ -110,15 +110,15 @@ public class ElfoTest
         Dwarf gimli = new Dwarf("gimli");
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         //Act
         mirado.atirarFlecha(balin);
         mirado.atirarFlecha(gimli);
         //Assert        
         assertEquals(qtdFlechasEsperada, mirado.getFlechas());
         assertEquals(experienciaEsperada, mirado.getExperiencia());
-        assertEquals(vidaEsperada, gimli.getVida());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(),0.000001);
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
     }
     
     @Test
@@ -129,15 +129,15 @@ public class ElfoTest
         IrishDwarf gimli = new IrishDwarf("gimli");
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
-        int vidaEsperada = 100;
+        double vidaEsperada = 100;
         //Act
         mirado.atirarFlecha(balin);
         mirado.atirarFlecha(gimli);
         //Assert        
         assertEquals(qtdFlechasEsperada, mirado.getFlechas());
         assertEquals(experienciaEsperada, mirado.getExperiencia());
-        assertEquals(vidaEsperada, gimli.getVida());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(),0.000001);
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
     }    
     
     @Test
@@ -149,7 +149,7 @@ public class ElfoTest
         Dwarf gimli = new Dwarf("gimli");
         int qtdFlechasEsperada = 40;
         int experienciaEsperada = 2;
-        int vidaEsperada = 90;
+        double vidaEsperada = 90.0;
         //Act
         mirado.atirarFlecha(balin);
         mirado.atirarFlecha(gimli);
@@ -158,13 +158,13 @@ public class ElfoTest
         //Assert        
         assertEquals(qtdFlechasEsperada, mirado.getFlechas());
         assertEquals(experienciaEsperada, mirado.getExperiencia());
-        assertEquals(vidaEsperada, gimli.getVida());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(),0.000001);
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
         
         assertEquals(qtdFlechasEsperada, noob.getFlechas());
         assertEquals(experienciaEsperada, noob.getExperiencia());
-        assertEquals(vidaEsperada, gimli.getVida());
-        assertEquals(vidaEsperada, balin.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(),0.000001);
+        assertEquals(vidaEsperada, balin.getVida(),0.000001);
     }
     
     @Test

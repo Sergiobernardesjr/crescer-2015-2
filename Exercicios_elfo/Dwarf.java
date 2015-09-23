@@ -9,14 +9,14 @@ public class Dwarf extends Personagem {
     public Dwarf(String nome){
         this.nome = nome;
         this.dataNascimento = new DataTerceiraEra(1,1,1);
-        vida = 110;
+        vida = 110.0;
         status = Status.VIVO;
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        vida = 110;
+        vida = 110.0;
         status = Status.VIVO;        
     }
 

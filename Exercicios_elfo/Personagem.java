@@ -2,11 +2,11 @@
 public class Personagem
 {
     protected final Inventario inventario = new Inventario();
-    protected int vida;
+    protected double vida;
     protected int experiencia;
     protected String nome;
     protected Status status = Status.VIVO;
-
+    
     public void receberAtaqueOrc(Orc orc){
         this.vida -= orc.getDanoDeAtaque();
     }
@@ -15,7 +15,7 @@ public class Personagem
         return this.status;
     }
 
-    public int getVida(){
+    public double getVida(){
         return this.vida;
     }
 

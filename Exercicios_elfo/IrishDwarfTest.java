@@ -33,7 +33,7 @@ public class IrishDwarfTest
     @Test
     public void quandoIrishDwarfNasceCom110DeVida(){
         IrishDwarf gimli = new IrishDwarf("Gimli");
-        assertEquals(110, gimli.getVida());
+        assertEquals(110, gimli.getVida(),0.00001);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class IrishDwarfTest
         gimli.danoRecebido();
 
         //Assert (Validação do reste)
-        assertEquals(100, gimli.getVida());
+        assertEquals(100, gimli.getVida(),0.00001);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class IrishDwarfTest
 
         meireles.danoRecebido();
 
-        assertEquals(vidaEsperada, meireles.getVida());
+        assertEquals(vidaEsperada, meireles.getVida(),0.00001);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class IrishDwarfTest
 
         seixas.danoRecebido();
 
-        assertEquals(vidaEsperada, seixas.getVida());
+        assertEquals(vidaEsperada, seixas.getVida(),0.00001);
     }    
 
     @Test
@@ -136,7 +136,7 @@ public class IrishDwarfTest
         IrishDwarf.danoRecebido();
 
         assertEquals(2, IrishDwarf.getExperiencia());
-        assertEquals(90, IrishDwarf.getVida());
+        assertEquals(90, IrishDwarf.getVida(),0.00001);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class IrishDwarfTest
         IrishDwarf IrishDwarf = new IrishDwarf("Meireles");
         IrishDwarf.danoRecebido();
         assertEquals(0, IrishDwarf.getExperiencia());
-        assertEquals(110, IrishDwarf.getVida());
+        assertEquals(110, IrishDwarf.getVida(),0.00001);
     }
 
     @Test
@@ -154,7 +154,7 @@ public class IrishDwarfTest
         IrishDwarf.danoRecebido();
 
         assertEquals(0, IrishDwarf.getExperiencia());
-        assertEquals(100, IrishDwarf.getVida());
+        assertEquals(100, IrishDwarf.getVida(),0.00001);
     }
 
     @Test

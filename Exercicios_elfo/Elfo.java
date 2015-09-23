@@ -9,12 +9,12 @@ public class Elfo extends Personagem {
         }
         this.flechas = flechas;
         this.status = Status.VIVO;
-        vida = 80;
+        vida = 100.0;
     }
 
     public Elfo(String nome){
         this(nome,42);
-        vida = 80;
+        vida = 100.0;
     }
 
     public void atirarFlecha(Dwarf dwarf){

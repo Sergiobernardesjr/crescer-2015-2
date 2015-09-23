@@ -5,7 +5,7 @@ public class Orc extends Personagem{
     
     public void recebeAtaque() {
         
-        if(getItem("Escudo Uruk-Hai") == null){
+        if(getItem("Escudo Uruk Hai") == null){
             perderVida(10);
         }
         else {
