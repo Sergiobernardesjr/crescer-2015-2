@@ -14,7 +14,8 @@ public class ElfoTest
 
     @Test
     public void verificaOContadorDeUmElfosCriados(){
-        int contadorEsperado = Elfo.getContadorElfo() + 1;
+        int contadorEsperado = 1;
+        
         new Elfo("Legolas");
 
         assertEquals (contadorEsperado, Elfo.getContadorElfo());
@@ -22,12 +23,16 @@ public class ElfoTest
 
     @Test
     public void verificaOContadorCriando100Elfos(){
-        Elfo.resetaContador();
         int esperado = 100;
         for (int i = 0; i < 100; i++){
             Elfo elfo = new Elfo("legolinha" + 1);
         }         
         assertEquals(esperado,Elfo.getContadorElfo());
+    }
+
+    @Before
+    public void setUp(){
+        Elfo.resetaContador();
     }
 
     @Test
