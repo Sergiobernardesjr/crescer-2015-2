@@ -7,7 +7,7 @@
  */
 public class Item
 {
-    protected String descricao;
+    protected final String descricao;
     protected int quantidade;
 
     public Item(String descricao, int quantidade){

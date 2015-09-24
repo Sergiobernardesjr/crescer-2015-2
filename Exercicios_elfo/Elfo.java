@@ -1,5 +1,6 @@
 public class Elfo extends Personagem {
     protected int flechas;
+    private static int contadorElfos = 0;
 
     public Elfo(String nome,Integer flechas)
     {
@@ -10,19 +11,19 @@ public class Elfo extends Personagem {
         this.flechas = flechas;
         this.status = Status.VIVO;
         vida = 100.0;
+        contadorElfos++;
     }
 
     public Elfo(String nome){
         this(nome,42);
-        vida = 100.0;
-    }
+     }
 
     public void atirarFlecha(Dwarf dwarf){
         this.experiencia++;
         dwarf.danoRecebido();
         this.flechas--;
     }
-    
+
     public void atacarOrc(Orc orc){
         orc.recebeAtaque();
         this.flechas--;
@@ -38,5 +39,13 @@ public class Elfo extends Personagem {
 
     public int getFlechas(){
         return this.flechas;
+    }
+
+    public static int getContadorElfo(){
+        return contadorElfos;
+    }
+    
+    public static void resetaContador(){
+        contadorElfos = 0;
     }
 }
