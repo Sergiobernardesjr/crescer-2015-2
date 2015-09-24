@@ -1,5 +1,5 @@
 
-public class Personagem
+public abstract class Personagem
 {
     protected final Inventario inventario = new Inventario();
     protected double vida;
