@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class GreenElf extends Elfo{
-    
+
     public GreenElf(String nome){
         super(nome);
     }
@@ -11,16 +11,16 @@ public class GreenElf extends Elfo{
     }
 
     private void gerarInventario(Item item) {
-       ArrayList<String> validas = 
+        ArrayList<String> validas = 
             new ArrayList<String>(
                 Arrays.asList(new String[] { 
-                    "Espada de aço valiriano", "Arco e Flecha de Vidro"
-                })
+                        "Espada de aço valiriano", "Arco e Flecha de Vidro"
+                    })
             );
-            
+
         boolean podeAdicionar = 
-                item != null && validas.contains(item.getDescricao());
-            
+            item != null && validas.contains(item.getDescricao());
+
         if (podeAdicionar){
             super.adicionarItem(item);
         }
@@ -30,4 +30,9 @@ public class GreenElf extends Elfo{
         super.atirarFlecha(dwarf);
         this.experiencia ++;
     }  
+
+    public int hashCode(){
+        return this.getNome().hashCode() +
+        "GreenElf".hashCode();
+    }
 }
