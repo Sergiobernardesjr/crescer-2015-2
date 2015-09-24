@@ -25,7 +25,7 @@ public class ExercitoTest
 
         assertEquals(noturno, exercito.getExercito().get("X-Men")); //verifica buscando pelo nome se existe o elfo verde no hashmap.
     }
-
+    
     @Test
     public void greenElfAgrupadoPorStatusVivo(){
         Exercito exercito = new Exercito();
