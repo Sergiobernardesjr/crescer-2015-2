@@ -36,4 +36,5 @@ public class ExercitoTest
         
         assertEquals(verdinho, exercito.buscar(Status.VIVO).get(0));
     }
+
 }

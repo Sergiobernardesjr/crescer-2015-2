@@ -3,9 +3,9 @@ import java.util.*;
 public class Exercito{
     private HashMap<String,Elfo> exercito = new HashMap<>();
     private HashMap<Status, ArrayList<Elfo>> agrupadorPorStatus = new HashMap<Status, ArrayList<Elfo>>();
+    private EstrategiaDeAtaque estrategia;
+    private ArrayList<Elfo> elfosQueAtacaram = new ArrayList<>();
 
-    public Exercito(){
-    }
 
     public void alistarElfo(Elfo elfo){
         boolean nightElfOuGreenElf = (elfo instanceof NightElf || elfo instanceof GreenElf) && elfo.getNome() != null;
@@ -14,6 +14,10 @@ public class Exercito{
             this.exercito.put(elfo.getNome(),elfo);
         }
     }    
+
+    public void atacarDwarf(ArrayList<Dwarf> alvos) {
+        this.estrategia.atacar(new ArrayList<Elfo>(this.exercito.values()),alvos);
+    }
 
     public void agruparPorStatus(){
         agrupadorPorStatus.clear();
@@ -37,4 +41,14 @@ public class Exercito{
     public HashMap getExercito(){
         return this.exercito;
     }
+
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque(){
+        return this.elfosQueAtacaram;
+    }
+    
+    
+    public void mudarEstrategia(EstrategiaDeAtaque estrategia) {
+        this.estrategia = estrategia;
+    }
+    
 }
