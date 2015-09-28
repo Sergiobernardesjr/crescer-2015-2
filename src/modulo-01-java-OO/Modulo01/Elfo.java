@@ -1,10 +1,9 @@
 /**
  * Representa objetos do tipo Elfo.
  */
-public class Elfo {
-    private String nome;
-    private int flechas, experiencia;
-    private Status status;
+public class Elfo extends Personagem {
+    private int flechas;
+    private static int qtdElfosCriados;   
 
     /* Type initializer
      * Executa antes de cada construtor
@@ -16,6 +15,8 @@ public class Elfo {
         this.nome = nome;
         this.flechas = flechas;
         this.status = Status.VIVO;
+        this.vida = 100;
+        this.qtdElfosCriados++;
     }
 
     /* Apenas para elucidar as diferenças entre int X Integer, esta duplicação não faz sentido.
@@ -45,6 +46,10 @@ public class Elfo {
         //experiencia = experiencia + 1;
     }
 
+    public void atacarOrc(Orc orc){
+        orc.levarAtaque();
+    }
+
     /*
      * ANTES:
      * public atirarFlechaRefactory(this.flechas, this.experiencia){
@@ -68,20 +73,17 @@ public class Elfo {
 
      */
 
-    public String getNome() {
-        return nome;
-    }
-
     public int getFlechas() {
         return this.flechas;
     }
-
-    public int getExperiencia() {
-        return this.experiencia;
+    
+    public static int getQtdElfosCriados() {
+        // return Elfo.qtdElfosCriados;
+        return qtdElfosCriados;
     }
     
-    public Status getStatus() {
-        return this.status;
+    public static void resetaContador() {
+        qtdElfosCriados = 0;
     }
 
     /* 
@@ -95,18 +97,21 @@ public class Elfo {
 
         boolean flechaNoSingular = Math.abs(this.flechas) == 1;
         boolean nivelNoSingular = Math.abs(this.experiencia) == 1;
-        
+
         // Ruby ou CoffeeScript:
         //"#{nome} possui #{flechas} #{textoFlechas} e #{experiencia} #{textoNiveis} de experiência."
-        
+
         // C# 6:
         //"\{nome} possui \{flechas} \{textoFlechas} e \{experiencia} \{textoNiveis} de experiência."
-        
+
         return String.format("%s possui %d %s e %d %s de experiência.",
             this.nome,
             this.flechas,
             flechaNoSingular ? "flecha" : "flechas",
             this.experiencia,
             nivelNoSingular ? "nível" : "níveis");
+    }
+    
+    public void tentarSorte() {
     }
 }

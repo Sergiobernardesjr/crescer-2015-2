@@ -127,5 +127,28 @@ public class InventarioTest
         
         assertEquals(esperado, mochila);
     }
+    
+    @Test
+    public void buscarItemPorDescricaoRetornaItem() {
+        Inventario mochila = new Inventario();
+        Item itemEsperado = new Item(9, "Elder Scroll");
+        mochila.adicionarItem(itemEsperado);
+        
+        Item itemEncontrado = mochila.getItemPorDescricao("Elder Scroll");
+        
+        assertEquals(itemEsperado.getQuantidade(), itemEncontrado.getQuantidade());
+        assertEquals(itemEsperado.getDescricao(), itemEncontrado.getDescricao());
+    }
+    
+    @Test
+    public void buscarItemPorDescricaoNaoRetornaItem() {
+        Inventario mochila = new Inventario();
+        mochila.adicionarItem(new Item(9, "Elder Scroll"));
+        
+        Item itemEncontrado = mochila.getItemPorDescricao("Elder Scrolls");
+        
+        assertNull(itemEncontrado);
+    }
+    
 
 }

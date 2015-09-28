@@ -35,4 +35,20 @@ public class ItemTest
         espada.aumentar1000Unidades();
         assertEquals(1042, espada.getQuantidade());
     }
+    
+    @Test
+    public void aumentarQuantidadesComSomatorio() {
+        Item espada = new Item(5, "Espada");
+        espada.aumentarQuantidadesComSomatorio();
+        
+        assertEquals(15005, espada.getQuantidade());
+    }
+    
+    @Test
+    public void debitarUmaUnidadeDoItem(){
+        Item flechas = new Item(3, "Flecha");
+        flechas.debitarUmaUnidade();
+        
+        assertEquals(2, flechas.getQuantidade());
+    }
 }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Inventario {
-    private ArrayList<Item> itens = new ArrayList<>();
+    private final ArrayList<Item> itens = new ArrayList<>();
     
     public void adicionarItem(Item item) {
         this.itens.add(item);
@@ -13,6 +13,16 @@ public class Inventario {
     
     public ArrayList<Item> getItens() {
         return this.itens;
+    }
+    
+    public Item getItemPorDescricao(String descricao){
+        for(Item item : this.itens){
+            if(item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        
+        return null;
     }
     
     public String getDescricoesItens() {
@@ -80,6 +90,12 @@ public class Inventario {
         
         // Ruby - QuickSort - O (n logn) em média, porém pior caso O(n^2)
         // itens.sort_by { |x| x.quantidade }
+    }
+    
+    public void aumentarUnidadesComSomatorio() {
+        for (Item item : this.itens) {
+            item.aumentarQuantidadesComSomatorio();
+        }
     }
     
     public boolean equals(Object obj) {
