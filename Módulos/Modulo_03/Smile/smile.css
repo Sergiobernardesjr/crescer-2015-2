@@ -1,0 +1,93 @@
+.centralizador {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 50%;
+  top:50%;
+  margin-left: -200px;
+  margin-top: -200px;
+
+}
+
+
+
+.corpo {
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    border: 3px solid #000;
+    background: #FFFF00;
+}
+
+.olhodireito {
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  margin: 90px 200px 360px 80px;
+}
+
+.olhoesquerdo {
+  width: 50px;
+  height: 50px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  margin: 90px 200px 360px 260px;
+}
+
+/* primeira class no css define o tamanho e a espessura do quadrado
+e setando o local na "boca"*/
+p:nth-of-type(3) {
+    width: 200px;
+    height: 200px;
+    margin: 120px 80px 100px 100px;
+    border: 1px solid #000;
+}
+
+/* segunda class no css define a espessura de uma determinada area
+no caso aqui está definindo a espessura da parte debaixo do circulo
+e setando as cores transparentes para a outra parte da forma*/
+p:nth-of-type(3) {
+    border-width: 0 0 10px 0;
+    border-color: #999 #999 #000 #999;
+}
+
+/* definindo o grau de rotação para cada canto da forma
+no caso está defindo a rotação dos cantos inferiores direito e esquero*/
+p:nth-of-type(3) {
+    border-radius: 0 0 47% 47%;
+}
+
+p:nth-of-type(4) {
+    width: 30px;
+    height: 30px;
+    margin: -186px 80px 100px 85px;
+    border: 1px solid #000;
+}
+
+p:nth-of-type(4) {
+    border-width: 6px 0 0 0;
+    border-color: #000 #999 #999 #999;
+}
+
+p:nth-of-type(4) {
+    border-radius: 47% 47% 0 0;
+}
+
+p:nth-of-type(5) {
+    width: 30px;
+    height: 30px;
+    margin: -138px 80px 100px 280px;
+    border: 1px solid #000;
+}
+
+p:nth-of-type(5) {
+    border-width: 6px 0 0 0;
+    border-color: #000 #999 #999 #999;
+}
+
+p:nth-of-type(5) {
+    border-radius: 47% 47% 0 0;
+}

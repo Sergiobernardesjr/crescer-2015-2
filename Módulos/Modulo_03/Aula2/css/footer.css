@@ -1,0 +1,17 @@
+/*==============================
+            Footer
+==============================*/
+
+.footer {
+    width: 100%;
+    padding: 20px 15px;
+    background: rgba(10,10,10,1);
+    box-sizing: border-box;
+    color: #fff;
+    margin-bottom: 0 auto;
+}
+
+.footer-font {
+  font-family: Georgia, "New times roman", Times;
+  font: 14px/18px;
+}
