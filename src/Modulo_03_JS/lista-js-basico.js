@@ -1,26 +1,63 @@
-daisyGame(petalas){
-  if (petalas%2 === 0){
-    return "Love me not";
-  }
-  else{
-    return "Love me";
-  }
+//EX: 1
+function isNumber(valor){
+  return typeof valor === 'number' ? true : false;
+};
 
+function isFunction(fn){
+  return typeof fn === 'function' ? true : false;
+};
+
+function daisyGame(petalas){
+  if(isNumber(petalas)){
+    return 'Love me' + (petalas%2 === 0 ? ' not' : '');
+  };
+};
+
+//EX: 2
 function maiorTexto(texto){
-  var i;
-  var posicao;
-  for (i=0; i<texto.length-1;i++){
-    if(texto[i].length > texto[i+1].length){
+  for (var i = 0, posicao = 0, len = texto.length; i < len;i++){
+    if(texto[i].length > texto[posicao].length){
       posicao = i;
-    }
-  }
-  return posicao;
-}
+    };
+  };
+  console.log('Indice do maior texto: ', posicao, ' maior texto: ', texto[posicao]);
+};
 
-function imprime(nomes,
-  function instrutor(nomes) {
-    var i;
-    for (i=0; i<nomes.length;i++){
-      console.log('Olá querido instrutor: '+ nomes[i])
-    }}
-  )
+//EX: 3
+//instrutores=["Bernardo","Ben-hur","Dudu","Everton","André","Fabricio"];
+function instrutor(nomes){
+  console.log('Olá querido instrutor: '+ nomes);
+};
+
+function imprime(nomes,fn) {
+  if (isFunction(fn)){
+    nomes.forEach(fn);
+  };
+};
+
+//EX: 4
+function sequenciaFibonacci (n){
+  if(n === 1 || n === 2) return 1;
+
+  return sequenciaFibonacci(n-1) + sequenciaFibonacci(n-2);
+};
+
+function fiboSum(n){
+  return sequenciaFibonacci(n+2)-1;
+};
+
+//EX: 6
+function queroCafe(mascada, precos){
+  var lista = [];
+  var resultado = '';
+  for (var i=0;i<precos.length;i++){
+    if(mascada > precos[i]){
+      lista.push(precos[i]);
+    };
+  };
+  lista.sort(function(a,b){
+    return a > b ? 1 : 0;
+  };);
+  resultado = lista.join(", ");
+  return resultado;
+};
