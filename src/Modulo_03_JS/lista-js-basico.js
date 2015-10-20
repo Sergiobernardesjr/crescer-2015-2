@@ -70,7 +70,10 @@ function queroCafe(mascada, precos){
   };
 };
 
-// lista de exercícios 2
+
+/*
+ * LISTA DE EXERCÍCIOS 2
+ */
 var clubes = [
   {
     nome: 'Arsenal',
@@ -106,51 +109,53 @@ var clubes = [
   }
 ];
 // EXRCICIO 1:
+//TIPO DE TITULOS
+function ordenaPorIndice(indice,clubes){
+  return clubes.concat().sort(function(elem1, elem2){
+    return elem1.titulos[indice].qtd < elem2.titulos[indice].qtd;
+  })
+}
+
+//SOMA POR TITULOS
+function somaPorIndice(indice,clubes){
+  return clubes.concat().reduce(function(acumulador, elemAtual) {
+    return acumulador + elemAtual.titulos[indice].qtd;
+  }, 0);
+}
+
 //1.A
 function ordenaPorNacionais(clubes){
-  clubes.sort(function(elem1, elem2){
-    return elem1.titulos[0].qtd < elem2.titulos[0].qtd;
-  })
+  return ordenaPorIndice(0, clubes);
 };
 
 //1.B
 function ordenaPorContinentais(clubes){
-  clubes.sort(function(elem1, elem2){
-    return elem1.titulos[1].qtd < elem2.titulos[1].qtd;
-  })
+  return ordenaPorIndice(1, clubes);
 };
 
 //1.C
 function ordenaPorMundiais(clubes){
-  clubes.sort(function(elem1, elem2){
-    return elem1.titulos[2].qtd < elem2.titulos[2].qtd;
-  })
+  return ordenaPorIndice(2, clubes);
 };
 
 function somarPorNacionais(clubes){
-  var somatorio = 0;
-    for (var i=0, len=clubes.length; i<len; i++){
-      somatorio += clubes[i].titulos[0].qtd;
-    }
-    return somatorio;
+  return somaPorIndice(0, clubes);
 };
 
 function somarPorContinentais(clubes){
-  var somatorio = 0;
-    for (var i=0, len=clubes.length; i<len; i++){
-      somatorio += clubes[i].titulos[1].qtd;
-    }
-    return somatorio;
+  return somaPorIndice(1, clubes);
 };
 
-function somarPorMundiais(clubes){
-  var somatorio = 0;
-    for (var i=0, len=clubes.length; i<len; i++){
-      somatorio += clubes[i].titulos[2].qtd;
-    }
-    return somatorio;
+function somarPorTodosOsTitulos(clubes){
+  var soma = 0;
+  [0,1,2].forEach(function(i) {
+    soma += somaPorIndice(i,clubes);
+  });
+  return soma;
 };
 
 function apenasOsMelhores(clubes){
-  return clubes.filter( function(elem) { elem.titulos[0].qtd >= 18});
+  return clubes.filter( function(elem) {
+    return elem.titulos[0].qtd > 18;
+  });
 };
