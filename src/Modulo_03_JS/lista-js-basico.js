@@ -159,3 +159,8 @@ function apenasOsMelhores(clubes){
     return elem.titulos[0].qtd > 18;
   });
 };
+
+clubes.map(function(clube){
+  clube.nome += ' FC';
+  return clube;
+});
