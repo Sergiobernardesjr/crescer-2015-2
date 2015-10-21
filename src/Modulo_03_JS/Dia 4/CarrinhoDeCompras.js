@@ -28,7 +28,7 @@ CarrinhoDeCompras.prototype.totalDoCarrinho = function(){
   var desconto = 0;
   var totalDosItensNoCarrinho = this.itens
     .reduce (function (acumulador,elem){
-       return acumulador += (elem.quantidade * elem.valorUnitario)
+       return acumulador += elem.subTotal();
     },0);
 
     desconto = this.sortearDesconto() ? 0.9 : 1;
@@ -40,14 +40,11 @@ CarrinhoDeCompras.prototype.sortearDesconto = function(){
   return Math.random() < 0.4;
 };
 
-
 CarrinhoDeCompras.prototype.forcarCompra = function(){
   if (!this.intervalo){
     this.intervalo = setInterval(function(){
       this.itens.forEach(function(elem){
-        console.log('Antes: ' + elem.valorUnitario);
         elem.valorUnitario += elem.valorUnitario * 0.1;
-        console.log('Depois: ' + elem.valorUnitario);
       });
     }.bind(this), 5000);
   }
