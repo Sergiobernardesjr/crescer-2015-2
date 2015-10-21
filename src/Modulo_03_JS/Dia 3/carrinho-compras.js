@@ -1,10 +1,3 @@
-function Item (sku, descricao, quantidade, valorUnitario){
-  this.sku = sku;
-  this.descricao = descricao;
-  this.quantidade = quantidade;
-  this.valorUnitario = valorUnitario;
-};
-
 function CarrinhoDeCompras (){
   this.itens = new Array();
 };
@@ -39,21 +32,23 @@ CarrinhoDeCompras.prototype.removerItem = function(sku, quantidade){
     alert('Não é permitido remover item com a quantidade menor que existente no carrinho!');
   }
 
-}
+};
 
 CarrinhoDeCompras.prototype.atualizarQuantidade = function(sku, quantidade){
   var itemASerAtualizado = this.procurarItemPorSku(sku);
   this.itens[itemASerAtualizado].quantidade = quantidade;
-}
-
-Item.prototype.subTotal = function(sku){
-  return sku === sku ? (this.quantidade * this.valorUnitario) : alert("Item inexistente!");
 };
 
 CarrinhoDeCompras.prototype.totalDoCarrinho = function(){
+  var desconto = 0;
   var totalDosItensNoCarrinho = this.itens
     .reduce (function (acumulador,elem){
       return acumulador += (elem.quantidade * elem.valorUnitario)
     },0)
-    return totalDosItensNoCarrinho;
+    desconto = this.sortearDesconto() ? 0.9 : 1;
+    return totalDosItensNoCarrinho * desconto;
+};
+
+CarrinhoDeCompras.prototype.sortearDesconto = function(){
+  return Math.random() < 0.4;
 }
