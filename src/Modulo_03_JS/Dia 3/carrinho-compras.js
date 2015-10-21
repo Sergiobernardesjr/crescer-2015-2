@@ -7,31 +7,16 @@ CarrinhoDeCompras.prototype.adicionarItem = function(item){
 };
 
 CarrinhoDeCompras.prototype.procurarItemPorSku = function(sku){
-  var indice = 0;
-  var itemSku = this.itens.map(function(elem){
-    return elem.sku;
+  var itemSku = this.itens.filter(function(elem){
+    return elem.sku === sku;
   });
-
-  indice = itemSku.indexOf(sku);
-
-  return indice
+  return itemSku;
 };
 
-CarrinhoDeCompras.prototype.removerItem = function(sku, quantidade){
-  var itemASerRemovido = this.procurarItemPorSku(sku);
-
-  if (this.itens[itemASerRemovido].quantidade > quantidade){
-    this.itens[itemASerRemovido].quantidade -= quantidade;
-  }
-
-  else if (this.itens[itemASerRemovido].quantidade === quantidade){
-    this.itens.splice(itemASerRemovido, quantidade);
-  }
-
-  else {
-    alert('Não é permitido remover item com a quantidade menor que existente no carrinho!');
-  }
-
+CarrinhoDeCompras.prototype.removerItem = function(sku){
+  this.itens = this.itens.filter(function(elem){
+    return elem.sku !== sku;
+  })
 };
 
 CarrinhoDeCompras.prototype.atualizarQuantidade = function(sku, quantidade){
