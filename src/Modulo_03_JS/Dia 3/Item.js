@@ -1,10 +1,11 @@
-function Item (sku, descricao, quantidade, valorUnitario){
-  this.sku = sku;
-  this.descricao = descricao;
-  this.quantidade = quantidade;
-  this.valorUnitario = valorUnitario;
+function Item (option){
+  option = option || {};
+  this.sku = option.sku;
+  this.descricao = option.descricao;
+  this.quantidade = option.quantidade;
+  this.valorUnitario = option.valorUnitario;
 };
 
-Item.prototype.subTotal = function(sku){
-  return sku === sku ? (this.quantidade * this.valorUnitario) : alert("Item inexistente!");
+Item.prototype.subTotal = function(){
+  return this.quantidade * this.valorUnitario;
 };
