@@ -1,3 +1,3 @@
 String.prototype.palindromo = function(){
-  return this.toString() === this.split('').reverse().join('').toString();
+  return this.toString().toUpperCase() === this.split('').reverse().join('').toString().toUpperCase();
 };
