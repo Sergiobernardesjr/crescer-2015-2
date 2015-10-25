@@ -32,20 +32,18 @@
         $.get(urlArtista)
           .done(function(data) {
             albums = data.items;
-              albums
-                .forEach(function(album){
-                  img = album.images;
-                    img
-                      .forEach(function(elem) {
-                        if (elem.height === 300 && elem.width === 300){
-                          $('#ul').append(
-                            $('<img>')
-                              .attr('src', elem.url)
-                          );
-                        }
-                      });
-                });
-            });
+              albums.forEach(function(album){
+                img = album.images;
+                  img.forEach(function(elem) {
+                    if (elem.height === 300 && elem.width === 300){
+                      $('#ul').append(
+                        $('<img>')
+                          .attr('src', elem.url)
+                        );
+                      }
+                    });
+              });
+          });
        });
     }
 
