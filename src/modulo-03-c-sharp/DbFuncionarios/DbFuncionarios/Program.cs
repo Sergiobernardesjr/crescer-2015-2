@@ -12,12 +12,16 @@ namespace DbFuncionarios
         {
             var BaseDeDados = new BaseDeDados();
 
+            var gerente = new Cargo("Gerente", 550.5);
+
             BaseDeDados.OrdenadosPorCargo();
 
-            foreach (var item in BaseDeDados.BuscarPorNome("ea"))
+            foreach (var item in BaseDeDados.BuscarPorCargo(gerente))
             {
                 Console.WriteLine(item.Nome);
             }
+
+            Console.WriteLine();
             
             Console.Read();
         }

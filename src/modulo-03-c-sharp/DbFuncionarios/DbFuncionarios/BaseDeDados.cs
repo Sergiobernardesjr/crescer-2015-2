@@ -106,12 +106,17 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turno)
         {
-            var query = from f in Funcionarios
-                        where turno.Contains(f.TurnoTrabalho)
-                        select f;
+            if (turno.Count() > 0)
+            {
+                var query = from f in Funcionarios
+                            where turno.Contains(f.TurnoTrabalho)
+                            select f;
 
 
-            return query.ToList();
+                return query.ToList();
+            }
+
+            return new List<Funcionario>();
         }
 
         public IList<dynamic> QtdFuncionariosPorTurno()
@@ -129,7 +134,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            return Funcionarios.Where(f => f.Cargo == cargo).ToList();
+            return Funcionarios.Where(f => f.Cargo.Titulo == cargo.Titulo).ToList();
         }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
