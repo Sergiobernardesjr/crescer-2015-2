@@ -20,7 +20,12 @@ namespace Locadora.TEC
             Console.WriteLine("Digite um nome a ser pesquisado: ");
             nome = Console.ReadLine();
 
-            data.PesquisarJogosPorNome(nome);
+            List<Jogo> lista = data.PesquisarJogosPorNome(nome);
+
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item.Nome);
+            }
 
             foreach (var item in jogosBuscados)
             {

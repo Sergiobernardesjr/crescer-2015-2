@@ -40,36 +40,20 @@ namespace Locadora.Dominio
 
         public List<Jogo> PesquisarJogosPorNome(string nome)
         {
-            string nomeJogo;
-            Categoria categoria;
-            double preco;
-            List<Jogo> jogosPesquisados = new List<Jogo>();
-
             XDocument xmlJogos = XDocument.Load(XML);
 
             var query = from jogo in xmlJogos.Element("jogos").Elements("jogo")
                         where jogo.Element("nome").Value.Contains(nome)
-                        select new
-                        {
-                            Nome = jogo.Element("nome").Value,
-                            categoria = (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value),
-                            Preco = Convert.ToDouble(jogo.Element("preco").Value)
-                        };
-
-           var a = query.ToList();
-
-            foreach (var item in a)
-            {
-                var categoriaItem = item.categoria.ToString();
-                var jogo = new Jogo(
-                        nomeJogo = item.Nome,
-                        preco = item.Preco,
-                        categoria = (Categoria)Enum.Parse(typeof(Categoria), categoriaItem)
+                        select new Jogo(
+                            jogo.Element("nome").Value,                            
+                            Convert.ToDouble(jogo.Element("preco").Value),
+                            (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value),
+                            Convert.ToInt32(jogo.Element("id").Value)                                                        
                         );
-                jogosPesquisados.Add(jogo);                 
-            }
 
-            return jogosPesquisados;
+            var a = query.ToList();
+
+            return a;
         }
     }
 }
