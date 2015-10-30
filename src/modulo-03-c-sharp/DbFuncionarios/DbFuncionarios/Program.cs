@@ -13,6 +13,13 @@ namespace DbFuncionarios
             var BaseDeDados = new BaseDeDados();
 
             BaseDeDados.OrdenadosPorCargo();
+
+            foreach (var item in BaseDeDados.BuscarPorNome("ea"))
+            {
+                Console.WriteLine(item.Nome);
+            }
+            
+            Console.Read();
         }
     }
 }

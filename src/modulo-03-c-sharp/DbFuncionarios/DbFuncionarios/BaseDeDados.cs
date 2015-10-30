@@ -84,7 +84,7 @@ namespace DbFuncionarios
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            return Funcionarios.OrderBy(cargo => cargo.Cargo).ToList();
+            return Funcionarios.OrderBy(f => f.Cargo.Titulo).ToList();
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
@@ -104,7 +104,7 @@ namespace DbFuncionarios
             return query.ToList<dynamic>();
         }
 
-        public IList<Funcionario> BuscarPorTurno(TurnoTrabalho[] turno)
+        public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turno)
         {
             var query = from f in Funcionarios
                         where turno.Contains(f.TurnoTrabalho)
@@ -134,7 +134,36 @@ namespace DbFuncionarios
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            
+            var DataNascimentoFuncionario = DateTime.Now.AddYears(-idade);
+            var DataMenos5Anos = DataNascimentoFuncionario.AddYears(-5);
+            var DataMais5Anos = DataNascimentoFuncionario.AddYears(5);
+
+            return Funcionarios.
+                                Where(f => f.DataNascimento < DataMenos5Anos &&
+                                           f.DataNascimento > DataMais5Anos).ToList();
+        }
+
+        public double SalarioMedio(TurnoTrabalho? turno)
+        {
+            TurnoTrabalho[] Turnos = { TurnoTrabalho.Manha, TurnoTrabalho.Tarde, TurnoTrabalho.Noite };
+
+            IList<Funcionario> FuncionariosPorTurno;
+
+            if (turno.HasValue)
+            {
+                FuncionariosPorTurno = BuscarPorTurno(turno.Value);
+            }
+            else
+            {
+                FuncionariosPorTurno = BuscarPorTurno(Turnos);
+            }
+
+            return FuncionariosPorTurno.Average(funcionario => funcionario.Cargo.Salario);
+        }
+
+        public IList<Funcionario> AniversariantesDoMes()
+        {
+            return Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month).ToList();
         }
     }
 }

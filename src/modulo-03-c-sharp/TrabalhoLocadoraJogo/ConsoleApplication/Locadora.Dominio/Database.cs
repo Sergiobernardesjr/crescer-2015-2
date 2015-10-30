@@ -38,32 +38,38 @@ namespace Locadora.Dominio
             return Id + 1;
         }
 
-        public string PesquisarJogosPorNome(string nome)
+        public List<Jogo> PesquisarJogosPorNome(string nome)
         {
             string nomeJogo;
-            string categoria;
+            Categoria categoria;
             double preco;
+            List<Jogo> jogosPesquisados = new List<Jogo>();
 
             XDocument xmlJogos = XDocument.Load(XML);
 
-            var query = from jogo in xmlJogos.Elements("jogo")
-                        where jogo.Element("nome").Value.ToString() == nome
+            var query = from jogo in xmlJogos.Element("jogos").Elements("jogo")
+                        where jogo.Element("nome").Value.Contains(nome)
                         select new
                         {
                             Nome = jogo.Element("nome").Value,
-                            Categoria = jogo.Element("categoria").Value,
-                            Preco = jogo.Element("preco").Value
+                            categoria = (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value),
+                            Preco = Convert.ToDouble(jogo.Element("preco").Value)
                         };
 
-            foreach (var jogo in query)
-            {
-                nomeJogo = jogo.Nome;
-                categoria = jogo.Categoria;
-                preco = Convert.ToDouble(jogo.Preco);
+           var a = query.ToList();
 
-                var frase = String.Format("Nome:\r\n{0}\r\nCategoria:\r\n{1}\r\nPreco:\r\n{2:2C}", nomeJogo, categoria, preco);
-                return frase;
+            foreach (var item in a)
+            {
+                var categoriaItem = item.categoria.ToString();
+                var jogo = new Jogo(
+                        nomeJogo = item.Nome,
+                        preco = item.Preco,
+                        categoria = (Categoria)Enum.Parse(typeof(Categoria), categoriaItem)
+                        );
+                jogosPesquisados.Add(jogo);                 
             }
+
+            return jogosPesquisados;
         }
     }
 }
