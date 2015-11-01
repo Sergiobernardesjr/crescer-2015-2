@@ -14,25 +14,13 @@ namespace Locadora.TEC
         static void Main(string[] args)
         {
             var data = new Database();
+            var menu = new Menu();
             string nome;
             List<string> jogosBuscados = new List<string>();
 
-            Console.WriteLine("Digite um nome a ser pesquisado: ");
-            nome = Console.ReadLine();
-
-            List<Jogo> lista = data.PesquisarJogosPorNome(nome);
-
-            foreach (var item in lista)
-            {
-                Console.WriteLine(item.Nome);
-            }
-
-            foreach (var item in jogosBuscados)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine("1 - Cadastrar, 2 - Pesquisar ou 3 - Editar: ");
+            menu.SelecaoDoMenu(Convert.ToInt32(Console.ReadLine()));
             
-            Console.WriteLine(data.ProximoId());
             Console.Read();
         }
     }

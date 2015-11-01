@@ -43,17 +43,32 @@ namespace Locadora.Dominio
             XDocument xmlJogos = XDocument.Load(XML);
 
             var query = from jogo in xmlJogos.Element("jogos").Elements("jogo")
-                        where jogo.Element("nome").Value.Contains(nome)
+                        where jogo.Element("nome").Value.ToUpper().ToString().Contains(nome.ToUpper())
                         select new Jogo(
                             jogo.Element("nome").Value,                            
                             Convert.ToDouble(jogo.Element("preco").Value),
                             (Categoria)Enum.Parse(typeof(Categoria), jogo.Element("categoria").Value),
-                            Convert.ToInt32(jogo.Element("id").Value)                                                        
+                            Convert.ToInt32(jogo.Attribute("id").Value)                                                        
                         );
 
-            var a = query.ToList();
+            var jogos = query.ToList();
 
-            return a;
+            return jogos;
+        }
+
+        public void EditarJogo(Jogo jogoEditado) {
+            XElement xmlJogos = XElement.Load(XML);
+
+            XElement jogos = xmlJogos.Element("jogos").Elements("jogo").Where(j => j.Element("jogo").Attribute("id").Value.Equals(jogoEditado.Id)).Last();
+
+            if (jogos != null)
+            {
+                jogos.Attribute("nome").SetValue(jogoEditado.Nome);
+                jogos.Attribute("categoria").SetValue(jogoEditado.Categoria);
+                jogos.Attribute("preco").SetValue(jogoEditado.Preco);
+            }
+
+            xmlJogos.Save(XML);
         }
     }
 }

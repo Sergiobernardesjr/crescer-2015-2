@@ -14,11 +14,19 @@ namespace Locadora.Dominio
         public double Preco { get; set; }
         public int Id { get; private set; }
 
-        public Jogo(string nome, double preco, Categoria categoria, int? id)
+        public Jogo(string nome, double preco, Categoria categoria)
         {
             this.Nome = nome;
             this.Preco = preco;
             this.Categoria = categoria;
+        }
+
+        public Jogo(string nome, double preco, Categoria categoria, int id)
+        {
+            this.Nome = nome;
+            this.Preco = preco;
+            this.Categoria = categoria;
+            this.Id = id;
         }
     }
 }
