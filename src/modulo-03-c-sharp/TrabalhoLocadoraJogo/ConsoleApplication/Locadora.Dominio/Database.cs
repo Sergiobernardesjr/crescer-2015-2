@@ -59,13 +59,15 @@ namespace Locadora.Dominio
         public void EditarJogo(Jogo jogoEditado) {
             XElement xmlJogos = XElement.Load(XML);
 
-            XElement jogos = xmlJogos.Element("jogos").Elements("jogo").Where(j => j.Element("jogo").Attribute("id").Value.Equals(jogoEditado.Id)).Last();
+            string idJogoString = jogoEditado.Id.ToString();
+
+            XElement jogos = xmlJogos.Elements().FirstOrDefault(j => idJogoString == j.Attribute("id").Value);
 
             if (jogos != null)
             {
-                jogos.Attribute("nome").SetValue(jogoEditado.Nome);
-                jogos.Attribute("categoria").SetValue(jogoEditado.Categoria);
-                jogos.Attribute("preco").SetValue(jogoEditado.Preco);
+                jogos.Element("nome").SetValue(jogoEditado.Nome);
+                jogos.Element("categoria").SetValue(jogoEditado.Categoria);
+                jogos.Element("preco").SetValue(jogoEditado.Preco);
             }
 
             xmlJogos.Save(XML);
