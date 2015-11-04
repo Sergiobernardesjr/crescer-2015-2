@@ -18,8 +18,8 @@ namespace Locadora.TEC
             string nome;
             List<string> jogosBuscados = new List<string>();
 
-            //Console.WriteLine("1 - Cadastrar, 2 - Pesquisar ou 3 - Editar: ");
-            //menu.SelecaoDoMenu(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("1 - Cadastrar, 2 - Pesquisar ou 3 - Editar: ");
+            menu.SelecaoDoMenu(Convert.ToInt32(Console.ReadLine()));
 
             data.RelatorioJogos();
             
