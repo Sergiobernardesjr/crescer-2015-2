@@ -1,0 +1,2 @@
+ALTER TABLE dbo.Jogo
+	ADD Descricao	VARCHAR(MAX) NOT NULL DEFAULT ''
