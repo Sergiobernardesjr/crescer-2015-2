@@ -1,0 +1,54 @@
+﻿@model RelatorioModel
+@{
+    ViewBag.Title = "JogosDisponiveis";
+}
+
+<h2>JogosDisponiveis</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Preco
+            </th>
+        </tr>
+    </thead>
+    @foreach (var jogo in Model.listaJogos)
+    {
+        <tr>
+            <td>@jogo.Nome</td>
+            <td>@jogo.Categoria</td>
+            <td>@jogo.Preco</td>
+        </tr>
+    }
+</table>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Jogo Mais Caro: @Model.nomeJogoMaiorPreco
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Jogo Mais Barato: @Model.nomeJogoMenorPreco
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade de Jogos: @Model.qtdDeJogos
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Média de preco: @Model.mediaValorDosJogos
+            </td>
+        </tr>
+    </thead>
+</table>
