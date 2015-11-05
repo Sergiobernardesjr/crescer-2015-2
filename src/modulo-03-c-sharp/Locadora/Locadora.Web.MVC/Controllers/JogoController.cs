@@ -10,7 +10,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class JogoController : Controller
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.XML.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
 
         public ActionResult DetalheJogo(int id)
         {
