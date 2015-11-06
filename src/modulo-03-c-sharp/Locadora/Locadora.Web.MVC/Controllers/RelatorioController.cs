@@ -12,35 +12,39 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
 
-        public ActionResult JogosDisponiveis()
+        public ActionResult JogosDisponiveis(string nome)
         {
             RelatorioModel relatorio = new RelatorioModel();
 
-            var jogos = repositorio.BuscarTodos();
+            IList<Dominio.Jogo> jogos = new List<Dominio.Jogo>();
 
-            foreach (var jogo in jogos)
+            if (!String.IsNullOrWhiteSpace(nome))
             {
-                JogoModel jogoModel = new JogoModel()
-                {
-                    Id = jogo.Id,
-                    Nome = jogo.Nome,
-                    Categoria = jogo.Categoria.ToString(),
-                    Preco = jogo.Preco
-                };
-
-                relatorio.listaJogos.Add(jogoModel);
+                jogos = repositorio.BuscarPorNome(nome);
             }
 
-            var jogoMaisCaro = relatorio.listaJogos.Max(jogo => jogo.Preco);
-            var jogoMaisBarato = relatorio.listaJogos.Min(jogo => jogo.Preco);
+            else
+            {
+                jogos = repositorio.BuscarTodos();
+            }
 
-            relatorio.nomeJogoMaiorPreco = relatorio.listaJogos.First(jogo => jogo.Preco == jogoMaisCaro).Nome;
+            if (jogos.Count > 0)
+            {
+                foreach (var jogo in jogos)
+                {
+                    JogoModel jogoModel = new JogoModel()
+                    {
+                        Id = jogo.Id,
+                        Nome = jogo.Nome,
+                        Categoria = jogo.Categoria.ToString(),
+                        Preco = jogo.Preco
+                    };
 
-            relatorio.nomeJogoMenorPreco = relatorio.listaJogos.First(jogo => jogo.Preco == jogoMaisBarato).Nome;
+                    relatorio.ListaJogos.Add(jogoModel);
+                }
+            }
 
-            relatorio.qtdDeJogos = relatorio.listaJogos.Count();
-
-            relatorio.mediaValorDosJogos = relatorio.listaJogos.Average(jogo => jogo.Preco);
+            relatorio.CalcularRelatorio();
 
             return View(relatorio);
         }

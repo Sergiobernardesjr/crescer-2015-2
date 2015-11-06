@@ -22,7 +22,7 @@
             </th>
         </tr>
     </thead>
-    @foreach (var jogo in Model.listaJogos)
+    @foreach (var jogo in Model.ListaJogos)
     {
         <tr>
             <td>@jogo.Nome</td>
@@ -37,22 +37,22 @@
     <thead>
         <tr>
             <td>
-                Jogo Mais Caro: @Model.nomeJogoMaiorPreco
+                Jogo Mais Caro: @Model.NomeJogoMaiorPreco
             </td>
         </tr>
         <tr>
             <td>
-                Jogo Mais Barato: @Model.nomeJogoMenorPreco
+                Jogo Mais Barato: @Model.NomeJogoMenorPreco
             </td>
         </tr>
         <tr>
             <td>
-                Quantidade de Jogos: @Model.qtdDeJogos
+                Quantidade de Jogos: @Model.QtdDeJogos
             </td>
         </tr>
         <tr>
             <td>
-                Média de preco: @Model.mediaValorDosJogos
+                Média de preco: @Model.MediaValorDosJogos
             </td>
         </tr>
     </thead>
