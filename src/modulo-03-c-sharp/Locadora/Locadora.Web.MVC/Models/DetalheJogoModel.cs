@@ -9,6 +9,7 @@ namespace Locadora.Web.MVC.Models
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public string Selo { get; set; }
         public string Image { get; set; }
         public int Id { get; set; }
     }

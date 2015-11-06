@@ -21,6 +21,7 @@ namespace Locadora.Web.MVC.Controllers
             detalheJogoModel.Id = jogoBuscado.Id;
             detalheJogoModel.Nome = jogoBuscado.Nome;
             detalheJogoModel.Descricao = jogoBuscado.Descricao;
+            detalheJogoModel.Selo = jogoBuscado.Selo.ToString();
             detalheJogoModel.Image = jogoBuscado.Imagem;
             
             return View(detalheJogoModel);

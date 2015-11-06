@@ -20,6 +20,8 @@ namespace Locadora.Dominio
 
         public string Imagem { get; set; }
 
+        public string Video { get; set; }
+
         public Jogo()
         {
 
@@ -43,6 +45,10 @@ namespace Locadora.Dominio
             builder.AppendLine("Nome: " + this.Nome);
             builder.AppendLine("Preço: " + this.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR")));
             builder.AppendLine("Categoria: " + this.Categoria);
+            builder.AppendLine("Descricao: " + this.Descricao);
+            builder.AppendLine("Selo: " + this.Selo);
+            builder.AppendLine("Imagem: " + this.Imagem);
+            builder.AppendLine("Video: " + this.Video);
 
             return builder.ToString();
         }
