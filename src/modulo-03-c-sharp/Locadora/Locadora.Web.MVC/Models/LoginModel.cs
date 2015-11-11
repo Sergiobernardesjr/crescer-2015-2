@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,14 +8,10 @@ namespace Locadora.Web.MVC.Models
 {
     public class LoginModel
     {
-        public string Usuario { get; private set; }
+        [Required]
+        public string Email { get; set; }
 
-        public string[] Permissoes { get; private set; }
-
-        public LoginModel(string usuario, string[] permissoes)
-        {
-            this.Usuario = usuario;
-            this.Permissoes = permissoes;
-        }
+        [Required]
+        public string Senha { get; set; }
     }
 }

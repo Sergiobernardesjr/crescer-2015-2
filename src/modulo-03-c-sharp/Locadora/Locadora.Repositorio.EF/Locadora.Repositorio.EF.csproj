@@ -52,13 +52,9 @@
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Migrations\201511091912450_Initial.cs" />
-    <Compile Include="Migrations\201511091912450_Initial.Designer.cs">
-      <DependentUpon>201511091912450_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511101739545_Permissoes_Usuario.cs" />
-    <Compile Include="Migrations\201511101739545_Permissoes_Usuario.Designer.cs">
-      <DependentUpon>201511101739545_Permissoes_Usuario.cs</DependentUpon>
+    <Compile Include="Migrations\201511111807119_Initial.cs" />
+    <Compile Include="Migrations\201511111807119_Initial.Designer.cs">
+      <DependentUpon>201511111807119_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,11 +79,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511091912450_Initial.resx">
-      <DependentUpon>201511091912450_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511101739545_Permissoes_Usuario.resx">
-      <DependentUpon>201511101739545_Permissoes_Usuario.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511111807119_Initial.resx">
+      <DependentUpon>201511111807119_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

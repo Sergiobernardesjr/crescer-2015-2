@@ -13,8 +13,9 @@ namespace Locadora.Web.MVC.Controllers
     {
         private IJogoRepositorio repositorio = new Repositorio.EF.JogoRepositorio();
 
-
-        public ActionResult Login(string login, string senha)
+      //  [HttpPost]
+       // [ValidateAntiForgeryToken]
+        public ActionResult Index(LoginModel loginModel)
         {
             return View();
         }

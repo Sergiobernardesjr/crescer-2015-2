@@ -35,8 +35,7 @@ namespace Locadora.Repositorio.EF
         {
             using(var db = new BancoDeDados())
             {
-                var lista = db.Jogo.ToList();
-                return lista;
+                return db.Jogo.ToList();
             }
         }
 
