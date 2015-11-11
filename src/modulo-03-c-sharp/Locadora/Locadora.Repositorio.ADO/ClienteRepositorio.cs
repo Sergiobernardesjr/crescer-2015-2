@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Locadora.Dominio;
 
-namespace Locadora.Repositorio.ADO
+namespace Locadora.Repositorio.EF
 {
     public class ClienteRepositorio : IClienteRepositorio
     {

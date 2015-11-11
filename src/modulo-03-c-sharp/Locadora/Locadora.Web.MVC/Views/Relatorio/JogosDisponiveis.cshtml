@@ -3,57 +3,68 @@
     ViewBag.Title = "JogosDisponiveis";
 }
 
-<h2>JogosDisponiveis</h2>
+<div>
+    <button nome="btnCadastrar" onclick="">Cadastrar jogo</button>
+</div>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                Nome
-            </th>
-            <th>
-                Categoria
-            </th>
-            <th>
-                Preco
-            </th>
-            <th>
-                Detalhes
-            </th>
-        </tr>
-    </thead>
-    @foreach (var jogo in Model.ListaJogos)
-    {
-        <tr>
-            <td>@jogo.Nome</td>
-            <td>@jogo.Categoria</td>
-            <td>@jogo.Preco</td>
-            <td><a href="/Jogo/DetalheJogo/@jogo.Id">Detalhes do jogo</a> </td>
-        </tr>
-    }
-</table>
+@if (Model.ListaJogos.Count > 0)
+{
+    <h2>JogosDisponiveis</h2>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <td>
-                Jogo Mais Caro: @Model.NomeJogoMaiorPreco
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Jogo Mais Barato: @Model.NomeJogoMenorPreco
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Quantidade de Jogos: @Model.QtdDeJogos
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Média de preco: @Model.MediaValorDosJogos
-            </td>
-        </tr>
-    </thead>
-</table>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Preco
+                </th>
+                <th>
+                    Detalhes
+                </th>
+            </tr>
+        </thead>
+        @foreach (var jogo in Model.ListaJogos)
+        {
+            <tr>
+                <td>@jogo.Nome</td>
+                <td>@jogo.Categoria</td>
+                <td>@jogo.Preco</td>
+                <td><a href="/Jogo/DetalheJogo/@jogo.Id">Detalhes do jogo</a> </td>
+            </tr>
+        }
+    </table>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>
+                    Jogo Mais Caro: @Model.NomeJogoMaiorPreco
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Jogo Mais Barato: @Model.NomeJogoMenorPreco
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Quantidade de Jogos: @Model.QtdDeJogos
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Média de preco: @Model.MediaValorDosJogos
+                </td>
+            </tr>
+        </thead>
+    </table>
+}
+else
+{
+    <h2>Nenhum jogo encontrado!</h2>
+}

@@ -1,0 +1,14 @@
+INSERT INTO 
+	Selo (Nome)
+VALUES
+	('OURO')
+
+INSERT INTO 
+	Selo (Nome)
+VALUES
+	('PRATA')
+	
+INSERT INTO 
+	Selo (Nome)
+VALUES
+	('BRONZE')

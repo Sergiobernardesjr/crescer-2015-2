@@ -10,7 +10,7 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class JogoController : Controller
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
 
         public ActionResult DetalheJogo(int id)
         {
@@ -22,9 +22,27 @@ namespace Locadora.Web.MVC.Controllers
             detalheJogoModel.Nome = jogoBuscado.Nome;
             detalheJogoModel.Descricao = jogoBuscado.Descricao;
             detalheJogoModel.Selo = jogoBuscado.Selo.ToString();
-            detalheJogoModel.Image = jogoBuscado.Imagem;
+            detalheJogoModel.Imagem = jogoBuscado.Imagem;
             
             return View(detalheJogoModel);
+        }
+
+        public ActionResult Manter(int id=0)
+        {
+            if(id > 0)
+            {
+                var manterJogoModel = new ManterJogoModel();
+                var manterJogoModelPesquisado = repositorio.BuscarPorId(id);
+
+                manterJogoModel.Id = manterJogoModelPesquisado.Id;
+                manterJogoModel.Nome = manterJogoModelPesquisado.Nome;
+                manterJogoModel.Descricao = manterJogoModelPesquisado.Descricao;
+                manterJogoModel.Video = manterJogoModelPesquisado.Descricao;
+                manterJogoModel.Imagem = manterJogoModelPesquisado.Descricao;
+                manterJogoModel.Selo = manterJogoModelPesquisado.Selo.ToString();
+                manterJogoModel.Imagem = manterJogoModelPesquisado.Imagem;
+            }
+            return View();
         }
     }
 }

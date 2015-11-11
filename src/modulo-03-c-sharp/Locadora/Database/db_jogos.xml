@@ -5,7 +5,7 @@
     <preco>60</preco>
     <categoria>RPG</categoria>
     <id_cliente_locacao></id_cliente_locacao>
-    <descricao></descricao>
+    <descricao>Sem descricao</descricao>
     <selo>BRONZE</selo>
     <imagem></imagem>
   </jogo>
@@ -14,7 +14,7 @@
     <preco>20</preco>
     <categoria>CORRIDA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
-    <descricao></descricao>
+    <descricao>Sem descricao</descricao>
     <selo>BRONZE</selo>
     <imagem></imagem>  
   </jogo>
@@ -23,7 +23,7 @@
     <preco>40</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
-    <descricao></descricao>
+    <descricao>Sem descricao</descricao>
     <selo>BRONZE</selo>
     <imagem></imagem>
   </jogo>
@@ -32,7 +32,7 @@
     <preco>35</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
-    <descricao></descricao>
+    <descricao>Sem descricao</descricao>
     <selo>BRONZE</selo>
     <imagem></imagem>
   </jogo>
@@ -41,7 +41,7 @@
     <preco>25</preco>
     <categoria>AVENTURA</categoria>
     <id_cliente_locacao></id_cliente_locacao>
-    <descricao></descricao>
+    <descricao>Sem descricao</descricao>
     <selo>BRONZE</selo>
     <imagem></imagem>
   </jogo>
