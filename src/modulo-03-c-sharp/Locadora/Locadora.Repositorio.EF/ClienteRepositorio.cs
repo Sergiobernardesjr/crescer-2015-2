@@ -10,9 +10,20 @@ namespace Locadora.Repositorio.EF
 {
     class ClienteRepositorio : IClienteRepositorio
     {
+        public Cliente BuscarPorId(int id)
+        {
+            using (var db = new BancoDeDados())
+            {
+                return db.Cliente.Find(id);
+            }
+        }
+
         public IList<Cliente> BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+            using (var db = new BancoDeDados())
+            {
+                return db.Cliente.Where(j => j.Nome.Contains(nome)).ToList();
+            }
         }
     }
 }
