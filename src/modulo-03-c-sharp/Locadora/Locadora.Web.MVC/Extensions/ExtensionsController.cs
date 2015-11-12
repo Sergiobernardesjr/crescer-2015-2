@@ -18,8 +18,8 @@ namespace Locadora.Web.MVC.Extensions
             jogo.Descricao = manterJogo.Descricao;
             jogo.Video = manterJogo.Video;
             jogo.Imagem = manterJogo.Imagem;
-            jogo.Selo = manterJogo.Selo;
-            jogo.Categoria = manterJogo.Categoria;
+            jogo.Selo = manterJogo.Selo.Value;
+            jogo.Categoria = manterJogo.Categoria.Value;
 
             return jogo;
         }

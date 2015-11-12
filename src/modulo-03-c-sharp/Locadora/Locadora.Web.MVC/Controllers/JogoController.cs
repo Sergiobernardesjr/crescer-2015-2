@@ -2,6 +2,7 @@
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Extensions;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoController : Controller
     {
         private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
@@ -56,24 +58,30 @@ namespace Locadora.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (manterJogo != null)
-                {
-                    var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
+                //if (manterJogo == null)
+                //{
+                //    var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
 
-                    repositorio.Atualizar(jogo);
-                }
+                //    repositorio.Criar(jogo);
+
+                //    return View("Manter", manterJogo);
+
+
+                //}
+                //else
+                //{
+                var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
+
+                repositorio.Atualizar(jogo);
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
+                //}
+
             }
             else
             {
-                var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
-
-                repositorio.Criar(jogo);
-                
                 return View("Manter", manterJogo);
             }
-
         }
     }
 }

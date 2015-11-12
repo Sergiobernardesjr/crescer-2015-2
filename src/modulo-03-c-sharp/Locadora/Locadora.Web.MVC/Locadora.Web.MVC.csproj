@@ -161,6 +161,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -177,6 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\ClienteIndexModel.cs" />
     <Compile Include="Models\DetalheJogoModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
@@ -223,6 +229,10 @@
     <ProjectReference Include="..\Locadora.Helpers\Locadora.Helpers.csproj">
       <Project>{98cfbfa0-6792-41aa-9f4c-f69ffd0c3c5c}</Project>
       <Name>Locadora.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
+      <Project>{24fc7957-accf-4a14-a467-7f49708e68ca}</Project>
+      <Name>Locadora.Infraestrutura.Servicos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.EF\Locadora.Repositorio.EF.csproj">
       <Project>{fde8172e-66d0-4dbd-8324-f30b5ed8fcf8}</Project>

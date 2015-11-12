@@ -6,28 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Locadora.Dominio;
 
-namespace Locadora.Repositorio.EF
+namespace Locadora.Repositorio.EF.Repositorios
 {
-    class UsuarioRepositorio : IUsuarioRepositorio
+    public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        public int Atualizar(Usuario usuario)
+        public Usuario BuscarPorEmail(string email)
         {
-            throw new NotImplementedException();
-        }
-
-        public Usuario BuscarPorEmailESenha(string email, string senha)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Criar(Usuario usuario)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Excluir(int id)
-        {
-            throw new NotImplementedException();
+            using (var db = new BancoDeDados())
+            {
+                return db.Usuario.Include("Permissao").FirstOrDefault(u => u.Email == email);
+            }
         }
     }
 }

@@ -16,11 +16,11 @@ namespace Locadora.Web.MVC.Models
         
         [Required]
         [EnumDataType(typeof(Categoria), ErrorMessage ="Selecione uma categoria")]
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
 
         [Required]
         [EnumDataType(typeof(Selo), ErrorMessage = "Selecione uma selo")]
-        public Selo Selo { get; set; }
+        public Selo? Selo { get; set; }
 
         [DisplayName("Descrição")]
         public string Descricao { get; set; }

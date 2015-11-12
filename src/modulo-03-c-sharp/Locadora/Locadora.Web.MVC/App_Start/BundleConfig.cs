@@ -26,6 +26,11 @@ namespace Locadora.Web.MVC.App_Start
 
             bundles.Add(new StyleBundle("~/Content/themes/base").
                 IncludeDirectory("~/Content/themes/base", "*.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/validacao").Include(
+                        "~/Scripts/jquery.validate.min.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js"));
+
         }
     }
 
