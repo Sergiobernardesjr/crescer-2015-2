@@ -50,7 +50,6 @@ namespace Locadora.Repositorio.EF
             HasKey(j => j.Id);
 
             Property(p => p.Nome).IsRequired().HasMaxLength(250);
-            Property(p => p.Preco).IsRequired();
             Property(p => p.Descricao).IsRequired();
             Property(p => p.Imagem).IsOptional();
             Property(p => p.Video).IsOptional();

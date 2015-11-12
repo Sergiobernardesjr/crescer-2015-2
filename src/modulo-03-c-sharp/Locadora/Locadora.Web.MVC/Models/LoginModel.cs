@@ -8,10 +8,11 @@ namespace Locadora.Web.MVC.Models
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email possui preenchimento obrigatório.")]
+        [EmailAddress(ErrorMessage ="Email inválido.")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Senha possui preenchimento obrigatório.")]
         public string Senha { get; set; }
     }
 }
