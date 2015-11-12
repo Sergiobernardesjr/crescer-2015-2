@@ -31,6 +31,7 @@ namespace Locadora.Web.MVC.Controllers
             return View(detalheJogoModel);
         }
 
+        [Autorizador(Roles = "ADMIN")]
         [HttpGet]
         public ActionResult Manter(int id = 0)
         {
