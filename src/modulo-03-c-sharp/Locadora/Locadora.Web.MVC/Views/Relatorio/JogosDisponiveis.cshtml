@@ -3,9 +3,12 @@
     ViewBag.Title = "JogosDisponiveis";
 }
 
-<div>
-    <button nome="btnCadastrar" onclick="">Cadastrar jogo</button>
-</div>
+@if (User.IsInRole("ADMIN"))
+{
+    <div>
+        <button nome="btnCadastrar" onclick="">Cadastrar jogo</button>
+    </div>
+}
 
 @if (Model.ListaJogos.Count > 0)
 {
@@ -28,9 +31,17 @@
         @foreach (var jogo in Model.ListaJogos)
         {
             <tr>
-                <td><a href="~/Jogo/Manter/@jogo.Id">@jogo.Nome</a></td>
+                @if (@User.IsInRole("ADMIN"))
+                {
+                    <td><a href="~/Jogo/Manter/@jogo.Id">@jogo.Nome</a></td>
+                }
+                else
+                {
+                    <td>@jogo.Nome</td>
+                }
                 <td>@jogo.Categoria</td>
                 <td><a href="/Jogo/DetalheJogo/@jogo.Id">Detalhes do jogo</a> </td>
+                <td><a href="/Jogo/DetalheJogo/@jogo.Id">Locar</a> </td>
             </tr>
         }
     </table>
