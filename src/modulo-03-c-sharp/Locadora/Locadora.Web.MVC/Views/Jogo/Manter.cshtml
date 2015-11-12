@@ -3,7 +3,14 @@
     ViewBag.Title = "Manter";
 }
 
-<h2>Manter</h2>
+@if (Model.Id > 0)
+{
+    <h2>Cadastrar jogo</h2>
+}
+else
+{
+    <h2>Editar jogo</h2>
+}
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form" }))
 {

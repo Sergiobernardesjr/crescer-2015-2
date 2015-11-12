@@ -21,9 +21,6 @@
                     Categoria
                 </th>
                 <th>
-                    Preco
-                </th>
-                <th>
                     Detalhes
                 </th>
             </tr>
@@ -31,9 +28,8 @@
         @foreach (var jogo in Model.ListaJogos)
         {
             <tr>
-                <td>@jogo.Nome</td>
+                <td><a href="~/Jogo/Manter/@jogo.Id">@jogo.Nome</a></td>
                 <td>@jogo.Categoria</td>
-                <td>@jogo.Preco</td>
                 <td><a href="/Jogo/DetalheJogo/@jogo.Id">Detalhes do jogo</a> </td>
             </tr>
         }
@@ -43,22 +39,7 @@
         <thead>
             <tr>
                 <td>
-                    Jogo Mais Caro: @Model.NomeJogoMaiorPreco
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Jogo Mais Barato: @Model.NomeJogoMenorPreco
-                </td>
-            </tr>
-            <tr>
-                <td>
                     Quantidade de Jogos: @Model.QtdDeJogos
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Média de preco: @Model.MediaValorDosJogos
                 </td>
             </tr>
         </thead>

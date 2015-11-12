@@ -52,9 +52,13 @@
     <Compile Include="BancoDeDados.cs" />
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="JogoRepositorio.cs" />
-    <Compile Include="Migrations\201511111807119_Initial.cs" />
-    <Compile Include="Migrations\201511111807119_Initial.Designer.cs">
-      <DependentUpon>201511111807119_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201511121506441_Initial.cs" />
+    <Compile Include="Migrations\201511121506441_Initial.Designer.cs">
+      <DependentUpon>201511121506441_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511121508390_Selo.cs" />
+    <Compile Include="Migrations\201511121508390_Selo.Designer.cs">
+      <DependentUpon>201511121508390_Selo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,8 +83,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511111807119_Initial.resx">
-      <DependentUpon>201511111807119_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511121506441_Initial.resx">
+      <DependentUpon>201511121506441_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511121508390_Selo.resx">
+      <DependentUpon>201511121508390_Selo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

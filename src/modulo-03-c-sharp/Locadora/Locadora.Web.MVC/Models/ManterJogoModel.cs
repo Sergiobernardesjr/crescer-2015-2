@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locadora.Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,11 +14,13 @@ namespace Locadora.Web.MVC.Models
         [StringLength(250)]
         public string Nome { get; set; }
         
-        [Required(ErrorMessage = "Categoria não pode ser vazia.")]
-        public string Categoria { get; set; }
+        [Required]
+        [EnumDataType(typeof(Categoria), ErrorMessage ="Selecione uma categoria")]
+        public Categoria Categoria { get; set; }
 
-        [Required(ErrorMessage = "Selo não pode ser vazio.")]
-        public string Selo { get; set; }
+        [Required]
+        [EnumDataType(typeof(Selo), ErrorMessage = "Selecione uma selo")]
+        public Selo Selo { get; set; }
 
         [DisplayName("Descrição")]
         public string Descricao { get; set; }

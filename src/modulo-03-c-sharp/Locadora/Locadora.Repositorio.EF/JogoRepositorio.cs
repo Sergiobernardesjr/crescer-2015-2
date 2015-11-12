@@ -12,7 +12,11 @@ namespace Locadora.Repositorio.EF
     {
         public int Atualizar(Jogo jogo)
         {
-            throw new NotImplementedException();
+            using (var db = new BancoDeDados())
+            {
+                db.Entry(jogo).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges();
+            }
         }
 
         public Jogo BuscarPorId(int id)

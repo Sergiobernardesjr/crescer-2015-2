@@ -37,7 +37,6 @@ namespace Locadora.Web.MVC.Controllers
                         Id = jogo.Id,
                         Nome = jogo.Nome,
                         Categoria = jogo.Categoria.ToString(),
-                        Preco = jogo.Preco
                     };
 
                     relatorio.ListaJogos.Add(jogoModel);

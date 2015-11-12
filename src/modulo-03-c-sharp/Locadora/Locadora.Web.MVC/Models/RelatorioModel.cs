@@ -22,16 +22,7 @@ namespace Locadora.Web.MVC.Models
 
         public void CalcularRelatorio()
         {
-            var jogoMaisCaro = ListaJogos.Max(jogo => jogo.Preco);
-            var jogoMaisBarato = ListaJogos.Min(jogo => jogo.Preco);
-
-            NomeJogoMaiorPreco = ListaJogos.First(jogo => jogo.Preco == jogoMaisCaro).Nome;
-
-            NomeJogoMenorPreco = ListaJogos.First(jogo => jogo.Preco == jogoMaisBarato).Nome;
-
             QtdDeJogos = ListaJogos.Count();
-
-            MediaValorDosJogos = ListaJogos.Average(jogo => jogo.Preco);
         }
     }
 }
