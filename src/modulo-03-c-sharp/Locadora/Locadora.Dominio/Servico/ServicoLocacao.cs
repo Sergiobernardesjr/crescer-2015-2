@@ -11,19 +11,40 @@ namespace Locadora.Dominio.Servico
     {
         IJogoRepositorio jogoRepositorio;
         IClienteRepositorio clienteRepositorio;
+        ILocacaoRepositorio locacaoRepositorio;
+        Locacao locacao;
 
-        public bool LocarJogo(int idCliente, Jogo jogo)
+        public bool LocarJogo(int idCliente, int idJogo)
         {
-            var jogoPesquisado = jogoRepositorio.BuscarPorId(jogo.Id);
+            var jogoPesquisado = jogoRepositorio.BuscarPorId(idJogo);
             var clientePesquisado = clienteRepositorio.BuscarPorId(idCliente);
 
-            if (clientePesquisado.PodeLocar() && jogoPesquisado.ClienteLocacao == null)
+            this.locacao = new Locacao(jogoPesquisado, clientePesquisado);
+
+            var qtdDeClienteComJogos = locacaoRepositorio.BuscarTodos().Count(c => c.IdCliente == clientePesquisado.Id);
+
+            if (qtdDeClienteComJogos < 3)
             {
-                jogoPesquisado.LocarPara(clientePesquisado);
+                locacaoRepositorio.Locar(locacao);
 
                 return true;
             }
+
             return false;
+        }
+
+        public void DevolverJogo(int idJogo)
+        {
+            locacao = locacaoRepositorio.BuscarIdPorJogo(idJogo);
+            var jogoEncontrado = jogoRepositorio.BuscarPorId(idJogo);
+            var dataEntregue = DateTime.Now - locacao.DataEntregaLocacao;
+
+            if (dataEntregue.Days > 0)
+            {
+                for (int i = 0, diaDataEntregue = dataEntregue.Days; i < diaDataEntregue; i++)
+                    locacao.PrecoLocacao += 5.00m;
+            }
+
         }
     }
 }

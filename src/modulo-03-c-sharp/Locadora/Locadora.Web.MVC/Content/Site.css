@@ -15,3 +15,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.borda-login{
+    border-style: solid;
+    border-width: 2px 5px 10px 10px;
+}
+
+.div-login{
+    width: 200px;
+    height: 400px;
+    text-align: center;
+}

@@ -20,6 +20,7 @@ namespace Locadora.Repositorio.EF
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
+        public DbSet<Locacao> Locacao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -56,7 +57,9 @@ namespace Locadora.Repositorio.EF
             Property(p => p.Categoria).IsRequired().HasColumnName("IdCategoria");
             Property(p => p.Selo).IsRequired().HasColumnName("IdSelo");
 
-            HasOptional(jogo => jogo.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
+            Ignore(p => p.IdCliente);
+            Ignore(p => p.ClienteLocacao);
+
         }
     }
 
@@ -93,5 +96,20 @@ namespace Locadora.Repositorio.EF
             Property(t => t.Nome).IsRequired().HasMaxLength(200);
         }
         
+    }
+
+    public class LocacaoMap : EntityTypeConfiguration<Locacao>
+    {
+        public LocacaoMap()
+        {
+            ToTable("Locacao");
+
+            HasKey(c => c.Id);
+            Property(p => p.DataEntregaLocacao);
+            Property(p => p.PrecoLocacao);
+
+            HasRequired(p => p.Cliente).WithMany().HasForeignKey(p => p.IdCliente);
+            HasRequired(p => p.Jogo).WithMany().HasForeignKey(p => p.IdJogo);
+        }
     }
 }

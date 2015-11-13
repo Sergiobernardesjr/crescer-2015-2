@@ -18,3 +18,12 @@
 <div class="text-center">
     <img src="@Model.Imagem" />
 </div>
+
+<div class="text-center">
+    @Html.Raw(Model.Video)
+</div>
+
+<div>
+    <button onclick="location.href='@Url.Action("Sair","Login")'" name="btnSair">Sair</button>
+    <button onclick="location.href='@Url.Action("JogosDisponiveis", "Relatorio")'" name="btnRelatorio">Jogos disponíveis</button>
+</div>

@@ -8,7 +8,7 @@ using Locadora.Dominio;
 
 namespace Locadora.Repositorio.EF
 {
-    class ClienteRepositorio : IClienteRepositorio
+    public class ClienteRepositorio : IClienteRepositorio
     {
         public Cliente BuscarPorId(int id)
         {
@@ -18,11 +18,11 @@ namespace Locadora.Repositorio.EF
             }
         }
 
-        public IList<Cliente> BuscarPorNome(string nome)
+        public Cliente BuscarPorNome(string nome)
         {
             using (var db = new BancoDeDados())
             {
-                return db.Cliente.Where(j => j.Nome.Contains(nome)).ToList();
+                return db.Cliente.FirstOrDefault(j => j.Nome.Contains(nome));
             }
         }
     }

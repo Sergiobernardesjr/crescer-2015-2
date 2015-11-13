@@ -3,16 +3,17 @@
     ViewBag.Title = "JogosDisponiveis";
 }
 
-@if (User.IsInRole("ADMIN"))
-{
+
     <div>
-        <button nome="btnCadastrar" onclick="">Cadastrar jogo</button>
+        <button nome="btnCadastrar" onclick="location.href='@Url.Action("Manter", "Jogo")'">Cadastrar jogo</button>
     </div>
-}
+
 
 @if (Model.ListaJogos.Count > 0)
 {
     <h2>JogosDisponiveis</h2>
+
+    <h3>@TempData["MANTER_JOGO"]</h3>
 
     <table class="table table-hover">
         <thead>
@@ -31,18 +32,12 @@
         @foreach (var jogo in Model.ListaJogos)
         {
             <tr>
-                @if (@User.IsInRole("ADMIN"))
-                {
-                    <td><a href="~/Jogo/Manter/@jogo.Id">@jogo.Nome</a></td>
-                }
-                else
-                {
-                    <td>@jogo.Nome</td>
-                }
+                <td><a href="~/Jogo/Manter/@jogo.Id">@jogo.Nome</a></td>
+                
                 <td>@jogo.Categoria</td>
                 <td><a href="/Jogo/DetalheJogo/@jogo.Id">Detalhes do jogo</a> </td>
-                <td><a href="/Jogo/DetalheJogo/@jogo.Id">Locar</a> </td>
-            </tr>
+                <td><a href="/Locacao/Index/@jogo.Id">Locar</a> </td>
+             </tr>
         }
     </table>
 
@@ -55,8 +50,13 @@
             </tr>
         </thead>
     </table>
+
 }
 else
 {
     <h2>Nenhum jogo encontrado!</h2>
 }
+
+<div>
+    <button onclick="location.href='@Url.Action("Sair","Login")'" name="btnSair">Sair</button>
+</div>

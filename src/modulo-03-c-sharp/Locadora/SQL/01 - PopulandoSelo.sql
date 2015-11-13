@@ -1,14 +1,14 @@
 INSERT INTO 
-	Selo (Nome)
+	Selo (Descricao)
 VALUES
 	('OURO')
 
 INSERT INTO 
-	Selo (Nome)
+	Selo (Descricao)
 VALUES
 	('PRATA')
 	
 INSERT INTO 
-	Selo (Nome)
+	Selo (Descricao)
 VALUES
 	('BRONZE')

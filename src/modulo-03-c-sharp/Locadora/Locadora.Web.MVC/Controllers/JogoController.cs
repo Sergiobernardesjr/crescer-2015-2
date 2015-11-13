@@ -31,8 +31,9 @@ namespace Locadora.Web.MVC.Controllers
             return View(detalheJogoModel);
         }
 
-        [Autorizador(Roles = "ADMIN")]
+        
         [HttpGet]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult Manter(int id = 0)
         {
             var manterJogoModel = new ManterJogoModel();
@@ -59,25 +60,30 @@ namespace Locadora.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (manterJogo == null)
-                //{
-                //    var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
+                var jogo = new Jogo();
 
-                //    repositorio.Criar(jogo);
+                if (manterJogo.Id > 0)
+                {
+                    jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
 
-                //    return View("Manter", manterJogo);
+                    repositorio.Atualizar(jogo);
 
+                    TempData["MANTER_JOGO"] = "Jogo alterado com sucesso!";
 
-                //}
-                //else
-                //{
-                var jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
+                    return RedirectToAction("JogosDisponiveis", "Relatorio");
+                }
+                else if(manterJogo.Id == 0)
+                {
+                    jogo = this.ConverterManterJogoModelEmJogo(manterJogo);
 
-                repositorio.Atualizar(jogo);
+                    repositorio.Criar(jogo);
+
+                    TempData["MANTER_JOGO"] = "Jogo criado com sucesso!";
+
+                    return RedirectToAction("JogosDisponiveis", "Relatorio");
+                }
 
                 return RedirectToAction("JogosDisponiveis", "Relatorio");
-                //}
-
             }
             else
             {

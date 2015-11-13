@@ -10,6 +10,8 @@ namespace Locadora.Dominio
 
         public Categoria Categoria { get; set; }
 
+        public int IdCliente { get; set; }
+
         public Cliente ClienteLocacao { get; private set; }
 
         public string Descricao { get; set; }

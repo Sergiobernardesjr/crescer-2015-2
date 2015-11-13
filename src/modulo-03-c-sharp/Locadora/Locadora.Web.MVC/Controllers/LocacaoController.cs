@@ -1,4 +1,6 @@
-﻿using Locadora.Dominio.Repositorio;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
+using Locadora.Dominio.Servico;
 using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -10,19 +12,29 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class LocacaoController : Controller
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
+        private ILocacaoRepositorio repositorioLocacao = new Locadora.Repositorio.EF.LocacaoRepositorio();
+        private IClienteRepositorio repositorioCliente = new Locadora.Repositorio.EF.ClienteRepositorio();
+        private IJogoRepositorio repositorioJogo = new Locadora.Repositorio.EF.JogoRepositorio();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            var model = new LocacaoModel() { IdJogo = id };
+
+            var jogo = repositorioJogo.BuscarPorId(id);
+
+            model.NomeJogo = jogo.Nome;
+            
+            return View(model);
         }
 
-        public ActionResult Locar(int id)
+        public ActionResult Locar(LocacaoModel locacaoModel)
         {
-            var jogo = repositorio.BuscarPorId(id);
+            var servicoLocacao = new ServicoLocacao();
+            var clientePesquisado = repositorioCliente.BuscarPorNome(locacaoModel.NomeCliente);
 
+            servicoLocacao.LocarJogo(clientePesquisado.Id, locacaoModel.IdJogo);
 
-            return View();
+            return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
     }
 }
