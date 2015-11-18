@@ -19,17 +19,23 @@ public class Aplicacao {
          */
 
         ClienteDao clienteDao = new ClienteDao();
-        List<Cliente> lista = clienteDao.listAll();
-        for (Cliente cliente : lista) {
-            System.out.println(cliente.getNmCliente());
-        }
+        // List<Cliente> lista = clienteDao.listAll();
+        // for (Cliente cliente : lista) {
+        // System.out.println(cliente.getNmCliente());
+        // }
+
+
 
         // Insert
-        // Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente();
         // cliente.setIdCliente(1L);
-        // cliente.setNmCliente("Joao");
-        // ClienteDao clienteDao = new ClienteDao();
-        // clienteDao.insert(cliente);
+        cliente.setNmCliente("Joao");
+        List<Cliente> listaSelect = clienteDao.select(cliente);
+        for (Cliente clienteSelect : listaSelect) {
+            System.out.println(clienteSelect.getNmCliente());
+            System.out.println(clienteSelect.getNrCpf());
+            System.out.println(clienteSelect.getIdCliente());
+        }
 
         //        int opcao = Integer.parseInt(JOptionPane.showInputDialog("Utilizar\n1-Lista simples\n2-Lista dupla:"));
         //        if (opcao == 1){
