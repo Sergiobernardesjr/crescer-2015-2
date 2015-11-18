@@ -13,10 +13,11 @@ import br.com.cwi.crescer.model.Pedido;
 public class Menu {
 
     private static final int SELECIONAR_CLIENTE = 1;
-    private static final int INSERIR_PEDIDO = 1;
 
     public void menu(int opcaoMenu) throws SQLException {
         Cliente cliente = new Cliente();
+        MenuInserirPedido menuInserirPedido = new MenuInserirPedido();
+        MenuUtilizarClienteECadastrar menuUtilizarClienteECadastrar = new MenuUtilizarClienteECadastrar();
         Pedido pedido = new Pedido();
         ClienteDao clienteDao = new ClienteDao();
         PedidoDao pedidoDao = new PedidoDao();
@@ -51,7 +52,7 @@ public class Menu {
             clientes = clienteDao.find(cliente);
 
             if (clientes.size() > 1){
-                Long codigoClienteSelecionado = 0L;
+
                 int opcaoCliente = 0;
                 for (Cliente clientesLista : clientes){
                     System.out.println("Mais de um registro foi encontrado!");
@@ -61,13 +62,10 @@ public class Menu {
                 }
                 System.out.println("1-Selecionar cliente pelo código\n2-Cadastrar novo cliente");
                 opcaoCliente = scanner.nextInt();
-                if (opcaoCliente == SELECIONAR_CLIENTE){
-                    System.out.println("Código do cliente: ");
-                    codigoClienteSelecionado = scanner.nextLong();
-                } else {
-                    clienteDao.insert(cliente);
-                }
+                menuUtilizarClienteECadastrar.menuUtilizarCliente(opcaoCliente, cliente);
+
             } else if (clientes.size() == 1){
+
                 int opcaoCliente = 0;
                 for (Cliente clientesLista : clientes){
                     System.out.println("Mais de um registro foi encontrado!");
@@ -77,26 +75,11 @@ public class Menu {
                 }
                 System.out.println("1-Inserir pedido para este cliente\n2-Cadastrar novo cliente");
                 opcaoCliente = scanner.nextInt();
-                scanner.reset();
-                if (opcaoCliente == INSERIR_PEDIDO){
-                    scanner.nextLine();
-                    System.out.println("Descricao pedido: ");
-                    pedido.setDsPedido(scanner.nextLine());
-                    pedido.setIdCliente(clientes.get(0).getIdCliente());
-                    pedidoDao.insert(pedido);
-                } else {
-                    clienteDao.insert(cliente);
-                    System.out.println("Descricao pedido: ");
-                    pedido.setDsPedido(scanner.nextLine());
-                    pedido.setIdCliente(cliente.getIdCliente());
-                    pedidoDao.insert(pedido);
-                }
+                menuInserirPedido.menuInserirSelecionandoCliente(clientes, opcaoCliente, cliente);
+
             } else {
                 clienteDao.insert(cliente);
-                System.out.println("Descricao pedido: ");
-                pedido.setDsPedido(scanner.nextLine());
-                pedido.setIdCliente(cliente.getIdCliente());
-                pedidoDao.insert(pedido);
+                menuInserirPedido.menuInserir(cliente);
             }
         }
 

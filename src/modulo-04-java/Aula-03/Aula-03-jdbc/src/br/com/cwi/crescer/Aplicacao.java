@@ -1,29 +1,19 @@
 package br.com.cwi.crescer;
 
 import java.sql.SQLException;
-import java.util.List;
-
-import br.com.cwi.crescer.dao.ClienteDao;
-import br.com.cwi.crescer.model.Cliente;
+import java.util.Scanner;
 
 public class Aplicacao {
 
     public static void main(String[] args) throws SQLException {
-
-        Cliente cliente = new Cliente();
-        ClienteDao clienteDao = new ClienteDao();
-        cliente.setNmCliente("Maria");
-        cliente.setIdCliente(1L);
-        cliente.setNrCpf("123456");
-
-        clienteDao.update(cliente);
-
-        cliente.setNmCliente("Maria");
-        List<Cliente> listaSelect = clienteDao.find(cliente);
-        for (Cliente clienteSelect : listaSelect) {
-            System.out.println(clienteSelect.getNmCliente());
-            System.out.println(clienteSelect.getNrCpf());
-            System.out.println(clienteSelect.getIdCliente());
-        }
+        Menu menu = new Menu();
+        
+        int opcaoMenu = 0;
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1-Inserir cliente\n2-Deletar cliente\n3-Pesquisar cliente\n4-Listar todos clientes\n5-Inserir pedido");
+        opcaoMenu = scanner.nextInt();
+        menu.menu(opcaoMenu);
+        
     }
 }
