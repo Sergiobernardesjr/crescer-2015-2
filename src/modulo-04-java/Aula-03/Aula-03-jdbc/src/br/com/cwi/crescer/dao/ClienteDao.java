@@ -89,7 +89,7 @@ public class ClienteDao {
 
         try (Connection conexao = new ConnectionFactory().getConnection()) {
             int cont = 0;
-            String parametro = null;
+            ArrayList<String> parametro = new ArrayList<String>();
             Long idParametro = 0L;
 
             StringBuilder query = new StringBuilder();
@@ -104,16 +104,15 @@ public class ClienteDao {
                     query.append(" and ");
                 }
                 query.append(" nmCliente = ? ");
-                parametro = cliente.getNmCliente();
-
+                parametro.add(cliente.getNmCliente());
                 cont++;
             }
             if (cliente.getNrCpf() != null) {
                 if (cont >= 1) {
                     query.append(" and ");
                 }
-                query.append(" nroCpf = ? ");
-                parametro = cliente.getNrCpf();
+                query.append(" nrCpf = ? ");
+                parametro.add(cliente.getNrCpf());
                 cont++;
             }
 
@@ -122,21 +121,21 @@ public class ClienteDao {
                 if (idParametro > 0){
                     statement.setLong(1, idParametro);
                 } else {
-                    statement.setString(1, parametro);
+                    statement.setString(1, parametro.get(0));
                 }
 
             } else if (cont > 1 && cont < 2){
                 if (idParametro > 0){
                     statement.setLong(1, idParametro);
-                    statement.setString(2, parametro);
+                    statement.setString(2, parametro.get(0));
                 } else {
-                    statement.setString(1, parametro);
-                    statement.setString(2, parametro);
+                    statement.setString(1, parametro.get(0));
+                    statement.setString(2, parametro.get(1));
                 }
             } else {
                 statement.setLong(1, idParametro);
-                statement.setString(2, parametro);
-                statement.setString(3, parametro);
+                statement.setString(2, parametro.get(0));
+                statement.setString(3, parametro.get(1));
             }
 
             ResultSet resultSet = statement.executeQuery();
@@ -152,5 +151,21 @@ public class ClienteDao {
             throw e;
         }
         return lista;
+    }
+
+    public void update(Cliente cliente) throws SQLException {
+        try (Connection conexao = new ConnectionFactory().getConnection()) {
+
+            StringBuilder query = new StringBuilder();
+            query.append(" update cliente set nmcliente = ?, nrcpf = ? where idcliente = ? ");
+
+            PreparedStatement statement = conexao.prepareStatement(query.toString());
+            statement.setString(1, cliente.getNmCliente());
+            statement.setString(2, cliente.getNrCpf());
+            statement.setLong(3, cliente.getIdCliente());
+            statement.execute();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }
