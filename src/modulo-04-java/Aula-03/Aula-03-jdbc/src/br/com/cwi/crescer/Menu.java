@@ -12,7 +12,7 @@ import br.com.cwi.crescer.model.Pedido;
 
 public class Menu {
 
-    private static final int SELECIONAR_CLIENTE = 1;
+    private static final int INSERIR_CLIENTE = 1;
 
     public void menu(int opcaoMenu) throws SQLException {
         Cliente cliente = new Cliente();
@@ -23,14 +23,18 @@ public class Menu {
         PedidoDao pedidoDao = new PedidoDao();
         Scanner scanner = new Scanner(System.in);
 
-        if (opcaoMenu == 1) {
-            // Cliente cliente = new Cliente();
-            // ClienteDao clienteDao = new ClienteDao();
-            // System.out.println("Nome: ");
-            // cliente.setNmCliente(scanner.nextLine());
-            // System.out.println("CPF(Não obrigatorio): ");
-            // cliente.setNrCpf(scanner.nextLine());
-            // inserir cliente
+        if (opcaoMenu == INSERIR_CLIENTE) {
+            String nome;
+            String CPF;
+            System.out.println("Nome: ");
+            nome = scanner.nextLine();
+            System.out.println("CPF: ");
+            CPF = scanner.nextLine();
+            cliente.setNmCliente(nome);
+            cliente.setNrCpf(CPF);
+
+            clienteDao.insert(cliente);
+
         } else if (opcaoMenu == 2) {
             // Cliente cliente = new Cliente();
             // ClienteDao clienteDao = new ClienteDao();
