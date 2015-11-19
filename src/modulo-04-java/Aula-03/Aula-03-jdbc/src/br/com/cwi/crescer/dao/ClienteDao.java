@@ -15,10 +15,9 @@ public class ClienteDao {
     public void insert(Cliente cliente) throws SQLException {
         try (Connection conexao = new ConnectionFactory().getConnection()) {
 
-            PreparedStatement statement = conexao.prepareStatement("insert into cliente (idCliente, nmCliente, nrCpf) values (?,?,?)");
-            statement.setLong(1, cliente.getIdCliente());
-            statement.setString(2, cliente.getNmCliente());
-            statement.setString(3, cliente.getNrCpf());
+            PreparedStatement statement = conexao.prepareStatement("insert into cliente (idCliente, nmCliente, nrCpf) values (cliente_seq.nextval,?,?)");
+            statement.setString(1, cliente.getNmCliente());
+            statement.setString(2, cliente.getNrCpf());
             statement.execute();
 
         } catch (SQLException e) {
@@ -89,7 +88,7 @@ public class ClienteDao {
 
         try (Connection conexao = new ConnectionFactory().getConnection()) {
             int cont = 0;
-            ArrayList<String> parametro = new ArrayList<String>();
+            List<String> parametro = new ArrayList<String>();
             Long idParametro = 0L;
 
             StringBuilder query = new StringBuilder();
@@ -124,7 +123,7 @@ public class ClienteDao {
                     statement.setString(1, parametro.get(0));
                 }
 
-            } else if (cont > 1 && cont < 2){
+            } else if (cont > 0 && cont <= 2) {
                 if (idParametro > 0){
                     statement.setLong(1, idParametro);
                     statement.setString(2, parametro.get(0));
