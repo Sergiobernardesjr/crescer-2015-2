@@ -42,16 +42,19 @@ else
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.Video)
-            @Html.TextBoxFor(m => m.Video)
+            @Html.LabelFor(m => m.Video, new { @class = "col-sm-2 control-label" })
+            @Html.TextBoxFor(m => m.Video, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Video)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.Imagem)
-            @Html.TextBoxFor(m => m.Imagem)
-            @Html.ValidationMessageFor(m => m.Imagem)
+            @Html.LabelFor(m => m.Video, new { @class = "col-sm-2 control-label" })
+            <div>
+                @Html.TextBoxFor(m => m.Video, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Video)
+            </div>
         </div>
+
 
         <input type="submit" name="enviar" value="Salvar" />
 
