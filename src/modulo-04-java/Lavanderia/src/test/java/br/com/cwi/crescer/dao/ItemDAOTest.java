@@ -29,6 +29,13 @@ public class ItemDAOTest extends AbstractEstructureTest {
     }
 
     @Test
+    public void buscarPorIdEVerificarSeTemProduto() throws Exception {
+        Item item = itemDao.findById(1L);
+        Assert.assertNotNull(item);
+        Assert.assertNotNull(item.getProduto());
+    }
+
+    @Test
     public void buscarPorSituacao() throws Exception {
         List<Item> listaItens = itemDao.findBySituacao(SituacaoItem.PENDENTE);
 

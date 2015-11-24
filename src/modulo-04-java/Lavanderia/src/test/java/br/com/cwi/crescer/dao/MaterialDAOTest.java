@@ -20,4 +20,11 @@ public class MaterialDAOTest extends AbstractEstructureTest {
         Assert.assertNotNull(material);
     }
 
+    @Test
+    public void buscarPorIdComListaDeProdutos() throws Exception {
+        Material material = materialDao.findById(1L);
+
+        Assert.assertNotNull(material.getProdutos());
+        Assert.assertNotNull(material);
+    }
 }

@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/home.css" />
-	<meta charset="UTF-8" />
-	<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'/>
+<meta charset="UTF-8" />
+<title>Home</title>
 </head>
 <body>
-	
-	<h2 class="red text-center" th:text="${mensagem}">Index</h2>
-
+	<div class="navbar blue-gradient navbar-fixed-top">
+		<div class="container">
+				<p class="navbar-text">
+					<a href="localhost:8081" class="navbar-link  navbar-font" style="text-decoration: none">Início</a>
+				</p>
+		</div>
+	</div>
+	<div class = "body-navbar-container">
+		<h1 class="msgHome text-center">Bem vindo à Lavanderia Crescer</h1>
+	</div>
 </body>
 </html>
