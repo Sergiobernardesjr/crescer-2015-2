@@ -20,8 +20,9 @@ public class ClienteService {
     public CidadeDAO cidadeDao;
 
     @Autowired
-    public ClienteService(ClienteDAO clienteDao){
+    public ClienteService(ClienteDAO clienteDao, CidadeDAO cidadeDao) {
         this.clienteDao = clienteDao;
+        this.cidadeDao = cidadeDao;
     }
 
     public List<ClienteDTO> listarClientesAtivos() {
@@ -37,8 +38,8 @@ public class ClienteService {
         return dtos;
     }
 
-    public Cliente buscarClientePorId(Long id) {
-        return clienteDao.findById(id);
+    public ClienteDTO buscarClientePorId(Long id) {
+        return ClienteMapper.toDTO(clienteDao.findById(id));
     }
 
     public void atualizar(ClienteDTO dto) {
@@ -47,9 +48,24 @@ public class ClienteService {
 
         ClienteMapper.merge(dto, cliente);
 
+        clienteDao.save(cliente);
+
+    }
+
+    public void incluir(ClienteDTO dto) {
+
+        Cliente cliente = ClienteMapper.newCliente(dto);
+
         cliente.setCidade(cidadeDao.findById(dto.getIdCidade()));
 
         clienteDao.save(cliente);
+    }
 
+    public void desativar(ClienteDTO dto) {
+        Cliente cliente = new Cliente();
+
+        ClienteMapper.merge(dto, cliente);
+
+        clienteDao.desativar(cliente);
     }
 }

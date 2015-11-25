@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css' />
+<meta charset="UTF-8"/>
+<title>Cadastro de clientes</title>
+</head>
+<body>
+	<div class="margin-topo-padrao blue-gradient teste">		
+		<form th:action="@{/clientes/cadastrar}" th:object="${cliente}" method="post">
+
+			<p th:classappend="${#fields.hasErrors('nome')}">
+				<label class="red">*</label>
+				<label class="control-label">Nome: </label>
+				<input class="form-control" th:field="*{nome}" type="text"/>
+				<span th:errors="*{nome}"></span>
+			</p>
+			
+			<p th:classappend="${#fields.hasErrors('cpf')}">
+				<label class="red">*</label>
+				<label class="control-label">CPF: </label>
+		 		<input class="form-control" th:field="*{cpf}" type="text"/>
+		 		<span th:errors="*{cpf}"></span>
+			</p>
+			
+			<p th:classappend="${#fields.hasErrors('email')}">
+				<label class="red">*</label>
+		 		<label class="control-label">Email: </label>
+		 		<input class="form-control" th:field="*{email}" type="text"/>
+		 		<span th:errors="*{email}"></span>
+	 		</p>
+	 		
+	 		<p>
+		 		<label class="control-label">Cidade: </label>
+		 		<select class="form-control" th:field="*{idCidade}">
+	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+	            </select>
+            </p>
+             
+             <button type="submit">Cadastrar</button>
+             
+		</form>
+	</div>
+</body>
+</html>

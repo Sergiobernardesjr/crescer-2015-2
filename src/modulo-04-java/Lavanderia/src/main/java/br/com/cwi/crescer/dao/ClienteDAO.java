@@ -25,10 +25,17 @@ public class ClienteDAO extends AbstractDAO {
     public Cliente save(Cliente cliente) {
 
         if (cliente.getIdCliente() == null) {
+            cliente.setSituacao(SituacaoCliente.ATIVO);
             em.persist(cliente);
             return cliente;
         }
 
+        return em.merge(cliente);
+    }
+
+    @Transactional
+    public Cliente desativar(Cliente cliente) {
+        cliente.setSituacao(SituacaoCliente.INATIVO);
         return em.merge(cliente);
     }
 }

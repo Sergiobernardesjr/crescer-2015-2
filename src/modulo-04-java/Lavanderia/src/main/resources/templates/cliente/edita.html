@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/home.css" />
+	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
 		rel='stylesheet' type='text/css' />
 <meta charset="UTF-8"/>
-<title>Insert title here</title>
+<title>Edição de clientes</title>
 </head>
 <body>
-	
-	<div class="margin-topo-padrao blue-gradient teste">		
-		
-		<form th:object="${cliente}">
+	<h2>Visualizar</h2>
+	<div class="blue-gradient teste">		
+		<form th:object="${cliente}" method="post"  th:action="@{/clientes/editar}">
 	
 			<p>
 				<label class="control-label">ID: </label>
-				<input class="form-control" th:field="*{id}" type="text" disabled="true" />
+				<input class="form-control" th:field="*{id}" type="text"/>
 			</p>
 			
 			<p>
 				<label class="control-label">Nome: </label>
-				<input class="form-control" th:field="*{nome}" type="text" disabled="true" />
+				<input class="form-control" th:field="*{nome}" type="text"/>
 			</p>
 			
 			<p>
 				<label class="control-label">CPF: </label>
-		 		<input class="form-control" th:field="*{cpf}" type="text" disabled="true"/>
+		 		<input class="form-control" th:field="*{cpf}" type="text"/>
 			</p>
 			
 			<p>
 		 		<label class="control-label">Email: </label>
-		 		<input class="form-control" th:field="*{email}" type="text" disabled="true"/>
+		 		<input class="form-control" th:field="*{email}" type="text"/>
 	 		</p>
 	 		
 	 		<p>
 		 		<label class="control-label">Cidade: </label>
-		 		<select  class="form-control" th:field="*{idCidade}" disabled="true">
+		 		<select class="form-control" th:field="*{idCidade}">
 	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 	            </select>
             </p>
-            
-            <p>
-            	<label class="control-label">Situacao: </label>
-            	<input class="form-control" th:text="$*{Situacao}" disable="true">
-            </p>
+			
+            <button type="submit">Salvar</button>
              
 		</form>
 	</div>

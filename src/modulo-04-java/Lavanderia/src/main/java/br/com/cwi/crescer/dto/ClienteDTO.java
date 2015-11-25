@@ -1,13 +1,31 @@
 package br.com.cwi.crescer.dto;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
+
 public class ClienteDTO {
 
     private Long id;
+
+    @NotBlank
     private String nome;
+
+    @NotBlank
+    @CPF
+    @Length(min = 11, max = 11)
     private String cpf;
+
+    @NotBlank
+    @Email
     private String email;
     private String endereco;
     private String bairro;
+
+    @NotNull
     private Long idCidade;
     private Long cep;
 

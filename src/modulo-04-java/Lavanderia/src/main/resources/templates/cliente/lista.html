@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html 	
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout">
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/home.css" />
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -7,10 +9,14 @@
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
 		rel='stylesheet' type='text/css' />
 	<meta charset="UTF-8" />
-	<title>Lista de clientes</title>
+	<title>Exibição de clientes</title>
 </head>
 <body>
-	<div th:if="${not #lists.isEmpty(clientes)}">
+
+<div th:if='${desativado} != null'>
+<p th:text="${desativado}"></p>
+</div>
+	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
         
         <table class="table">
         
@@ -21,7 +27,7 @@
                 <th>Email</th>
                 <th>Visualizar</th>
                 <th>Editar</th>
-                <th>Remover</th>
+                <th>Desativar</th>
             </tr>
             <tr th:each="cliente : ${clientes}">
                 <td th:text="${cliente.id}"></td>
@@ -30,7 +36,7 @@
                 <td th:text="${cliente.email}"></td>
                 <td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
                 <td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
-                <td><a th:href="${'/clientes/remover/' + cliente.id}">Remover</a></td>
+                <td><a th:href="${'/clientes/desativar/' + cliente.id}">Desativar</a></td>
             </tr>
         </table>
 

@@ -1,7 +1,5 @@
 package br.com.cwi.crescer.mapper;
 
-import br.com.cwi.crescer.dao.CidadeDAO;
-import br.com.cwi.crescer.domain.Cidade;
 import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.dto.ClienteDTO;
 
@@ -22,17 +20,24 @@ public class ClienteMapper {
     }
 
     public static Cliente merge(ClienteDTO dto, Cliente cliente) {
-        Cidade cidade = new Cidade();
-        CidadeDAO cidadeDao = new CidadeDAO();
-        cidade = cidadeDao.findById(dto.getIdCidade());
-
         cliente.setBairro(dto.getBairro());
         cliente.setCep(dto.getCep());
         cliente.setCpf(dto.getCpf());
         cliente.setEmail(dto.getEmail());
         cliente.setEndereco(dto.getEndereco());
         cliente.setIdCliente(dto.getId());
-        cliente.setCidade(cidade);
+        cliente.setNome(dto.getNome());
+
+        return cliente;
+    }
+
+    public static Cliente newCliente(ClienteDTO dto) {
+        Cliente cliente = new Cliente();
+        cliente.setBairro(dto.getBairro());
+        cliente.setCep(dto.getCep());
+        cliente.setCpf(dto.getCpf());
+        cliente.setEmail(dto.getEmail());
+        cliente.setEndereco(dto.getEndereco());
         cliente.setNome(dto.getNome());
 
         return cliente;
