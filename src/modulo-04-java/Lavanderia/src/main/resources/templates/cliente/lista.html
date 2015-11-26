@@ -13,9 +13,10 @@
 </head>
 <body>
 
-<div th:if='${desativado} != null'>
-<p th:text="${desativado}"></p>
+<div th:if='${mensagem} != null'>
+<p th:text="${mensagem}"></p>
 </div>
+
 	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
         
         <table class="table">

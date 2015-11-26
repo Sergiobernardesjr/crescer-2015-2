@@ -31,6 +31,10 @@
 	color: red;
 }
 
+.hidden{
+	 overflow: hidden
+}
+
 .navbar-link-override:hover{
 	color:#1fef24;
 }

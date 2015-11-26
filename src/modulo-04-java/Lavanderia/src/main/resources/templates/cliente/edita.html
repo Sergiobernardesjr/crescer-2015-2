@@ -14,24 +14,27 @@
 	<div class="blue-gradient teste">		
 		<form th:object="${cliente}" method="post"  th:action="@{/clientes/editar}">
 	
-			<p>
+			<p class="hidden" th:classappend="${#fields.hasErrors('nome')}">
 				<label class="control-label">ID: </label>
 				<input class="form-control" th:field="*{id}" type="text"/>
 			</p>
 			
-			<p>
+			<p th:classappend="${#fields.hasErrors('nome')}">
 				<label class="control-label">Nome: </label>
 				<input class="form-control" th:field="*{nome}" type="text"/>
+				<span th:errors="*{nome}"></span>
 			</p>
 			
-			<p>
+			<p th:classappend="${#fields.hasErrors('cpf')}">
 				<label class="control-label">CPF: </label>
 		 		<input class="form-control" th:field="*{cpf}" type="text"/>
+		 		<span th:errors="*{cpf}"></span>
 			</p>
 			
-			<p>
+			<p th:classappend="${#fields.hasErrors('email')}">
 		 		<label class="control-label">Email: </label>
 		 		<input class="form-control" th:field="*{email}" type="text"/>
+		 		<span th:errors="*{email}"></span>
 	 		</p>
 	 		
 	 		<p>

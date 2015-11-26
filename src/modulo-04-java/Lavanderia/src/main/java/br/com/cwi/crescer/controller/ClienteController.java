@@ -49,8 +49,17 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(ClienteDTO dto) {
-        clienteService.atualizar(dto);
+    public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO cliente,
+            BindingResult result,
+            final RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            return new ModelAndView("cliente/edita", "cliente", cliente);
+        }
+        clienteService.atualizar(cliente);
+
+        redirectAttributes.addFlashAttribute("mensagem", "Cliente alterado com sucesso");
+
         return new ModelAndView("redirect:/clientes");
     }
 
@@ -81,7 +90,7 @@ public class ClienteController {
 
         clienteService.desativar(dto);
 
-        redirectAttribute.addFlashAttribute("desativado", "Cliente " + id + " desativado com sucesso");
+        redirectAttribute.addFlashAttribute("mesagem", "Cliente " + id + " desativado com sucesso");
 
         return new ModelAndView("redirect:/clientes");
     }
