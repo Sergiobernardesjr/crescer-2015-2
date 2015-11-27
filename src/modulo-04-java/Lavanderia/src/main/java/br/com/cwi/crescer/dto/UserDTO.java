@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import br.com.cwi.crescer.domain.Users.SituacaoUsuario;
 
-public class UsuarioDTO {
+public class UserDTO {
 
     @NotBlank
     private String username;

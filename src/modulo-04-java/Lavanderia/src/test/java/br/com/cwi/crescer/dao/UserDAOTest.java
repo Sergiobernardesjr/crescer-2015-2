@@ -6,10 +6,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.cwi.crescer.AbstractEstructureTest;
 import br.com.cwi.crescer.domain.Users;
 import br.com.cwi.crescer.domain.Users.SituacaoUsuario;
 
-public class UserDAOTest {
+public class UserDAOTest extends AbstractEstructureTest {
 
     @Autowired
     private UserDAO usuarioDao;

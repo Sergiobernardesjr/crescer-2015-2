@@ -10,7 +10,7 @@ import br.com.cwi.crescer.dao.CidadeDAO;
 import br.com.cwi.crescer.dao.UserDAO;
 import br.com.cwi.crescer.domain.Users;
 import br.com.cwi.crescer.domain.Users.SituacaoUsuario;
-import br.com.cwi.crescer.dto.UsuarioDTO;
+import br.com.cwi.crescer.dto.UserDTO;
 import br.com.cwi.crescer.mapper.UsuarioMapper;
 
 @Service
@@ -24,11 +24,11 @@ public class UserService {
         this.UsuarioDAO = UsuarioDAO;
     }
 
-    public List<UsuarioDTO> listarClientesAtivos() {
+    public List<UserDTO> listarUsersAtivos() {
 
         List<Users> usuarios = UsuarioDAO.findBySituacao(SituacaoUsuario.ATIVO);
 
-        List<UsuarioDTO> dtos = new ArrayList<UsuarioDTO>();
+        List<UserDTO> dtos = new ArrayList<UserDTO>();
 
         for (Users usuario : usuarios) {
             dtos.add(UsuarioMapper.toDTO(usuario));
@@ -37,11 +37,11 @@ public class UserService {
         return dtos;
     }
 
-    public UsuarioDTO buscarClientePorId(String username) {
+    public UserDTO buscarClientePorId(String username) {
         return UsuarioMapper.toDTO(UsuarioDAO.findByUsername(username));
     }
 
-    public void atualizar(UsuarioDTO dto) {
+    public void atualizar(UserDTO dto) {
 
         Users usuario = UsuarioDAO.findByUsername(dto.getUsername());
 
@@ -51,14 +51,14 @@ public class UserService {
 
     }
 
-    public void incluir(UsuarioDTO dto) {
+    public void incluir(UserDTO dto) {
 
         Users usuario = UsuarioMapper.newUsuario(dto);
 
         UsuarioDAO.save(usuario);
     }
 
-    public void desativar(UsuarioDTO dto) {
+    public void desativar(UserDTO dto) {
         Users usuario = new Users();
 
         UsuarioMapper.merge(dto, usuario);
