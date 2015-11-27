@@ -12,30 +12,44 @@
 </head>
 <body>
 	<h2>Visualizar</h2>
-	<div class="blue-gradient centralizar">		
-		<form th:object="${cliente}" method="post"  th:action="@{/clientes/editar}" layout:fragment="content">
-	
-			<p class="hidden" th:classappend="${#fields.hasErrors('nome')}">
-				<label class="control-label">ID: </label>
-				<input class="form-control" th:field="*{id}" type="text"/>
-			</p>
-			
+	<div>		
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${cliente}" method="post"  th:action="@{/clientes/editar}" layout:fragment="content">
+
 			<p th:classappend="${#fields.hasErrors('nome')}">
+				<label class="red">*</label>
 				<label class="control-label">Nome: </label>
 				<input class="form-control" th:field="*{nome}" type="text"/>
 				<span th:errors="*{nome}"></span>
 			</p>
 			
 			<p th:classappend="${#fields.hasErrors('cpf')}">
+				<label class="red">*</label>
 				<label class="control-label">CPF: </label>
 		 		<input class="form-control" th:field="*{cpf}" type="text"/>
 		 		<span th:errors="*{cpf}"></span>
 			</p>
 			
 			<p th:classappend="${#fields.hasErrors('email')}">
+				<label class="red">*</label>
 		 		<label class="control-label">Email: </label>
 		 		<input class="form-control" th:field="*{email}" type="text"/>
 		 		<span th:errors="*{email}"></span>
+	 		</p>
+	 		
+	 		<p>
+		 		<label class="control-label">Endereco: </label>
+		 		<input class="form-control" th:field="*{endereco}" type="text"/>
+	 		</p>
+
+	 		<p>
+		 		<label class="control-label">Bairro: </label>
+		 		<input class="form-control" th:field="*{bairro}" type="text"/>
+	 		</p>
+	 		
+			<p th:classappend="${#fields.hasErrors('cep')}">
+		 		<label class="control-label">CEP: </label>
+		 		<input class="form-control" th:field="*{cep}" type="text"/>
+		 		<span th:errors="*{cep}"></span>
 	 		</p>
 	 		
 	 		<p>
@@ -44,6 +58,15 @@
 	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 	            </select>
             </p>
+            
+        	<p>
+		 		<label class="control-label">Situacão: </label>
+		 		<select class="form-control" th:field="*{situacao}">
+	                <option th:each="c : ${situacaoCliente}" th:text="${c}" th:value="${c}" ></option>
+	            </select>
+            </p>
+		
+			<p class="red informacoes-obrigatorias">**Campos com asterísco(*) são obrigatórios.</p>
 			
             <button type="submit">Salvar</button>
              

@@ -25,9 +25,9 @@ public class ClienteService {
         this.cidadeDao = cidadeDao;
     }
 
-    public List<ClienteDTO> listarClientesAtivos() {
+    public List<ClienteDTO> listarClientes() {
 
-        List<Cliente> clientes = clienteDao.findBySituacao(SituacaoCliente.ATIVO);
+        List<Cliente> clientes = clienteDao.findAllClientes();
 
         List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
 
@@ -40,6 +40,17 @@ public class ClienteService {
 
     public ClienteDTO buscarClientePorId(Long id) {
         return ClienteMapper.toDTO(clienteDao.findById(id));
+    }
+
+    public List<ClienteDTO> buscarClientePorNome(String nomeCliente) {
+        List<Cliente> listaClientes = clienteDao.findByNome(nomeCliente);
+
+        List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
+
+        for (Cliente cliente : listaClientes) {
+            dtos.add(ClienteMapper.toDTO(cliente));
+        }
+        return dtos;
     }
 
     public void atualizar(ClienteDTO dto) {
@@ -67,5 +78,12 @@ public class ClienteService {
         ClienteMapper.merge(dto, cliente);
 
         clienteDao.desativar(cliente);
+    }
+
+    public List<SituacaoCliente> listarSituacao() {
+        List<SituacaoCliente> lista = new ArrayList<SituacaoCliente>();
+        lista.add(SituacaoCliente.ATIVO);
+        lista.add(SituacaoCliente.INATIVO);
+        return lista;
     }
 }

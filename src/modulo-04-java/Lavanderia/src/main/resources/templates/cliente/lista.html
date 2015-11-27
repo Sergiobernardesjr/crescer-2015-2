@@ -15,30 +15,36 @@
 
 	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
         
+        <form name="form" th:action="@{clientes/listarpornome}" method="GET">
+			<input type="text" name="nomeCliente" placeholder="Nome cliente" />
+			<input type="submit" id="pesquisar" value="Pesquisar" />
+		</form>
         
 		<div th:if='${mensagem} != null'>
 			<p th:text="${mensagem}"></p>
 		</div>
 		
+		<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
+				<form class="navbar-right" th:action="@{clientes/cadastrar}" method="GET">
+        	        <button class="navbar-btn btn btn-default" type="submit">Cadastrar</button>
+            	</form>
+		</p>
+		
         <table class="table">
         
             <tr>
-                <th>Id</th>
                 <th>Nome</th>
                 <th>CPF</th>
-                <th>Email</th>
                 <th>Visualizar</th>
                 <th>Editar</th>
-                <th>Desativar</th>
+                <th>Situacao</th>
             </tr>
             <tr th:each="cliente : ${clientes}">
-                <td th:text="${cliente.id}"></td>
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.cpf}"></td>
-                <td th:text="${cliente.email}"></td>
                 <td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
                 <td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
-                <td><a th:href="${'/clientes/desativar/' + cliente.id}">Desativar</a></td>
+                <td th:text="${cliente.situacao}"></td>
             </tr>
         </table>
 

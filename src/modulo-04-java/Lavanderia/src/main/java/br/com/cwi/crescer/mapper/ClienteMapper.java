@@ -15,6 +15,7 @@ public class ClienteMapper {
         clienteDto.setId(cliente.getIdCliente());
         clienteDto.setIdCidade(cliente.getCidade().getIdCidade());
         clienteDto.setNome(cliente.getNome());
+        clienteDto.setSituacao(cliente.getSituacao());
 
         return clienteDto;
     }
@@ -27,6 +28,7 @@ public class ClienteMapper {
         cliente.setEndereco(dto.getEndereco());
         cliente.setIdCliente(dto.getId());
         cliente.setNome(dto.getNome());
+        cliente.setSituacao(dto.getSituacao());
 
         return cliente;
     }

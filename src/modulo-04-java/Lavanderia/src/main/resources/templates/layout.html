@@ -12,7 +12,7 @@
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Home</title>
 </head>
 <body>
-	<div class="navbar blue-gradient navbar-fixed-top">
+	<div class="navbar-font navbar blue-gradient navbar-fixed-top">
 		<div class="container">
 			<p class="navbar-text">
 				<a th:href="@{/}"
@@ -24,13 +24,14 @@
 					class="navbar-link-override navbar-link  navbar-font"
 					style="text-decoration: none"> Lista de clientes </a>
 			</p>
-
 			
 			<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
 					<form class="navbar-right" th:action="@{/logout}" method="POST">
                        <button class="navbar-btn btn btn-default" type="submit">Logout</button>
+                       <span>Usuário: </span><i sec:authentication="name"></i>
                    </form>
 			</p>
+			
 		</div>
 	</div>
 

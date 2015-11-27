@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div layout:fragment="content">
+<div layout:fragment="content" class="margin-topo-padrao">
 	<div sec:authorize="hasRole('ROLE_ADMIN')">
             <h3>Olá <span sec:authentication="name"></span> você está logado como Administrador</h3>
     </div>

@@ -37,6 +37,21 @@
 	 		</p>
 	 		
 	 		<p>
+		 		<label class="control-label">Endereco: </label>
+		 		<input class="form-control" th:field="*{endereco}" type="text" disabled="true"/>
+	 		</p>
+
+			<p>
+		 		<label class="control-label">Bairro: </label>
+		 		<input class="form-control" th:field="*{bairro}" type="text" disabled="true"/>
+	 		</p>	 		
+	 		
+			<p>
+		 		<label class="control-label">CEP: </label>
+		 		<input class="form-control" th:field="*{cep}" type="text" disabled="true"/>
+	 		</p>
+	 			 		
+	 		<p>
 		 		<label class="control-label">Cidade: </label>
 		 		<select  class="form-control" th:field="*{idCidade}" disabled="true">
 	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>

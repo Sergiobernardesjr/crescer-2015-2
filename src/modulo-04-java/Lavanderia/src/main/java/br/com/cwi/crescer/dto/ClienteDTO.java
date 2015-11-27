@@ -1,11 +1,15 @@
 package br.com.cwi.crescer.dto;
 
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.br.CPF;
+
+import br.com.cwi.crescer.domain.Cliente.SituacaoCliente;
 
 public class ClienteDTO {
 
@@ -27,7 +31,20 @@ public class ClienteDTO {
 
     @NotNull
     private Long idCidade;
+
+    @Range(max = 99999999)
     private Long cep;
+
+    @Enumerated
+    private SituacaoCliente situacao;
+
+    public SituacaoCliente getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCliente situacao) {
+        this.situacao = situacao;
+    }
 
     public Long getId() {
         return id;
