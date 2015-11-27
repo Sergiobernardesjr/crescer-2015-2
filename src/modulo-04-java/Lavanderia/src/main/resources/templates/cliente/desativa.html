@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	layout:decorator="layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/home.css" />
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -8,16 +7,16 @@
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
 		rel='stylesheet' type='text/css' />
 <meta charset="UTF-8"/>
-<title>Visualizar cliente</title>
+<title>Desativar cliente</title>
 </head>
 <body>
 	
-		<form th:object="${cliente}" layout:fragment="content" >
+	<div class="margin-topo-padrao blue-gradient centralizar">		
 		
-			<div class="margin-topo-padrao blue-gradient centralizar">
+		<form th:object="${cliente}">
 	
 			<p>
-				<label class="control-label">ID: </label>
+				<label class="control-label">ID:<span th:field="*{id}"></span> </label>
 				<input class="form-control" th:field="*{id}" type="text" disabled="true" />
 			</p>
 			
@@ -42,10 +41,13 @@
 	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 	            </select>
             </p>
-    
-    	
-    	</div>         
+            
+            <p>
+            	<label class="control-label">Situacao: </label>
+            	<input class="form-control" th:text="$*{Situacao}" disable="true">
+            </p>
+             
 		</form>
-	
+	</div>
 </body>
 </html>

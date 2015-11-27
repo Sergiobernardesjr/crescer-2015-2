@@ -11,11 +11,18 @@
 <meta charset="UTF-8" />
 </head>
 <body>
+	<div class="navbar-font black margin-topo-padrao centralizar blue-gradient" layout:fragment="content">
+		
+    	<p>Período: <span th:text ="${timestamp}"></span> </p>
 
-<div layout:fragment="content">
-	<div sec:authorize="hasRole('ROLE_ADMIN')">
-            <h3>Olá <span sec:authentication="name"></span> você está logado como Administrador</h3>
+		<p>Status: <span th:text = "${status}"></span></p>
+	
+		<p>Código erro: <span th:text = "${error}"></span></p>
+
+		<div th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+   			<span th:text="${message}">message ...</span>
+		</div>	
     </div>
-    </div>
+    
 </body>
 </html>

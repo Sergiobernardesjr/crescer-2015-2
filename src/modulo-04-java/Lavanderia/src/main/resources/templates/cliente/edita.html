@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		layout:decorator="layout">
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -11,8 +12,8 @@
 </head>
 <body>
 	<h2>Visualizar</h2>
-	<div class="blue-gradient teste">		
-		<form th:object="${cliente}" method="post"  th:action="@{/clientes/editar}">
+	<div class="blue-gradient centralizar">		
+		<form th:object="${cliente}" method="post"  th:action="@{/clientes/editar}" layout:fragment="content">
 	
 			<p class="hidden" th:classappend="${#fields.hasErrors('nome')}">
 				<label class="control-label">ID: </label>

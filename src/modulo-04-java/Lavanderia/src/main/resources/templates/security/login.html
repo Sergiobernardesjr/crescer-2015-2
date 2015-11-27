@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css' />
+<meta charset="UTF-8"/>
+<title>Login</title>
+</head>
+<body>
+	<div class="margin-topo-padrao blue-gradient teste" layout:fragment="content">		
+		<p th:if="${param.logout}" class="alert">Logout feito com sucesso</p>
+		<p th:if="${param.error}" class="alert alert-error">Login incorreto. Tente novamente !</p>
+		
+		<h2>Login</h2>
+		
+		<form name="form" th:action="@{/login}" method="POST">
+			<input type="text" name="username" placeholder="Username" />
+			<input type="password" name="password" placeholder="Password" />
+			<input type="submit" id="login" value="Login" />
+		</form>
+	</div>
+</body>
+</html>
