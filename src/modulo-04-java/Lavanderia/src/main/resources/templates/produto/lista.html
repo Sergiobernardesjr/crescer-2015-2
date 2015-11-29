@@ -9,11 +9,11 @@
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
 		rel='stylesheet' type='text/css' />
 	<meta charset="UTF-8" />
-	<title>Exibição de clientes</title>
+	<title>Exibição de produtos</title>
 </head>
 <body>
 
-	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
+	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(produtos)}" layout:fragment="content">
         
         <form name="form"  th:action="${'/clientes/listaPorNome'}" method="GET">
 			<input type="text" name="nomeCliente" placeholder="Nome cliente" />
@@ -33,19 +33,15 @@
         <table class="table">
         
             <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Visualizar</th>
-                <th>Editar</th>
-                <th>Situacao</th>
+                <th>Valor</th>
+                <th>Material</th>
             </tr>
-            <tr th:each="cliente : ${clientes}">
-                <td th:text="${cliente.nome}"></td>
-                <td th:text="${cliente.cpf}"></td>
-                <td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
-                <td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
-                <td th:text="${cliente.situacao}"></td>
+            <tr th:each="produto : ${produtos}" >
+                <td  th:text="${produto.valor}"></td>
+		 		<td  th:text="${produto.material}">
+            	</td>
             </tr>
+            
         </table>
 
     </div>

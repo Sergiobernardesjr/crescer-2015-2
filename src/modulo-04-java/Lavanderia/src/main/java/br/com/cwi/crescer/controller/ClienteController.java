@@ -52,7 +52,7 @@ public class ClienteController {
         return new ModelAndView("cliente/edita", "cliente", clienteService.buscarClientePorId(id));
     }
 
-    @RequestMapping(path = "/ {nomeCliente}", method = RequestMethod.GET)
+    @RequestMapping(path = "/listaPorNome", method = RequestMethod.GET)
     public ModelAndView pesquisaCliente(@RequestParam("nomeCliente") String nomeCliente) {
         return new ModelAndView("cliente/lista", "clientes", clienteService.buscarClientePorNome(nomeCliente));
     }

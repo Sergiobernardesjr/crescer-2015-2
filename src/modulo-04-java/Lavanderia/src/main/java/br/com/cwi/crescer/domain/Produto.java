@@ -32,6 +32,17 @@ public class Produto {
     @Basic(optional = false)
     private Servico servico;
 
+    @Column(name = "prazo", length = 3)
+    private Integer prazo;
+
+    public Integer getPrazo() {
+        return prazo;
+    }
+
+    public void setPrazo(Integer prazo) {
+        this.prazo = prazo;
+    }
+
     @ManyToOne
     @JoinColumn(name = "IDMaterial")
     @Basic(optional = false)
@@ -41,8 +52,24 @@ public class Produto {
     @Basic(optional = false)
     private BigDecimal valor;
 
+    @Column(name = "Situacao")
+    @Basic(optional = false)
+    private SituacaoProduto situacao;
+
+    public SituacaoProduto getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoProduto situacao) {
+        this.situacao = situacao;
+    }
+
     @OneToMany(mappedBy = "produto")
     private List<Item> itens;
+
+    public enum SituacaoProduto {
+        ATIVO, INATIVO
+    }
 
     public Long getIdProduto() {
         return idProduto;

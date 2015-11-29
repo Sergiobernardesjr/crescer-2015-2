@@ -24,6 +24,12 @@
 					class="navbar-link-override navbar-link  navbar-font"
 					style="text-decoration: none"> Lista de clientes </a>
 			</p>
+			<p class="navbar-text">
+				<a th:href="${'/produtos'}"
+					class="navbar-link-override navbar-link  navbar-font"
+					style="text-decoration: none"> Lista de produtos </a>
+			</p>
+			
 			
 			<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
 					<form class="navbar-right" th:action="@{/logout}" method="POST">
