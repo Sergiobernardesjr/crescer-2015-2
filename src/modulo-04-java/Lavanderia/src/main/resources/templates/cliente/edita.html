@@ -15,6 +15,11 @@
 	<div>		
 		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${cliente}" method="post"  th:action="@{/clientes/editar}" layout:fragment="content">
 
+			<p class="hidden">
+				<label class="control-label">Id:</label>
+				<input type="text" th:field="*{id}"/>
+			</p>
+
 			<p th:classappend="${#fields.hasErrors('nome')}">
 				<label class="red">*</label>
 				<label class="control-label">Nome: </label>

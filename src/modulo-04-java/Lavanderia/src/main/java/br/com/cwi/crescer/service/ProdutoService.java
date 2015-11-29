@@ -28,6 +28,12 @@ public class ProdutoService {
         this.materialDao = materialDao;
     }
 
+    public ProdutoDTO findById(Long id){
+        Produto produto = produtoDao.findById(id);
+        ProdutoDTO dto = ProdutoMapper.toDTO(produto);
+        return dto;
+    }
+
     public List<ProdutoDTO> listarProdutos() {
 
         List<Produto> produtos = produtoDao.findAllProdutos();

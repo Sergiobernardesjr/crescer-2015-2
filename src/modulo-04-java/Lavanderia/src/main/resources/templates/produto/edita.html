@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		layout:decorator="layout">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css' />
+<meta charset="UTF-8"/>
+<title>Edição de clientes</title>
+</head>
+<body>
+	<h2>Visualizar</h2>
+	<div>		
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${produto}" method="post"  th:action="@{/produtos/editar}" layout:fragment="content">
+
+			<p class = "hidden">
+				<label>Id: </label>
+				<input th:field = "*{idProduto}" />
+			</p>
+			
+			<p>
+				<label class="control-label">Valor: </label>
+				<input class="form-control" th:field = "*{valor}" />
+			</p>
+			
+        	<p th:classappend="${#fields.hasErrors('idMaterial')}">
+		 		<label class="control-label">Material: </label>
+		 		<select class="form-control" th:field="*{idMaterial}">
+	                <option th:each="c : ${materiais}" th:text="${c.descricao}" th:value="${c.idMaterial}" ></option>
+	            </select>
+	            <span th:errors="*{idMaterial}"></span>
+            </p>
+            <p th:classappend="${#fields.hasErrors('idServico')}">
+		 		<label class="control-label">Serviço: </label>
+		 		<select class="form-control" th:field="*{idServico}">
+	                <option th:each="c : ${servicos}" th:text="${c.descricao}" th:value="${c.idServico}" ></option>
+	            </select>
+	            <span th:errors="*{idServico}"></span>
+            </p>	
+            
+            <p th:classappend="${#fields.hasErrors('Situacao')}">
+		 		<label class="control-label">Situação: </label>
+		 		<select class="form-control" th:field="*{situacao}">
+	                <option th:each="c : ${situacoes}" th:text="${c}" th:value="${c}" ></option>
+	            </select>
+	            <span th:errors="*{situacao}"></span>
+            </p>
+            	
+			<p class="red informacoes-obrigatorias">**Campos com asterísco(*) são obrigatórios.</p>
+			
+            <button type="submit">Salvar</button>
+             
+		</form>
+	</div>
+</body>
+</html>

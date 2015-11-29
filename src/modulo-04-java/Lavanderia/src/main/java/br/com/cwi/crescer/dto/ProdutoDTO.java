@@ -3,8 +3,7 @@ package br.com.cwi.crescer.dto;
 import java.math.BigDecimal;
 
 import javax.persistence.Enumerated;
-
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import br.com.cwi.crescer.domain.Produto.SituacaoProduto;
 
@@ -12,10 +11,20 @@ public class ProdutoDTO {
 
     private Long idProduto;
 
-    @NotBlank
+    @NotNull
     private Long idServico;
 
     private String servico;
+
+    @NotNull
+    private Long idMaterial;
+
+    private String material;
+
+    @NotNull
+    private BigDecimal valor;
+
+    private Integer prazo;
 
     public String getServico() {
         return servico;
@@ -32,16 +41,6 @@ public class ProdutoDTO {
     public void setMaterial(String material) {
         this.material = material;
     }
-
-    @NotBlank
-    private Long idMaterial;
-
-    private String material;
-
-    @NotBlank
-    private BigDecimal valor;
-
-    private Integer prazo;
 
     public Integer getPrazo() {
         return prazo;

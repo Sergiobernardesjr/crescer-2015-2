@@ -35,11 +35,12 @@
             <tr>
                 <th>Valor</th>
                 <th>Material</th>
+                <th>Editar</th>
             </tr>
             <tr th:each="produto : ${produtos}" >
                 <td  th:text="${produto.valor}"></td>
-		 		<td  th:text="${produto.material}">
-            	</td>
+		 		<td  th:text="${produto.material}"></td>
+		 		<td><a th:href="${'/produtos/editar/' + produto.idProduto}">Editar</a></td>
             </tr>
             
         </table>
