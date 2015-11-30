@@ -13,12 +13,12 @@
 <body>
 	<h2>Visualizar</h2>
 	<div>		
-		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${cliente}" method="post"  th:action="@{/produtos/cadastrar}" layout:fragment="content">
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${produto}" method="post"  th:action="@{/produtos/cadastrar}" layout:fragment="content">
 
 			<p>
 				<label class="control-label">Prazo(dias): </label>
 				<input class="form-control" th:field = "*{prazo}"/>
-			<p>
+			</p>
 
 			<p>
 				<label class="control-label">Valor: </label>

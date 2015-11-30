@@ -15,6 +15,7 @@ public class ProdutoMapper {
         dto.setIdMaterial(produto.getIdProduto());
         dto.setMaterial(produto.getMaterial().getDescricao());
         dto.setServico(produto.getServico().getDescricao());
+        dto.setSituacao(produto.getSituacao());
 
         return dto;
     }
@@ -32,7 +33,7 @@ public class ProdutoMapper {
         produto.setIdProduto(dto.getIdProduto());
         produto.setSituacao(dto.getSituacao());
         produto.setValor(dto.getValor());
-        return null;
+        return produto;
     }
 
 }

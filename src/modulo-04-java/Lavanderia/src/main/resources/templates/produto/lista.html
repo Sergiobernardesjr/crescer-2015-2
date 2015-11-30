@@ -25,7 +25,7 @@
 		</div>
 		
 		<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
-				<form class="navbar-right" th:action="@{clientes/cadastrar}" method="GET">
+				<form class="navbar-right" th:action="@{produtos/cadastrar}" method="GET">
         	        <button class="navbar-btn btn btn-default" type="submit">Cadastrar</button>
             	</form>
 		</p>
@@ -35,11 +35,13 @@
             <tr>
                 <th>Valor</th>
                 <th>Material</th>
+                <th>Situação</th>
                 <th>Editar</th>
             </tr>
             <tr th:each="produto : ${produtos}" >
                 <td  th:text="${produto.valor}"></td>
 		 		<td  th:text="${produto.material}"></td>
+		 		<td  th:text="${produto.situacao}"></td>
 		 		<td><a th:href="${'/produtos/editar/' + produto.idProduto}">Editar</a></td>
             </tr>
             

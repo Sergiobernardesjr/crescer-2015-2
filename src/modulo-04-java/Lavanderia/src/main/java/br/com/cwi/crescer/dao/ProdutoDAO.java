@@ -18,18 +18,15 @@ public class ProdutoDAO extends AbstractDAO {
     public List<Produto> findAllProdutos() {
         return em.createQuery("FROM Produto", Produto.class)
                 .getResultList();
-
     }
 
     @Transactional
     public Produto save(Produto produto) {
-
         if (produto.getIdProduto() == null && !jaExisteCombinacaoServicoEMaterial(produto)) {
             produto.setSituacao(SituacaoProduto.ATIVO);
             em.persist(produto);
             return produto;
         }
-
         return em.merge(produto);
     }
 

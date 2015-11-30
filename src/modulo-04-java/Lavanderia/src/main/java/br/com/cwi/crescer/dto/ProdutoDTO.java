@@ -24,6 +24,9 @@ public class ProdutoDTO {
     @NotNull
     private BigDecimal valor;
 
+    @Enumerated
+    private SituacaoProduto situacao;
+
     private Integer prazo;
 
     public String getServico() {
@@ -50,8 +53,7 @@ public class ProdutoDTO {
         this.prazo = prazo;
     }
 
-    @Enumerated
-    private SituacaoProduto situacao;
+
 
     public Long getIdProduto() {
         return idProduto;
