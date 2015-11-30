@@ -24,7 +24,7 @@ public class ProdutoDAO extends AbstractDAO {
     @Transactional
     public Produto save(Produto produto) {
 
-        if (produto.getIdProduto() == null) {
+        if (produto.getIdProduto() == null && !jaExisteCombinacaoServicoEMaterial(produto)) {
             produto.setSituacao(SituacaoProduto.ATIVO);
             em.persist(produto);
             return produto;
@@ -36,5 +36,29 @@ public class ProdutoDAO extends AbstractDAO {
     public void desativar(Produto produto) {
         produto.setSituacao(SituacaoProduto.INATIVO);
         em.merge(produto);
+    }
+
+    public boolean jaExisteCombinacaoServicoEMaterial(Produto produtoAtual) {
+        String servicoAtual;
+        String materialAtual;
+        String concatenacaoCombinacaoAtual;
+        String concatenacaoCombinacao;
+
+        List<Produto> produtos = findAllProdutos();
+
+        servicoAtual = produtoAtual.getServico().getIdServico().toString();
+        materialAtual = produtoAtual.getMaterial().getIdMaterial().toString();
+
+        concatenacaoCombinacaoAtual = servicoAtual + materialAtual;
+
+        for (Produto produto : produtos) {
+            concatenacaoCombinacao = produto.getMaterial().getIdMaterial().toString() + produto.getServico().getIdServico().toString();
+            if (concatenacaoCombinacao.equals(concatenacaoCombinacaoAtual)) {
+                return true;
+            }
+        }
+
+        return false;
+
     }
 }

@@ -11,7 +11,7 @@
 <title>Cadastro de clientes</title>
 </head>
 <body>
-		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${cliente}" method="post"  th:action="@{/clientes/editar}" layout:fragment="content">
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${cliente}" method="post"  th:action="@{/clientes/cadastrar}" layout:fragment="content">
 
 			<p th:classappend="${#fields.hasErrors('nome')}">
 				<label class="red">*</label>
