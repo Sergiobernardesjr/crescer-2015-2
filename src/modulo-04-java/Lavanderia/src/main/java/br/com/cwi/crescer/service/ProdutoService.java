@@ -102,4 +102,16 @@ public class ProdutoService {
         return lista;
     }
 
+    public List<ProdutoDTO> buscarProdutoPorServicoEMaterial(Long idServico, Long idMaterial) {
+        List<Produto> produtos = produtoDao.buscaServicoEMaterial(idServico, idMaterial);
+
+        List<ProdutoDTO> dtos = new ArrayList<ProdutoDTO>();
+
+        for (Produto produto : produtos) {
+            dtos.add(ProdutoMapper.toDTO(produto));
+        }
+
+        return dtos;
+    }
+
 }

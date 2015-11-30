@@ -14,12 +14,24 @@
 <body>
 
 	<div  th:if="${not #lists.isEmpty(produtos)}" layout:fragment="content">
-        
-        <form name="form"  th:action="${'/clientes/listaPorNome'}" method="GET">
-			<input type="text" name="nomeCliente" placeholder="Nome cliente" />
-			<input type="submit" id="pesquisar" value="Pesquisar" />
-		</form>
-        
+        <form class="navbar-left form-inline" name="form" th:action="${'/produtos/buscar'}" method="get">
+			 <p class="form-group">
+		 		<label class="control-label">Serviço: </label>
+		 		<select name="servico" >
+		 			<option th:value="${null}">Selecione...</option>
+	                <option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+	            </select>
+            </p>
+            
+		 	<p class="form-group">
+		 		<label class="control-label">Material: </label>
+		 		<select name="material">
+		 			<option th:value="${null}">Selecione...</option>
+	                <option th:each="m : ${materiais}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
+	            </select>
+            </p>
+				<input type="submit" id="filter" value="Pesquisar" class="btn btn-default" />
+		</form>        
 		<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
 				<form class="navbar-right" th:action="@{produtos/cadastrar}" method="GET">
         	        <button class="navbar-btn btn btn-default" type="submit">Cadastrar</button>

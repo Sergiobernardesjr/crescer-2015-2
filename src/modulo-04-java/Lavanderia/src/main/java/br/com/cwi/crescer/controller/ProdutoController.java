@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -106,4 +107,10 @@ public class ProdutoController {
         mv.addObject("mensagem", "Já existe produto com este serviço e material cadastrado!");
         return mv;
     }
+
+    @RequestMapping(path = "/buscar", method = RequestMethod.GET)
+    public ModelAndView pesquisaProduto(@RequestParam("servico") Long idServico, @RequestParam("material") Long idMaterial) {
+        return new ModelAndView("produto/lista", "produtos", produtoService.buscarProdutoPorServicoEMaterial(idServico, idMaterial));
+    }
+
 }
