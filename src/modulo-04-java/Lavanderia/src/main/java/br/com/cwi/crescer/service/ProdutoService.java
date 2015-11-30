@@ -60,18 +60,23 @@ public class ProdutoService {
         produto.setMaterial(materialDao.findById(dto.getIdMaterial()));
         produto.setServico(servicoDao.findById(dto.getIdServico()));
 
-        produtoDao.save(produto);
+        produtoDao.saveMerge(produto);
 
     }
 
-    public void incluir(ProdutoDTO dto) {
+    public boolean incluir(ProdutoDTO dto) {
 
         Produto produto = ProdutoMapper.newProduto(dto);
 
         produto.setMaterial(materialDao.findById(dto.getIdMaterial()));
         produto.setServico(servicoDao.findById(dto.getIdServico()));
 
-        produtoDao.save(produto);
+        if (produto.getIdProduto() == null && naoExisteCombinacaoServicoEMaterial(produto)) {
+            produto.setSituacao(SituacaoProduto.INATIVO);
+            produtoDao.savePersist(produto);
+            return true;
+        }
+        return false;
     }
 
     public void desativar(ProdutoDTO dto) {
@@ -80,6 +85,14 @@ public class ProdutoService {
         ProdutoMapper.merge(dto, produto);
 
         produtoDao.desativar(produto);
+    }
+
+    public boolean naoExisteCombinacaoServicoEMaterial(Produto produto) {
+        List<Produto> listaProdutos = produtoDao.buscaServicoEMaterial(produto.getServico().getIdServico(), produto.getMaterial().getIdMaterial());
+        if (listaProdutos.size() == 0) {
+            return true;
+        }
+        return false;
     }
 
     public List<SituacaoProduto> listarSituacao() {

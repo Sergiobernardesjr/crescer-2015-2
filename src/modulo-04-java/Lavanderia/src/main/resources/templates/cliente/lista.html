@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<div  class="margin-topo-padrao" th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
+	<div th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
         
         <form name="form"  th:action="${'/clientes/listaPorNome'}" method="GET">
 			<input type="text" name="nomeCliente" placeholder="Nome cliente" />

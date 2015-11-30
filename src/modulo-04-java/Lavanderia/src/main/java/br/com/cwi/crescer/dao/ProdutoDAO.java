@@ -21,41 +21,22 @@ public class ProdutoDAO extends AbstractDAO {
     }
 
     @Transactional
-    public Produto save(Produto produto) {
-        if (produto.getIdProduto() == null && !jaExisteCombinacaoServicoEMaterial(produto)) {
-            produto.setSituacao(SituacaoProduto.ATIVO);
-            em.persist(produto);
-            return produto;
-        }
-        return em.merge(produto);
+    public void savePersist(Produto produto) {
+        produto.setSituacao(SituacaoProduto.ATIVO);
+        em.persist(produto);
     }
 
-    public void desativar(Produto produto) {
-        produto.setSituacao(SituacaoProduto.INATIVO);
+    @Transactional
+    public void saveMerge(Produto produto) {
         em.merge(produto);
     }
 
-    public boolean jaExisteCombinacaoServicoEMaterial(Produto produtoAtual) {
-        String servicoAtual;
-        String materialAtual;
-        String concatenacaoCombinacaoAtual;
-        String concatenacaoCombinacao;
+    public void desativar(Produto produto) {
+        em.merge(produto);
+    }
 
-        List<Produto> produtos = findAllProdutos();
-
-        servicoAtual = produtoAtual.getServico().getIdServico().toString();
-        materialAtual = produtoAtual.getMaterial().getIdMaterial().toString();
-
-        concatenacaoCombinacaoAtual = servicoAtual + materialAtual;
-
-        for (Produto produto : produtos) {
-            concatenacaoCombinacao = produto.getMaterial().getIdMaterial().toString() + produto.getServico().getIdServico().toString();
-            if (concatenacaoCombinacao.equals(concatenacaoCombinacaoAtual)) {
-                return true;
-            }
-        }
-
-        return false;
-
+    public List<Produto> buscaServicoEMaterial(Long idServico, Long idMaterial) {
+        return em.createQuery("FROM Produto WHERE IDServico = :idservico and IDMaterial = :idmaterial", Produto.class)
+                .setParameter("idservico", idServico).setParameter("idmaterial", idMaterial).getResultList();
     }
 }

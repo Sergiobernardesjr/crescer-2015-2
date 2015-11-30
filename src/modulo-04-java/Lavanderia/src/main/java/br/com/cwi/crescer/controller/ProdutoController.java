@@ -85,7 +85,7 @@ public class ProdutoController {
     }
 
     @RequestMapping("/cadastrar")
-    public ModelAndView viewCadastra(ProdutoDTO dto) {
+    public ModelAndView viewCadastra() {
         return new ModelAndView("produto/cadastra", "produto", new ProdutoDTO());
     }
 
@@ -97,9 +97,13 @@ public class ProdutoController {
             return new ModelAndView("produto/cadastra");
         }
 
-        redirectAttributes.addFlashAttribute("mensagem", "Produto alterado com sucesso");
+        if (produtoService.incluir(dto)) {
+            redirectAttributes.addFlashAttribute("mensagem", "Produto cadastrado com sucesso!");
+            return new ModelAndView("redirect:/produtos");
+        }
 
-        produtoService.incluir(dto);
-        return new ModelAndView("redirect:/produtos");
+        ModelAndView mv = new ModelAndView("produto/cadastra", "produto", dto);
+        mv.addObject("mensagem", "Já existe produto com este serviço e material cadastrado!");
+        return mv;
     }
 }
