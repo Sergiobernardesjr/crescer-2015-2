@@ -3,6 +3,7 @@ package br.com.cwi.crescer.dao;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cwi.crescer.domain.Item;
 import br.com.cwi.crescer.domain.Item.SituacaoItem;
@@ -17,6 +18,17 @@ public class ItemDAO extends AbstractDAO {
     public List<Item> findBySituacao(SituacaoItem situacao) {
         return em.createQuery("FROM Item c WHERE c.situacao = :situacao", Item.class)
                 .setParameter("situacao", situacao)
+                .getResultList();
+    }
+
+    @Transactional
+    public void savePersist(Item item) {
+        em.persist(item);
+    }
+
+    public List<Item> buscarItensPorPedido(Long idPedido) {
+        return em.createQuery("FROM Item c WHERE c.idPedido = :idPedido", Item.class)
+                .setParameter("idPedido", idPedido)
                 .getResultList();
     }
 }

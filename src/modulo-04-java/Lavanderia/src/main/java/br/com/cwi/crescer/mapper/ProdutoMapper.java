@@ -12,6 +12,7 @@ public class ProdutoMapper {
         dto.setIdProduto(produto.getIdProduto());
         dto.setIdServico(produto.getServico().getIdServico());
         dto.setValor(produto.getValor());
+        dto.setPrazo(produto.getPrazo());
         dto.setIdMaterial(produto.getIdProduto());
         dto.setMaterial(produto.getMaterial().getDescricao());
         dto.setServico(produto.getServico().getDescricao());

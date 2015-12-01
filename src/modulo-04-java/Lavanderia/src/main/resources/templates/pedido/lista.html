@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html 	
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/home.css" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css' />
+	<meta charset="UTF-8" />
+	<title>Exibição de produtos</title>
+</head>
+<body>
+
+	<div  th:if="${not #lists.isEmpty(pedidos)}" layout:fragment="content">
+	        
+		<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
+				<form class="navbar-right" th:action="@{pedidos/cadastrar}" method="GET">
+        	        <button class="navbar-btn btn btn-default" type="submit">Cadastrar</button>
+            	</form>
+		</p>
+		
+        <table class="table">
+        
+            <tr>
+                <th>Cliente</th>
+                <th>Item</th>
+                <th>Valor total</th>
+                <th>Situação</th>
+                <th>Editar</th>
+            </tr>
+            <tr th:each="pedido : ${pedidos}" >
+                <td  th:text="${pedido.nomeCliente}"></td>
+		 		<td  th:text="${produto.valorFinal}"></td>
+		 		<td  th:text="${produto.situacao}"></td>
+		 		<td><a th:href="${'/pedidos/editar/' + pedidos.idPedido}">Editar</a></td>
+            </tr>
+            
+        </table>
+
+    </div>
+</body>
+</html>

@@ -13,44 +13,47 @@
 <body>
 	<h2>Visualizar</h2>
 	<div>		
-		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${produto}" method="post"  th:action="@{/produtos/cadastrar}" layout:fragment="content">
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${item}" method="post"  th:action="@{/itens/editar}" layout:fragment="content">
 
-			<p th:classappend="${#fields.hasErrors('prazo')}">
-				<label class="control-label">Prazo(dias): </label>
-				<input class="form-control" th:field = "*{prazo}"/>
-				<span th:errors="*{prazo}"></span>
+			<p class = "hidden">
+				<label>Id: </label>
+				<input th:field = "*{idItem}" />
 			</p>
-
-			<p th:classappend="${#fields.hasErrors('valor')}">
-				<label class="control-label">Valor: </label>
-				<input class="form-control" th:field = "*{valor}" />
-				<span th:errors="*{valor}"></span>
+	
+			<p class = "hidden">
+				<label>Id: </label>
+				<input th:field = "*{idPedido}" />
 			</p>
 			
-        	<p th:classappend="${#fields.hasErrors('idMaterial')}">
+			<p>
+				<label class="control-label">Peso: </label>
+				<input class="form-control" th:field = "*{peso}" />
+			</p>
+			
+        	<p >
 		 		<label class="control-label">Material: </label>
 		 		<select class="form-control" th:field="*{idMaterial}">
 	                <option th:each="c : ${materiais}" th:text="${c.descricao}" th:value="${c.idMaterial}" ></option>
 	            </select>
-	            <span th:errors="*{idMaterial}"></span>
             </p>
-            <p th:classappend="${#fields.hasErrors('idServico')}">
+            <p >
 		 		<label class="control-label">Serviço: </label>
 		 		<select class="form-control" th:field="*{idServico}">
 	                <option th:each="c : ${servicos}" th:text="${c.descricao}" th:value="${c.idServico}" ></option>
 	            </select>
-	            <span th:errors="*{idServico}"></span>
             </p>	
             
-            <p th:classappend="${#fields.hasErrors('Situacao')}">
+            <!--<p th:classappend="${#fields.hasErrors('Situacao')}">
 		 		<label class="control-label">Situação: </label>
 		 		<select class="form-control" th:field="*{situacao}">
 	                <option th:each="c : ${situacoes}" th:text="${c}" th:value="${c}" ></option>
 	            </select>
 	            <span th:errors="*{situacao}"></span>
-            </p>
+            </p>-->
             	
-            <button type="submit">Salvar</button>
+            <button type="submit" th:action="@{/itens/editar}">Continuar adicionando</button>
+            
+            <button type="submit" th:action="@{/pedidos/finalizar}">Finalizar pedido</button>
              
 		</form>
 	</div>

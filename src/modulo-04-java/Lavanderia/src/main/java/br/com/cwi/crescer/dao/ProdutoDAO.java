@@ -37,6 +37,8 @@ public class ProdutoDAO extends AbstractDAO {
 
     public List<Produto> buscaServicoEMaterial(Long idServico, Long idMaterial) {
         return em.createQuery("FROM Produto WHERE IDServico = :idservico and IDMaterial = :idmaterial", Produto.class)
-                .setParameter("idservico", idServico).setParameter("idmaterial", idMaterial).getResultList();
+                .setParameter("idservico", idServico)
+                .setParameter("idmaterial", idMaterial)
+                .getResultList();
     }
 }

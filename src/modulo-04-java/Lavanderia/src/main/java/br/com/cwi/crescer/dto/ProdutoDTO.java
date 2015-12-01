@@ -11,12 +11,10 @@ public class ProdutoDTO {
 
     private Long idProduto;
 
-    @NotNull
     private Long idServico;
 
     private String servico;
 
-    @NotNull
     private Long idMaterial;
 
     private String material;
@@ -27,6 +25,7 @@ public class ProdutoDTO {
     @Enumerated
     private SituacaoProduto situacao;
 
+    @NotNull
     private Integer prazo;
 
     public String getServico() {

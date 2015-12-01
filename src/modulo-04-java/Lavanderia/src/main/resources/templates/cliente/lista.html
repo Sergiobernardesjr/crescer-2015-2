@@ -19,10 +19,6 @@
 			<input type="text" name="nomeCliente" placeholder="Nome cliente" />
 			<input type="submit" id="pesquisar" value="Pesquisar" />
 		</form>
-        
-		<div th:if='${mensagem} != null'>
-			<p th:text="${mensagem}"></p>
-		</div>
 		
 		<p sec:authorize="isAuthenticated()" class="navbar-text pull-right">
 				<form class="navbar-right" th:action="@{clientes/cadastrar}" method="GET">

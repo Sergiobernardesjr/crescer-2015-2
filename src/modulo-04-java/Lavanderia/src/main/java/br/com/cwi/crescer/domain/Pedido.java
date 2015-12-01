@@ -46,9 +46,17 @@ public class Pedido {
     @Column(name = "DATAEntrega")
     private Date dataEntrega;
 
-    @Column(name = "Valor")
+    @Column(name = "VALORbruto")
     @Basic(optional = false)
-    private BigDecimal valor;
+    private BigDecimal valorBruto;
+
+    @Column(name = "VALORdesconto")
+    @Basic(optional = false)
+    private BigDecimal valorDesconto;
+
+    @Column(name = "VALORfinal")
+    @Basic(optional = false)
+    private BigDecimal valorFinal;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
@@ -101,12 +109,28 @@ public class Pedido {
         this.dataEntrega = dataEntrega;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorBruto() {
+        return valorBruto;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorBruto(BigDecimal valorBruto) {
+        this.valorBruto = valorBruto;
+    }
+
+    public BigDecimal getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(BigDecimal valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public SituacaoPedido getSituacao() {

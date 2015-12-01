@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		layout:decorator="layout">
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/Home.css" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500'
+		rel='stylesheet' type='text/css' />
+<meta charset="UTF-8"/>
+<title>Edição de clientes</title>
+</head>
+<body>
+	<h2>Visualizar</h2>
+	<div>		
+		<form class="margin-topo-padrao blue-gradient centralizar" th:object="${pedido}" method="post"  th:action="@{/pedidos/cadastrar}" layout:fragment="content">
+
+			<p class="hidden">
+				<label>Id: </label>
+				<input th:field="*{idPedido}"/>	
+			</p>
+					
+        	<p>
+		 		<label class="control-label">Clientes: </label>
+		 		<select class="form-control" th:field="*{idCliente}">
+	                <option th:each="c : ${clientes}" th:text="${c.nome}" th:value="${c.id}" ></option>
+	            </select>
+            </p>
+			
+            <button type="submit">Inserir itens</button>
+             
+		</form>
+	</div>
+</body>
+</html>

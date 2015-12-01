@@ -58,6 +58,7 @@ public class ProdutoController {
     public List<Servico> comboServicos() {
         return servicoService.listar();
     }
+
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewExibe(@PathVariable("id") Long id) {
         return new ModelAndView("produto/exibe", "produto", produtoService.findById(id));
@@ -76,6 +77,7 @@ public class ProdutoController {
             final RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
+
             return new ModelAndView("produto/edita", "produto", produto);
         }
         produtoService.atualizar(produto);

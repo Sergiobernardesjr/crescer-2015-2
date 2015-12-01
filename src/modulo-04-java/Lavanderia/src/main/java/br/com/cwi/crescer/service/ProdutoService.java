@@ -57,9 +57,6 @@ public class ProdutoService {
 
         ProdutoMapper.merge(dto, produto);
 
-        produto.setMaterial(materialDao.findById(dto.getIdMaterial()));
-        produto.setServico(servicoDao.findById(dto.getIdServico()));
-
         produtoDao.saveMerge(produto);
 
     }
@@ -88,8 +85,8 @@ public class ProdutoService {
     }
 
     public boolean naoExisteCombinacaoServicoEMaterial(Produto produto) {
-        List<Produto> listaProdutos = produtoDao.buscaServicoEMaterial(produto.getServico().getIdServico(), produto.getMaterial().getIdMaterial());
-        if (listaProdutos.size() == 0) {
+        List<Produto> produtoPesquisado = produtoDao.buscaServicoEMaterial(produto.getServico().getIdServico(), produto.getMaterial().getIdMaterial());
+        if (produtoPesquisado.size() == 0) {
             return true;
         }
         return false;
@@ -106,8 +103,7 @@ public class ProdutoService {
         List<Produto> produtos = produtoDao.buscaServicoEMaterial(idServico, idMaterial);
 
         List<ProdutoDTO> dtos = new ArrayList<ProdutoDTO>();
-
-        for (Produto produto : produtos) {
+        for(Produto produto : produtos){
             dtos.add(ProdutoMapper.toDTO(produto));
         }
 

@@ -20,25 +20,34 @@
 				<input th:field = "*{idProduto}" />
 			</p>
 			
-			<p>
+			<p th:classappend="${#fields.hasErrors('valor')}">
 				<label class="control-label">Valor: </label>
 				<input class="form-control" th:field = "*{valor}" />
+				<span th:errors="*{valor}"></span>
 			</p>
+			
+			<p>
+				<label class="control-label">Prazo: </label>
+				<input class="form-control" th:field = "*{prazo}" />
+			</p>
+
+
+            <p th:classappend="${#fields.hasErrors('idServico')}">
+		 		<label class="control-label">Serviço: </label>
+		 		<select class="form-control" th:field="*{idServico}" disabled="true">
+	                <option th:each="c : ${servicos}" th:text="${c.descricao}" th:value="${c.idServico}" ></option>
+	            </select>
+	            <span th:errors="*{idServico}"></span>
+            </p>
 			
         	<p th:classappend="${#fields.hasErrors('idMaterial')}">
 		 		<label class="control-label">Material: </label>
-		 		<select class="form-control" th:field="*{idMaterial}">
+		 		<select class="form-control" th:field="*{idMaterial}" disabled="true">
 	                <option th:each="c : ${materiais}" th:text="${c.descricao}" th:value="${c.idMaterial}" ></option>
 	            </select>
 	            <span th:errors="*{idMaterial}"></span>
             </p>
-            <p th:classappend="${#fields.hasErrors('idServico')}">
-		 		<label class="control-label">Serviço: </label>
-		 		<select class="form-control" th:field="*{idServico}">
-	                <option th:each="c : ${servicos}" th:text="${c.descricao}" th:value="${c.idServico}" ></option>
-	            </select>
-	            <span th:errors="*{idServico}"></span>
-            </p>	
+	
             
             <p th:classappend="${#fields.hasErrors('Situacao')}">
 		 		<label class="control-label">Situação: </label>
@@ -47,8 +56,6 @@
 	            </select>
 	            <span th:errors="*{situacao}"></span>
             </p>
-            	
-			<p class="red informacoes-obrigatorias">**Campos com asterísco(*) são obrigatórios.</p>
 			
             <button type="submit">Salvar</button>
              
