@@ -53,7 +53,9 @@
             	
             <button type="submit" th:action="@{/itens/editar}">Continuar adicionando</button>
             
-            <button type="submit" th:action="@{/pedidos/finalizar}">Finalizar pedido</button>
+            <a th:href="@{|/itens/finalizar/*{idPedido}|}"
+					class="btn btn-default"
+					style="text-decoration: none"> Finalizar pedido </a>
              
 		</form>
 	</div>

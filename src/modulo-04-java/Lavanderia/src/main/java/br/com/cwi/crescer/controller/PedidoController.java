@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -80,21 +81,12 @@ public class PedidoController {
         return new ModelAndView("item/edita", "item", item);
     }
 
-    @RequestMapping(path = "/finalizar", method = RequestMethod.POST)
-    public ModelAndView finalizar(@Valid @ModelAttribute("pedido") PedidoDTO dto,
-            BindingResult result,
-            final RedirectAttributes redirectAttributes) {
-        if (result.hasErrors()) {
-            return new ModelAndView("pedido/cadastra");
-        }
+    @RequestMapping(path = "/finalizar", method = RequestMethod.GET)
+    public ModelAndView finalizar(Model model) {
+        PedidoDTO pedido = (PedidoDTO) model.asMap().get("pedido");
+        pedidoService.finalizar(pedido);
 
-        Pedido pedido = pedidoService.finalzar(dto);
-
-        ItemDTO item = new ItemDTO();
-
-        item.setIdPedido(pedido.getIdPedido());
-
-        return new ModelAndView("item/edita", "item", item);
+        return new ModelAndView("pedido/lista", "pedidos", pedidoService.listAll());
     }
 
     @ModelAttribute("materiais")

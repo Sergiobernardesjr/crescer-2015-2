@@ -30,7 +30,7 @@ public class ProdutoMapper {
 
     public static Produto newProduto(ProdutoDTO dto) {
         Produto produto = new Produto();
-
+        produto.setPrazo(dto.getPrazo());
         produto.setIdProduto(dto.getIdProduto());
         produto.setSituacao(dto.getSituacao());
         produto.setValor(dto.getValor());

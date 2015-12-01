@@ -87,11 +87,13 @@ public class ProdutoController {
         return new ModelAndView("redirect:/produtos");
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/cadastrar")
     public ModelAndView viewCadastra() {
         return new ModelAndView("produto/cadastra", "produto", new ProdutoDTO());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(path = "/cadastrar", method = RequestMethod.POST)
     public ModelAndView cadastrar(@Valid @ModelAttribute("produto") ProdutoDTO dto,
             BindingResult result,

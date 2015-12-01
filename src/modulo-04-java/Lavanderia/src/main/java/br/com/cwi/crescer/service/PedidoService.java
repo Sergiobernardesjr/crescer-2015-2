@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.cwi.crescer.dao.ClienteDAO;
 import br.com.cwi.crescer.dao.ItemDAO;
 import br.com.cwi.crescer.dao.PedidoDAO;
+import br.com.cwi.crescer.domain.Cliente;
 import br.com.cwi.crescer.domain.Item;
 import br.com.cwi.crescer.domain.Pedido;
 import br.com.cwi.crescer.domain.Pedido.SituacaoPedido;
@@ -73,10 +74,16 @@ public class PedidoService {
         return PedidoMapper.toDTO(pedido);
     }
 
-    public Pedido finalzar(PedidoDTO dto) {
+    public void finalizar(PedidoDTO dto) {
         List<Item> itensPedido = itemDao.buscarItensPorPedido(dto.getIdPedido());
 
+        Pedido pedido = PedidoMapper.newPedido(dto);
+
+        Cliente cliente = clienteDao.findById(dto.getIdCliente());
+        pedido.setCliente(cliente);
+
         Integer maiorPrazo = 0;
+
 
         for (Item item : itensPedido) {
             if (item.getProduto().getPrazo() > maiorPrazo) {
@@ -84,17 +91,20 @@ public class PedidoService {
             }
         }
 
-        dto.setDataEntrega(calcularDataEntrega(dto.getDataInclusao(), maiorPrazo));
-        dto.setValorBruto(calcularValorTotal(itensPedido));
-        dto.setValorFinal(calcularValorTotal(itensPedido));
-        return null;
+        pedido.setDataEntrega(calcularDataEntrega(dto.getDataInclusao(), maiorPrazo));
+        pedido.setValorBruto(calcularValorTotal(itensPedido));
+        pedido.setValorFinal(calcularValorTotal(itensPedido));
+        pedido.setDataEntrega(calcularDataEntrega(dto.getDataInclusao(), maiorPrazo));
+
+        pedido.setSituacao(SituacaoPedido.PROCESSANDO);
+        pedidoDao.saveMerge(pedido);
     }
 
-    private BigDecimal calcularValorDesconto(List<Item> itensPedido) {
-        BigDecimal valorTotalPedido = calcularValorTotal(itensPedido);
-
-        return null;
-    }
+    // private BigDecimal calcularValorDesconto(List<Item> itensPedido) {
+    // BigDecimal valorTotalPedido = calcularValorTotal(itensPedido);
+    //
+    // return null;
+    // }
 
     public Date calcularDataEntrega(Date dataInclusao, Integer prazo) {
         Calendar dataAdicionadoPrazo = Calendar.getInstance();
@@ -107,7 +117,7 @@ public class PedidoService {
         BigDecimal valorTotalPedido = new BigDecimal(0);
 
         for (Item item : itensPedido) {
-            valorTotalPedido.add(item.getValorTotal());
+            valorTotalPedido = valorTotalPedido.add(item.getValorTotal());
         }
 
         return valorTotalPedido;

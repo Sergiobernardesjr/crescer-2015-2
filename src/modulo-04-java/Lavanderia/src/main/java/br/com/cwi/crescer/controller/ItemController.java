@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.domain.Material;
@@ -59,12 +61,15 @@ public class ItemController {
         return mv;
     }
 
-    @RequestMapping(path = "/finalizar", method = RequestMethod.POST)
-    public ModelAndView finalizar(@ModelAttribute("item") ItemDTO item) {
+    @RequestMapping(path = "/finalizar/{id}", method = RequestMethod.GET)
+    public ModelAndView finalizar(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 
-        PedidoDTO pedido = pedidoService.buscarPedidoPorId(item.getIdPedido());
+        PedidoDTO pedido = pedidoService.buscarPedidoPorId(id);
 
-        return new ModelAndView("pedido/finalizar", "pedido", pedido);
+        redirectAttributes.addFlashAttribute("pedido", pedido);
+
+        ModelAndView mv = new ModelAndView("redirect:/pedidos/finalizar");
+        return mv;
     }
 
     @ModelAttribute("materiais")

@@ -25,16 +25,15 @@
         
             <tr>
                 <th>Cliente</th>
-                <th>Item</th>
                 <th>Valor total</th>
+                <th>Data entrega</th>
                 <th>Situação</th>
-                <th>Editar</th>
             </tr>
             <tr th:each="pedido : ${pedidos}" >
                 <td  th:text="${pedido.nomeCliente}"></td>
-		 		<td  th:text="${produto.valorFinal}"></td>
-		 		<td  th:text="${produto.situacao}"></td>
-		 		<td><a th:href="${'/pedidos/editar/' + pedidos.idPedido}">Editar</a></td>
+		 		<td  th:text="${pedido.valorFinal}"></td>
+		 		<td  th:text="${pedido.dataEntrega}"></td>
+		 		<td  th:text="${pedido.situacao}"></td>
             </tr>
             
         </table>

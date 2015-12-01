@@ -35,6 +35,7 @@ public class ItemService {
         item.setPedido(pedidoDao.findById(dto.getIdPedido()));
         Produto produto = produtoDao.buscaServicoEMaterial(dto.getIdServico(), dto.getIdMaterial()).get(0);
         item.setProduto(produto);
+        item.setSituacao(SituacaoItem.PENDENTE);
 
         itemDao.savePersist(calcularTotais(item));
     }

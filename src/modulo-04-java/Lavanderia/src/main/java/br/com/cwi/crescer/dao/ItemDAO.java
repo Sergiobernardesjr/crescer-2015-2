@@ -27,7 +27,7 @@ public class ItemDAO extends AbstractDAO {
     }
 
     public List<Item> buscarItensPorPedido(Long idPedido) {
-        return em.createQuery("FROM Item c WHERE c.idPedido = :idPedido", Item.class)
+        return em.createQuery("FROM Item c WHERE c.pedido.idPedido = :idPedido", Item.class)
                 .setParameter("idPedido", idPedido)
                 .getResultList();
     }

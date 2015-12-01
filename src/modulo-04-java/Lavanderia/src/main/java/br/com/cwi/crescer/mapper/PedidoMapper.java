@@ -17,6 +17,7 @@ public class PedidoMapper {
         dto.setValorBruto(pedido.getValorBruto());
         dto.setValorDesconto(pedido.getValorDesconto());
         dto.setValorFinal(pedido.getValorFinal());
+        dto.setIdPedido(pedido.getIdPedido());
         return dto;
     }
 
